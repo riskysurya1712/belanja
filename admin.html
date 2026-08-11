@@ -164,7 +164,7 @@ button:hover{
 
     display:flex;
 
-    justify-space-between;
+    justify-content:space-between;
 
     align-items:center;
 
@@ -757,7 +757,7 @@ FORM PRODUK
         <div class="upload-box">
 
             <label>
-                🎬 Upload Video Produk (Bisa menampung file berukuran besar)
+                🎬 Upload Video Produk (Dapat menampung ukuran berkas besar)
             </label>
 
             <input
@@ -856,12 +856,34 @@ PESANAN
 <script>
 
 /* =====================================================
-INDEXEDDB UTILITIES FOR LARGE FILE STORAGE
+INDEXEDDB UTILITIES WITH INITIAL DATA
 ===================================================== */
 
 const DB_NAME = "GadgetStoreDB";
 const DB_VERSION = 1;
 const STORE_NAME = "products";
+
+// Produk Bawaan / Awal Default
+const INITIAL_PRODUCTS = [
+    {
+        id: 101,
+        name: "Smartphone Galaxy Ultra",
+        price: 12000000,
+        stock: 15,
+        desc: "Smartphone flagship dengan kamera 200MP dan performa tinggi.",
+        image: "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=500",
+        video: ""
+    },
+    {
+        id: 102,
+        name: "Laptop Pro Book 15",
+        price: 15500000,
+        stock: 8,
+        desc: "Laptop profesional untuk kebutuhan koding dan desain grafis.",
+        image: "https://images.unsplash.com/photo-1496181133206-80ce9b88a853?w=500",
+        video: ""
+    }
+];
 
 function openDB() {
     return new Promise((resolve, reject) => {
@@ -870,7 +892,12 @@ function openDB() {
         request.onupgradeneeded = (e) => {
             const db = e.target.result;
             if (!db.objectStoreNames.contains(STORE_NAME)) {
-                db.createObjectStore(STORE_NAME, { keyPath: "id" });
+                const store = db.createObjectStore(STORE_NAME, { keyPath: "id" });
+                
+                // Masukkan produk awal saat database dibuat
+                INITIAL_PRODUCTS.forEach(product => {
+                    store.add(product);
+                });
             }
         };
 
@@ -885,7 +912,20 @@ async function getAllProductsFromDB() {
         const tx = db.transaction(STORE_NAME, "readonly");
         const store = tx.objectStore(STORE_NAME);
         const req = store.getAll();
-        req.onsuccess = () => resolve(req.result || []);
+
+        req.onsuccess = async () => {
+            let products = req.result || [];
+            
+            // Jika database kosong sama sekali, tambahkan data awal
+            if (products.length === 0) {
+                for (const item of INITIAL_PRODUCTS) {
+                    await saveProductToDB(item);
+                }
+                products = INITIAL_PRODUCTS;
+            }
+            resolve(products);
+        };
+
         req.onerror = () => reject(req.error);
     });
 }
@@ -1056,7 +1096,7 @@ document.getElementById("productForm").addEventListener("submit", async function
         await renderProducts();
 
     } catch (err) {
-        alert("Terjadi kesalahan saat menyimpan data ke database browser: " + err);
+        alert("Terjadi kesalahan saat menyimpan data: " + err);
     }
 });
 
@@ -1077,13 +1117,19 @@ async function renderProducts(){
     container.innerHTML = "";
 
     products.forEach(product => {
-        const imageSrc = product.image instanceof File || product.image instanceof Blob 
-            ? URL.createObjectURL(product.image) 
-            : (product.image || 'https://via.placeholder.com/600x400?text=No+Image');
+        let imageSrc = 'https://via.placeholder.com/600x400?text=No+Image';
+        if (product.image instanceof File || product.image instanceof Blob) {
+            imageSrc = URL.createObjectURL(product.image);
+        } else if (typeof product.image === 'string' && product.image.trim() !== '') {
+            imageSrc = product.image;
+        }
 
-        const videoSrc = product.video instanceof File || product.video instanceof Blob 
-            ? URL.createObjectURL(product.video) 
-            : product.video;
+        let videoSrc = '';
+        if (product.video instanceof File || product.video instanceof Blob) {
+            videoSrc = URL.createObjectURL(product.video);
+        } else if (typeof product.video === 'string') {
+            videoSrc = product.video;
+        }
 
         const productEl = document.createElement("div");
         productEl.className = "product";
