@@ -1,14 +1,12 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>GadgetStore Pro</title>
 
 <style>
-
 *{
     box-sizing:border-box;
     margin:0;
@@ -52,7 +50,6 @@ header p{
     box-shadow:0 8px 25px #0878c522;
     border:1px solid #d7edff;
 }
-
 
 /* ================= LOGIN ================= */
 
@@ -104,7 +101,6 @@ input:focus,
 select:focus{
     border-color:#0785e8;
 }
-
 
 /* ================= BUTTON ================= */
 
@@ -161,7 +157,6 @@ button:hover,
     background:#ef4444;
 }
 
-
 /* ================= NAV ================= */
 
 .nav{
@@ -179,7 +174,6 @@ button:hover,
     flex-wrap:wrap;
 }
 
-
 /* ================= PRODUK ================= */
 
 .section-title{
@@ -187,10 +181,10 @@ button:hover,
     color:#075da8;
 }
 
+/* 2 PRODUK SETIAP BARIS */
 .products{
     display:grid;
-    grid-template-columns:
-    repeat(auto-fit,minmax(260px,1fr));
+    grid-template-columns:repeat(2,1fr);
     gap:20px;
 }
 
@@ -200,11 +194,17 @@ button:hover,
     overflow:hidden;
     background:white;
     box-shadow:0 5px 18px #0878d11c;
+    transition:.2s;
+}
+
+.product:hover{
+    transform:translateY(-4px);
+    box-shadow:0 10px 25px #0878d133;
 }
 
 .product img{
     width:100%;
-    height:210px;
+    height:250px;
     object-fit:cover;
 }
 
@@ -236,7 +236,6 @@ video{
     background:#000;
 }
 
-
 /* ================= ORDER ================= */
 
 .order{
@@ -256,7 +255,6 @@ video{
     font-weight:bold;
     margin-top:8px;
 }
-
 
 /* ================= TRACKING ================= */
 
@@ -321,7 +319,6 @@ video{
     font-size:10px;
 }
 
-
 /* ================= CART ================= */
 
 .cart-item{
@@ -373,7 +370,6 @@ video{
     font-weight:bold;
     color:#075da8;
 }
-
 
 /* ================= MODAL ================= */
 
@@ -431,7 +427,6 @@ video{
     font-weight:bold;
 }
 
-
 /* ================= LAINNYA ================= */
 
 .empty{
@@ -450,13 +445,21 @@ footer{
     color:#64748b;
 }
 
-
 /* ================= MOBILE ================= */
 
 @media(max-width:600px){
 
     header h1{
         font-size:25px;
+    }
+
+    /* HP menjadi 1 produk per baris */
+    .products{
+        grid-template-columns:1fr;
+    }
+
+    .product img{
+        height:210px;
     }
 
     .cart-item img{
@@ -479,17 +482,12 @@ footer{
     }
 
 }
-
 </style>
 </head>
 
-
 <body>
 
-
-<!-- =====================================================
-LOGIN
-===================================================== -->
+<!-- ================= LOGIN ================= -->
 
 <div id="loginPage">
 
@@ -497,25 +495,14 @@ LOGIN
 
         <h2>GadgetStore Pro</h2>
 
-        <p>
-            Login ke GadgetStore
-        </p>
-
+        <p>Login ke GadgetStore</p>
 
         <label>Login sebagai</label>
 
         <select id="role">
-
-            <option value="customer">
-                Customer
-            </option>
-
-            <option value="admin">
-                Administrator
-            </option>
-
+            <option value="customer">Customer</option>
+            <option value="admin">Administrator</option>
         </select>
-
 
         <label>Username</label>
 
@@ -525,7 +512,6 @@ LOGIN
             placeholder="Masukkan username"
         >
 
-
         <label>Password</label>
 
         <input
@@ -534,7 +520,6 @@ LOGIN
             placeholder="Masukkan password"
         >
 
-
         <button
             onclick="login()"
             style="width:100%">
@@ -542,7 +527,6 @@ LOGIN
             Login
 
         </button>
-
 
         <p
             id="loginMessage"
@@ -554,28 +538,19 @@ LOGIN
 </div>
 
 
-
-<!-- =====================================================
-APLIKASI CUSTOMER
-===================================================== -->
+<!-- ================= APLIKASI CUSTOMER ================= -->
 
 <div id="app" class="hidden">
 
 <header>
 
-    <h1>
-        GadgetStore Management System
-    </h1>
+    <h1>GadgetStore Management System</h1>
 
-    <p>
-        Premium Technology Marketplace
-    </p>
+    <p>Premium Technology Marketplace</p>
 
 </header>
 
-
 <div class="container">
-
 
 <!-- ================= NAV ================= -->
 
@@ -585,9 +560,7 @@ APLIKASI CUSTOMER
 
         <div>
 
-            <h2>
-                🛍️ Panel Pembeli
-            </h2>
+            <h2>🛍️ Panel Pembeli</h2>
 
             <p>
                 Selamat datang,
@@ -595,7 +568,6 @@ APLIKASI CUSTOMER
             </p>
 
         </div>
-
 
         <div class="user-info">
 
@@ -608,7 +580,6 @@ APLIKASI CUSTOMER
 
             </button>
 
-
             <button
                 class="admin-btn hidden"
                 id="adminPanelBtn"
@@ -617,7 +588,6 @@ APLIKASI CUSTOMER
                 ⚙️ Admin
 
             </button>
-
 
             <button
                 class="logout"
@@ -632,7 +602,6 @@ APLIKASI CUSTOMER
     </div>
 
 </div>
-
 
 
 <!-- ================= PRODUK ================= -->
@@ -651,7 +620,6 @@ APLIKASI CUSTOMER
 </div>
 
 
-
 <!-- ================= PESANAN ================= -->
 
 <div class="card">
@@ -664,24 +632,16 @@ APLIKASI CUSTOMER
 
 </div>
 
-
 </div>
 
-
 <footer>
-
-    © 2026 GadgetStore Pro —
-    Prototype E-Commerce
-
+    © 2026 GadgetStore Pro — Prototype E-Commerce
 </footer>
 
 </div>
 
 
-
-<!-- =====================================================
-MODAL KERANJANG
-===================================================== -->
+<!-- ================= MODAL KERANJANG ================= -->
 
 <div
     id="cartModal"
@@ -691,9 +651,7 @@ MODAL KERANJANG
 
         <div class="modal-header">
 
-            <h2>
-                🛒 Keranjang
-            </h2>
+            <h2>🛒 Keranjang</h2>
 
             <button
                 class="close"
@@ -705,15 +663,12 @@ MODAL KERANJANG
 
         </div>
 
-
         <div id="cartItems"></div>
-
 
         <div
             id="cartTotal"
             class="cart-total">
         </div>
-
 
         <button
             class="buy"
@@ -729,10 +684,7 @@ MODAL KERANJANG
 </div>
 
 
-
-<!-- =====================================================
-MODAL CHECKOUT
-===================================================== -->
+<!-- ================= MODAL CHECKOUT ================= -->
 
 <div
     id="checkoutModal"
@@ -742,9 +694,7 @@ MODAL CHECKOUT
 
         <div class="modal-header">
 
-            <h2>
-                💳 Pembayaran
-            </h2>
+            <h2>💳 Pembayaran</h2>
 
             <button
                 class="close"
@@ -756,11 +706,9 @@ MODAL CHECKOUT
 
         </div>
 
-
         <h3>
             Pilih Metode Pembayaran
         </h3>
-
 
         <div class="payment">
 
@@ -781,7 +729,6 @@ MODAL CHECKOUT
 
         </div>
 
-
         <div class="payment">
 
             <label>
@@ -800,7 +747,6 @@ MODAL CHECKOUT
             </p>
 
         </div>
-
 
         <div class="payment">
 
@@ -821,12 +767,10 @@ MODAL CHECKOUT
 
         </div>
 
-
         <div
             id="checkoutTotal"
             class="checkout-total">
         </div>
-
 
         <button
             class="buy"
@@ -842,9 +786,7 @@ MODAL CHECKOUT
 </div>
 
 
-
 <script>
-
 
 /* =====================================================
 PRODUK DEFAULT
@@ -943,6 +885,7 @@ function login(){
     const msg=
         document.getElementById("loginMessage");
 
+    msg.textContent="";
 
     if(!username || !password){
 
@@ -952,7 +895,6 @@ function login(){
         return;
 
     }
-
 
     /* ADMIN */
 
@@ -998,12 +940,10 @@ function login(){
             ) || "[]"
         );
 
-
     let customer=
         customers.find(
             c=>c.username===username
         );
-
 
     if(!customer){
 
@@ -1012,9 +952,7 @@ function login(){
             password:password
         };
 
-
         customers.push(customer);
-
 
         localStorage.setItem(
             "customers",
@@ -1036,7 +974,6 @@ function login(){
 
     }
 
-
     localStorage.setItem(
         "loggedUser",
         username
@@ -1046,7 +983,6 @@ function login(){
         "loggedRole",
         "customer"
     );
-
 
     showApp();
 
@@ -1063,22 +999,18 @@ function showApp(){
     .getElementById("loginPage")
     .classList.add("hidden");
 
-
     document
     .getElementById("app")
     .classList.remove("hidden");
-
 
     const user=
         localStorage.getItem(
             "loggedUser"
         );
 
-
     document
     .getElementById("welcome")
     .textContent=user;
-
 
     if(
         localStorage.getItem(
@@ -1094,11 +1026,8 @@ function showApp(){
 
     }
 
-
     renderProducts();
-
     renderOrders();
-
     updateCartCount();
 
 }
@@ -1171,24 +1100,19 @@ function addToCart(id){
             ) || "[]"
         );
 
-
     const product=
         products.find(
             p=>p.id===id
         );
 
-
     if(!product)return;
 
-
     let cart=getCart();
-
 
     const existing=
         cart.find(
             item=>item.productId===id
         );
-
 
     if(existing){
 
@@ -1210,7 +1134,6 @@ function addToCart(id){
 
     }
 
-
     saveCart(cart);
 
     updateCartCount();
@@ -1231,14 +1154,12 @@ function updateCartCount(){
 
     const cart=getCart();
 
-
     const count=
         cart.reduce(
             (total,item)=>
             total+item.qty,
             0
         );
-
 
     document
     .getElementById("cartCount")
@@ -1258,14 +1179,12 @@ function renderProducts(){
             "products"
         );
 
-
     const products=
         JSON.parse(
             localStorage.getItem(
                 "products"
             ) || "[]"
         );
-
 
     if(products.length===0){
 
@@ -1277,7 +1196,6 @@ function renderProducts(){
         return;
 
     }
-
 
     container.innerHTML=
 
@@ -1294,23 +1212,19 @@ function renderProducts(){
                 "
             >
 
-
             <div class="product-body">
 
                 <h3>
                     ${product.name}
                 </h3>
 
-
                 <div class="price">
                     ${rupiah(product.price)}
                 </div>
 
-
                 <p class="desc">
                     ${product.desc}
                 </p>
-
 
                 <video controls>
 
@@ -1318,8 +1232,9 @@ function renderProducts(){
                         src="${product.video}"
                         type="video/mp4">
 
-                </video>
+                    Browser Anda tidak mendukung video.
 
+                </video>
 
                 <button
                     class="buy"
@@ -1379,9 +1294,7 @@ function renderCart(){
             "cartItems"
         );
 
-
     const cart=getCart();
-
 
     if(cart.length===0){
 
@@ -1400,7 +1313,6 @@ function renderCart(){
 
     }
 
-
     container.innerHTML=
 
     cart.map(item=>`
@@ -1414,18 +1326,15 @@ function renderCart(){
                 "
             >
 
-
             <div class="cart-info">
 
                 <h4>
                     ${item.name}
                 </h4>
 
-
                 <div class="cart-price">
                     ${rupiah(item.price)}
                 </div>
-
 
                 <div class="qty">
 
@@ -1441,11 +1350,9 @@ function renderCart(){
 
                     </button>
 
-
                     <span>
                         ${item.qty}
                     </span>
-
 
                     <button
                         onclick="
@@ -1458,7 +1365,6 @@ function renderCart(){
                         +
 
                     </button>
-
 
                     <button
                         class="danger"
@@ -1480,7 +1386,6 @@ function renderCart(){
 
     `).join("");
 
-
     const total=
         cart.reduce(
             (sum,item)=>
@@ -1489,7 +1394,6 @@ function renderCart(){
             item.qty,
             0
         );
-
 
     document
     .getElementById(
@@ -1510,18 +1414,14 @@ function changeQty(id,change){
 
     let cart=getCart();
 
-
     const item=
         cart.find(
             i=>i.productId===id
         );
 
-
     if(!item)return;
 
-
     item.qty+=change;
-
 
     if(item.qty<=0){
 
@@ -1531,7 +1431,6 @@ function changeQty(id,change){
         );
 
     }
-
 
     saveCart(cart);
 
@@ -1550,12 +1449,10 @@ function removeFromCart(id){
 
     let cart=getCart();
 
-
     cart=
     cart.filter(
         item=>item.productId!==id
     );
-
 
     saveCart(cart);
 
@@ -1574,7 +1471,6 @@ function openCheckout(){
 
     const cart=getCart();
 
-
     if(cart.length===0){
 
         alert(
@@ -1585,7 +1481,6 @@ function openCheckout(){
 
     }
 
-
     const total=
         cart.reduce(
             (sum,item)=>
@@ -1595,7 +1490,6 @@ function openCheckout(){
             0
         );
 
-
     document
     .getElementById(
         "checkoutTotal"
@@ -1604,9 +1498,7 @@ function openCheckout(){
     "Total Pembayaran: "+
     rupiah(total);
 
-
     closeCart();
-
 
     document
     .getElementById(
@@ -1639,7 +1531,6 @@ function processCheckout(){
             'input[name="payment"]:checked'
         );
 
-
     if(!selected){
 
         alert(
@@ -1650,9 +1541,7 @@ function processCheckout(){
 
     }
 
-
     const cart=getCart();
-
 
     if(cart.length===0){
 
@@ -1664,12 +1553,10 @@ function processCheckout(){
 
     }
 
-
     const user=
         localStorage.getItem(
             "loggedUser"
         );
-
 
     let orders=
         JSON.parse(
@@ -1677,7 +1564,6 @@ function processCheckout(){
                 "orders"
             ) || "[]"
         );
-
 
     const total=
         cart.reduce(
@@ -1687,7 +1573,6 @@ function processCheckout(){
             item.qty,
             0
         );
-
 
     cart.forEach(item=>{
 
@@ -1727,22 +1612,18 @@ function processCheckout(){
 
     });
 
-
     localStorage.setItem(
         "orders",
         JSON.stringify(orders)
     );
 
-
     saveCart([]);
-
 
     closeCheckout();
 
     updateCartCount();
 
     renderOrders();
-
 
     alert(
 
@@ -1769,12 +1650,10 @@ function renderOrders(){
             "orders"
         );
 
-
     const user=
         localStorage.getItem(
             "loggedUser"
         );
-
 
     const orders=
         JSON.parse(
@@ -1783,12 +1662,10 @@ function renderOrders(){
             ) || "[]"
         );
 
-
     const myOrders=
         orders.filter(
             o=>o.customer===user
         );
-
 
     if(myOrders.length===0){
 
@@ -1800,7 +1677,6 @@ function renderOrders(){
         return;
 
     }
-
 
     container.innerHTML=
 
@@ -1815,14 +1691,12 @@ function renderOrders(){
                 📦 ${order.productName}
             </h3>
 
-
             <p>
                 Jumlah:
                 <b>
                     ${order.quantity||1}
                 </b>
             </p>
-
 
             <p>
                 Total:
@@ -1834,7 +1708,6 @@ function renderOrders(){
                 </b>
             </p>
 
-
             <p>
                 Pembayaran:
                 <b>
@@ -1842,12 +1715,10 @@ function renderOrders(){
                 </b>
             </p>
 
-
             <p>
                 Tanggal:
                 ${order.date}
             </p>
-
 
             <div style="
                 margin-top:18px;
@@ -1865,9 +1736,7 @@ function renderOrders(){
 
                 </h4>
 
-
                 <div class="tracking">
-
 
                     <div class="
                         step
@@ -1887,7 +1756,6 @@ function renderOrders(){
 
                     </div>
 
-
                     <div class="
                         line
                         ${getLineClass(
@@ -1896,7 +1764,6 @@ function renderOrders(){
                         )}
                     ">
                     </div>
-
 
                     <div class="
                         step
@@ -1916,7 +1783,6 @@ function renderOrders(){
 
                     </div>
 
-
                     <div class="
                         line
                         ${getLineClass(
@@ -1925,7 +1791,6 @@ function renderOrders(){
                         )}
                     ">
                     </div>
-
 
                     <div class="
                         step
@@ -1945,7 +1810,6 @@ function renderOrders(){
 
                     </div>
 
-
                     <div class="
                         line
                         ${getLineClass(
@@ -1954,7 +1818,6 @@ function renderOrders(){
                         )}
                     ">
                     </div>
-
 
                     <div class="
                         step
@@ -1976,7 +1839,6 @@ function renderOrders(){
 
                 </div>
 
-
                 <div style="
                     text-align:center;
                     margin-top:20px;
@@ -1993,7 +1855,6 @@ function renderOrders(){
                     </span>
 
                 </div>
-
 
                 <p style="
                     text-align:center;
@@ -2034,10 +1895,8 @@ function getStepClass(status,step){
 
     };
 
-
     const current=
         statusNumber[status]||1;
-
 
     if(step<current){
 
@@ -2045,13 +1904,11 @@ function getStepClass(status,step){
 
     }
 
-
     if(step===current){
 
         return "active";
 
     }
-
 
     return "";
 
@@ -2076,17 +1933,14 @@ function getLineClass(status,step){
 
     };
 
-
     const current=
         statusNumber[status]||1;
-
 
     if(current>=step){
 
         return "line-done";
 
     }
-
 
     return "";
 
@@ -2148,26 +2002,18 @@ function getStatusIcon(status){
 
 
 /* =====================================================
-CEK SESSION SAAT HALAMAN DIBUKA
+CEK SESSION
 ===================================================== */
 
-/*
-   Jika belum login:
-   TAMPILKAN LOGIN
-
-   Jika sudah login customer:
-   TAMPILKAN APLIKASI
-
-   Jika admin:
-   arahkan ke admin.html
-*/
-
 const loggedUser=
-    localStorage.getItem("loggedUser");
+    localStorage.getItem(
+        "loggedUser"
+    );
 
 const loggedRole=
-    localStorage.getItem("loggedRole");
-
+    localStorage.getItem(
+        "loggedRole"
+    );
 
 if(
     loggedUser &&
