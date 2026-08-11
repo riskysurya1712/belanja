@@ -1,979 +1,710 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>GadgetStore Pro - Admin</title>
+<title>GadgetStore Pro</title>
 
 <style>
-
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+    font-family:Arial,sans-serif;
 }
 
-body {
-    font-family: Arial, sans-serif;
-    background: linear-gradient(
-        135deg,
-        #e0f7ff,
-        #f8fdff
-    );
-    color: #172033;
+body{
+    background:#eef8ff;
+    color:#172033;
 }
 
-/* HEADER */
-
-header {
-    background: linear-gradient(
-        135deg,
-        #0369a1,
-        #38bdf8
-    );
-
-    color: white;
-
-    padding: 20px 7%;
-
-    display: flex;
-
-    justify-content: space-between;
-
-    align-items: center;
-
-    box-shadow:
-        0 5px 25px #0284c755;
+header{
+    background:linear-gradient(135deg,#071b33,#0b63ce,#72d7ff);
+    color:white;
+    padding:25px;
+    text-align:center;
+    box-shadow:0 5px 20px #0002;
 }
 
-.logo {
-    font-size: 25px;
-    font-weight: bold;
+header h1{
+    font-size:32px;
 }
 
-.logout {
-    background: white;
-    color: #0369a1;
-    border: none;
-    padding: 10px 18px;
-    border-radius: 10px;
-    cursor: pointer;
-    font-weight: bold;
+header p{
+    margin-top:7px;
+    opacity:.9;
 }
 
-
-/* CONTAINER */
-
-.container {
-    width: 90%;
-    max-width: 1250px;
-    margin: 35px auto;
+.container{
+    width:92%;
+    max-width:1200px;
+    margin:25px auto;
 }
 
-
-/* WELCOME */
-
-.welcome {
-    margin-bottom: 30px;
+.card{
+    background:white;
+    border-radius:18px;
+    padding:25px;
+    margin-bottom:25px;
+    box-shadow:0 8px 25px #0878c522;
+    border:1px solid #d7edff;
 }
 
-.welcome h1 {
-    color: #075985;
-    margin-bottom: 8px;
+/* LOGIN */
+#loginPage{
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:linear-gradient(135deg,#06182c,#0878d1,#9be9ff);
 }
 
-.welcome p {
-    color: #64748b;
+.login-box{
+    background:white;
+    width:90%;
+    max-width:420px;
+    padding:35px;
+    border-radius:25px;
+    box-shadow:0 20px 50px #0005;
 }
 
-
-/* DASHBOARD */
-
-.dashboard {
-    display: grid;
-    grid-template-columns:
-        1fr 1fr 1fr;
-
-    gap: 20px;
-
-    margin-bottom: 30px;
+.login-box h2{
+    text-align:center;
+    color:#0967bd;
+    margin-bottom:8px;
 }
 
-.stat {
-    background: white;
-    padding: 25px;
-    border-radius: 18px;
-    border: 1px solid #bae6fd;
-    box-shadow: 0 7px 25px #0284c722;
+.login-box p{
+    text-align:center;
+    color:#718096;
+    margin-bottom:25px;
 }
 
-.stat h3 {
-    color: #64748b;
+input,select{
+    width:100%;
+    padding:13px;
+    border:1px solid #cbd5e1;
+    border-radius:10px;
+    margin:7px 0 15px;
+    outline:none;
 }
 
-.stat strong {
-    display: block;
-    margin-top: 10px;
-    font-size: 30px;
-    color: #0284c7;
+input:focus,select:focus{
+    border-color:#0785e8;
 }
 
-
-/* CARD */
-
-.card {
-    background: white;
-    padding: 30px;
-    border-radius: 20px;
-    border: 1px solid #bae6fd;
-    box-shadow: 0 8px 30px #0284c722;
-    margin-bottom: 30px;
+button,.btn{
+    border:0;
+    padding:12px 18px;
+    border-radius:10px;
+    cursor:pointer;
+    font-weight:bold;
+    background:#0878d1;
+    color:white;
+    transition:.2s;
 }
 
-.card h2 {
-    color: #075985;
-    margin-bottom: 20px;
+button:hover,.btn:hover{
+    transform:translateY(-2px);
+    background:#075ca2;
 }
 
-
-/* FORM */
-
-.form-group {
-    margin-bottom: 15px;
+.admin-btn{
+    background:#152238;
 }
 
-.form-group label {
-    display: block;
-    font-weight: bold;
-    color: #334155;
-    margin-bottom: 6px;
+.logout{
+    background:#ef4444;
 }
 
-input,
-textarea {
-    width: 100%;
-    padding: 13px;
-    border: 1px solid #bae6fd;
-    border-radius: 10px;
-    outline: none;
-    font-size: 14px;
+.info{
+    background:#e8f6ff;
+    padding:12px;
+    border-radius:10px;
+    font-size:14px;
+    margin-top:10px;
 }
 
-textarea {
-    min-height: 100px;
-    resize: vertical;
+/* NAV */
+.nav{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:15px;
+    flex-wrap:wrap;
 }
 
-input:focus,
-textarea:focus {
-    border-color: #0284c7;
+.user-info{
+    display:flex;
+    align-items:center;
+    gap:10px;
 }
 
-
-/* BUTTON */
-
-.btn {
-    padding: 13px 20px;
-    border: none;
-    border-radius: 10px;
-    background:
-        linear-gradient(
-            135deg,
-            #0284c7,
-            #38bdf8
-        );
-
-    color: white;
-    font-weight: bold;
-    cursor: pointer;
+/* KATALOG */
+.section-title{
+    margin-bottom:18px;
+    color:#075da8;
 }
 
-.btn:hover {
-    opacity: .9;
+.products{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+    gap:20px;
 }
 
-
-/* PRODUCTS */
-
-.products {
-    display: grid;
-
-    grid-template-columns:
-        repeat(
-            auto-fit,
-            minmax(260px, 1fr)
-        );
-
-    gap: 20px;
+.product{
+    border:1px solid #d9ecfa;
+    border-radius:18px;
+    overflow:hidden;
+    background:white;
+    box-shadow:0 5px 18px #0878d11c;
 }
 
-.product {
-    border: 1px solid #bae6fd;
-    border-radius: 15px;
-    overflow: hidden;
-    background: #f8fdff;
+.product img{
+    width:100%;
+    height:210px;
+    object-fit:cover;
 }
 
-.product img {
-    width: 100%;
-    height: 180px;
-    object-fit: cover;
+.product-body{
+    padding:18px;
 }
 
-.product-body {
-    padding: 15px;
+.product h3{
+    margin-bottom:8px;
 }
 
-.product-body h3 {
-    color: #075985;
+.price{
+    color:#0878d1;
+    font-size:21px;
+    font-weight:bold;
+    margin:10px 0;
 }
 
-.price {
-    color: #0284c7;
-    font-weight: bold;
-    font-size: 18px;
-    margin: 8px 0;
+.desc{
+    color:#64748b;
+    line-height:1.5;
+    min-height:50px;
 }
 
-.product-body p {
-    color: #64748b;
-    font-size: 14px;
-    line-height: 1.5;
+video{
+    width:100%;
+    margin-top:15px;
+    border-radius:10px;
+    background:#000;
 }
 
-.delete {
-    margin-top: 12px;
-    width: 100%;
-    border: none;
-    padding: 10px;
-    background: #ef4444;
-    color: white;
-    border-radius: 8px;
-    cursor: pointer;
+.buy{
+    display:block;
+    text-align:center;
+    text-decoration:none;
+    margin-top:15px;
+    background:#08a66a;
 }
 
-
-/* ORDER */
-
-.order {
-    border: 1px solid #bae6fd;
-    padding: 20px;
-    border-radius: 15px;
-    margin-bottom: 15px;
-    background: #f8fdff;
+.buy:hover{
+    background:#078c5b;
 }
 
-.order h3 {
-    color: #075985;
-    margin-bottom: 10px;
+/* PESANAN */
+.order{
+    border:1px solid #dcebf5;
+    padding:15px;
+    border-radius:12px;
+    margin:10px 0;
 }
 
-.order p {
-    margin: 5px 0;
-    color: #475569;
+.status{
+    display:inline-block;
+    padding:6px 10px;
+    border-radius:20px;
+    background:#e0f2fe;
+    color:#0369a1;
+    font-size:13px;
+    font-weight:bold;
+    margin-top:8px;
 }
 
-select {
-    padding: 10px;
-    border: 1px solid #bae6fd;
-    border-radius: 8px;
-    margin-top: 10px;
-    background: white;
+.empty{
+    text-align:center;
+    padding:30px;
+    color:#64748b;
 }
 
-
-/* FOOTER */
-
-footer {
-    background: #075985;
-    color: white;
-    text-align: center;
-    padding: 30px;
-    margin-top: 50px;
+.hidden{
+    display:none!important;
 }
 
-
-/* RESPONSIVE */
-
-@media(max-width:800px) {
-
-    .dashboard {
-        grid-template-columns: 1fr;
-    }
-
-    header {
-        padding: 15px;
-    }
-
+footer{
+    text-align:center;
+    padding:25px;
+    color:#64748b;
 }
-
 </style>
-
 </head>
-
 
 <body>
 
+<!-- ================= LOGIN ================= -->
+<div id="loginPage">
 
-<!-- HEADER -->
+<div class="login-box">
+    <h2>GadgetStore Pro</h2>
+    <p>Login ke GadgetStore Management System</p>
 
-<header>
+    <label>Login sebagai</label>
+    <select id="role">
+        <option value="customer">Customer</option>
+        <option value="admin">Administrator</option>
+    </select>
 
-    <div class="logo">
-        ❄️ GadgetStore Pro
-        <small> | ADMIN</small>
-    </div>
+    <label>Username</label>
+    <input type="text" id="username" placeholder="Masukkan username">
 
-    <button
-        class="logout"
-        onclick="logout()"
-    >
-        Keluar
+    <label>Password</label>
+    <input type="password" id="password" placeholder="Masukkan password">
+
+    <button onclick="login()" style="width:100%">
+        Login
     </button>
 
-</header>
-
-
-<div class="container">
-
-
-    <!-- WELCOME -->
-
-    <div class="welcome">
-
-        <h1>
-            👨‍💼 Dashboard Administrator
-        </h1>
-
-        <p>
-            Kelola produk dan status pesanan pelanggan.
-        </p>
-
+    <div class="info">
+        <b>Customer:</b> bebas membuat username & password sendiri.<br><br>
+        <b>Admin:</b> username = admin | password = 12345
     </div>
 
-
-    <!-- STATISTICS -->
-
-    <div class="dashboard">
-
-        <div class="stat">
-
-            <h3>Total Produk</h3>
-
-            <strong id="totalProducts">
-                0
-            </strong>
-
-        </div>
-
-
-        <div class="stat">
-
-            <h3>Total Pesanan</h3>
-
-            <strong id="totalOrders">
-                0
-            </strong>
-
-        </div>
-
-
-        <div class="stat">
-
-            <h3>Pesanan Selesai</h3>
-
-            <strong id="completedOrders">
-                0
-            </strong>
-
-        </div>
-
-    </div>
-
-
-    <!-- TAMBAH PRODUK -->
-
-    <div class="card">
-
-        <h2>
-            ➕ Tambahkan Produk Baru
-        </h2>
-
-
-        <div class="form-group">
-
-            <label>
-                Nama Produk
-            </label>
-
-            <input
-                type="text"
-                id="productName"
-                placeholder="Contoh: iPhone 17 Pro Max"
-            >
-
-        </div>
-
-
-        <div class="form-group">
-
-            <label>
-                Harga Produk
-            </label>
-
-            <input
-                type="number"
-                id="productPrice"
-                placeholder="Contoh: 15000000"
-            >
-
-        </div>
-
-
-        <div class="form-group">
-
-            <label>
-                Deskripsi Produk
-            </label>
-
-            <textarea
-                id="productDescription"
-                placeholder="Masukkan spesifikasi produk..."
-            ></textarea>
-
-        </div>
-
-
-        <div class="form-group">
-
-            <label>
-                URL Foto Produk
-            </label>
-
-            <input
-                type="text"
-                id="productImage"
-                placeholder="https://contoh.com/gambar.jpg"
-            >
-
-        </div>
-
-
-        <div class="form-group">
-
-            <label>
-                URL Video Produk
-            </label>
-
-            <input
-                type="text"
-                id="productVideo"
-                placeholder="https://contoh.com/video.mp4"
-            >
-
-        </div>
-
-
-        <button
-            class="btn"
-            onclick="addProduct()"
-        >
-            💾 Simpan Produk ke Database
-        </button>
-
-    </div>
-
-
-    <!-- DAFTAR PRODUK -->
-
-    <div class="card">
-
-        <h2>
-            📦 Daftar Produk
-        </h2>
-
-        <div
-            class="products"
-            id="productList"
-        ></div>
-
-    </div>
-
-
-    <!-- PESANAN -->
-
-    <div class="card">
-
-        <h2>
-            🚚 Manajemen Status Pesanan
-        </h2>
-
-        <div id="orderList"></div>
-
-    </div>
-
+    <p id="loginMessage" style="color:#ef4444;margin-top:15px"></p>
+</div>
 
 </div>
 
 
+<!-- ================= APLIKASI CUSTOMER ================= -->
+<div id="app" class="hidden">
+
+<header>
+    <h1>GadgetStore Management System</h1>
+    <p>Premium Technology Marketplace</p>
+</header>
+
+<div class="container">
+
+    <div class="card">
+        <div class="nav">
+            <div>
+                <h2>🛍️ Panel Pembeli</h2>
+                <p>Selamat datang, <b id="welcome"></b></p>
+            </div>
+
+            <div class="user-info">
+                <button class="admin-btn hidden" id="adminPanelBtn"
+                    onclick="location.href='admin.html'">
+                    ⚙️ Panel Admin
+                </button>
+
+                <button class="logout" onclick="logout()">
+                    Keluar
+                </button>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- KATALOG -->
+    <div class="card">
+        <h2 class="section-title">📱 Katalog Produk</h2>
+
+        <div id="products" class="products"></div>
+    </div>
+
+
+    <!-- PESANAN -->
+    <div class="card">
+        <h2 class="section-title">📦 Status Pesanan Saya</h2>
+
+        <div id="orders"></div>
+    </div>
+
+</div>
+
 <footer>
-
-    <h3>
-        ❄️ GadgetStore Pro
-    </h3>
-
-    <p>
-        Administrator Dashboard
-    </p>
-
+    © 2026 GadgetStore Pro — Prototype E-Commerce
 </footer>
+
+</div>
 
 
 <script>
 
-/* ================= CEK LOGIN ================= */
+/* =====================================================
+   DATA PRODUK DEFAULT
+===================================================== */
 
-if (
-    localStorage.getItem("loggedIn")
-    !== "admin"
-) {
+const defaultProducts = [
+{
+    id:1,
+    name:"Smartphone Premium",
+    price:12000000,
+    desc:"Layar AMOLED 120Hz, RAM 12GB, kamera 108MP dan baterai 5000mAh.",
+    image:"https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=800",
+    video:"https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4"
+},
+{
+    id:2,
+    name:"Laptop Ultra",
+    price:15500000,
+    desc:"Laptop performa tinggi dengan RAM 16GB, SSD 1TB dan layar Full HD.",
+    image:"https://images.unsplash.com/photo-1496181133206-80ce9b88a853?w=800",
+    video:"https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4"
+},
+{
+    id:3,
+    name:"Gaming Headset",
+    price:850000,
+    desc:"Headset gaming surround sound dengan microphone noise cancelling.",
+    image:"https://images.unsplash.com/photo-1599669454699-248893623440?w=800",
+    video:"https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4"
+}
+];
 
-    window.location.href =
-        "index.html";
 
+/* =====================================================
+   INITIAL STORAGE
+===================================================== */
+
+if(!localStorage.getItem("products")){
+    localStorage.setItem("products",JSON.stringify(defaultProducts));
+}
+
+if(!localStorage.getItem("orders")){
+    localStorage.setItem("orders",JSON.stringify([]));
 }
 
 
-/* ================= DATA PRODUK ================= */
+/* =====================================================
+   FORMAT RUPIAH
+===================================================== */
 
-let products =
-    JSON.parse(
-        localStorage.getItem(
-            "gadgetProducts"
-        )
-    ) || [];
-
-
-/* ================= TAMBAH PRODUK ================= */
-
-function addProduct() {
-
-    let name =
-        document.getElementById(
-            "productName"
-        ).value;
-
-    let price =
-        document.getElementById(
-            "productPrice"
-        ).value;
-
-    let description =
-        document.getElementById(
-            "productDescription"
-        ).value;
-
-    let image =
-        document.getElementById(
-            "productImage"
-        ).value;
-
-    let video =
-        document.getElementById(
-            "productVideo"
-        ).value;
+function rupiah(number){
+    return new Intl.NumberFormat("id-ID",{
+        style:"currency",
+        currency:"IDR",
+        maximumFractionDigits:0
+    }).format(number);
+}
 
 
-    if (
-        !name ||
-        !price ||
-        !description ||
-        !image ||
-        !video
-    ) {
+/* =====================================================
+   LOGIN
+===================================================== */
 
-        alert(
-            "Semua data produk harus diisi!"
-        );
+function login(){
+
+    const role = document.getElementById("role").value;
+    const username = document.getElementById("username").value.trim();
+    const password = document.getElementById("password").value;
+
+    const msg = document.getElementById("loginMessage");
+
+    if(!username || !password){
+        msg.textContent = "Username dan password wajib diisi!";
+        return;
+    }
+
+
+    /* ADMIN */
+
+    if(role === "admin"){
+
+        if(username === "admin" && password === "12345"){
+
+            localStorage.setItem("loggedUser","admin");
+            localStorage.setItem("loggedRole","admin");
+
+            location.href="admin.html";
+
+        }else{
+            msg.textContent="Username atau password admin salah!";
+        }
 
         return;
+    }
+
+
+    /* CUSTOMER */
+
+    let customers =
+        JSON.parse(localStorage.getItem("customers") || "[]");
+
+    let customer =
+        customers.find(c => c.username === username);
+
+
+    /* Jika belum ada, otomatis membuat akun */
+
+    if(!customer){
+
+        customer={
+            username:username,
+            password:password
+        };
+
+        customers.push(customer);
+
+        localStorage.setItem(
+            "customers",
+            JSON.stringify(customers)
+        );
+
+    }else{
+
+        if(customer.password !== password){
+            msg.textContent="Password customer salah!";
+            return;
+        }
 
     }
 
 
-    let product = {
+    localStorage.setItem("loggedUser",username);
+    localStorage.setItem("loggedRole","customer");
 
-        id: Date.now(),
-
-        name: name,
-
-        price: Number(price),
-
-        description: description,
-
-        image: image,
-
-        video: video
-
-    };
+    showApp();
+}
 
 
-    products.push(product);
+/* =====================================================
+   TAMPILKAN APLIKASI
+===================================================== */
 
+function showApp(){
 
-    localStorage.setItem(
-        "gadgetProducts",
-        JSON.stringify(products)
-    );
+    document.getElementById("loginPage")
+        .classList.add("hidden");
 
+    document.getElementById("app")
+        .classList.remove("hidden");
 
-    alert(
-        "Produk berhasil ditambahkan!"
-    );
+    const user =
+        localStorage.getItem("loggedUser");
 
+    document.getElementById("welcome").textContent=user;
 
-    document.getElementById(
-        "productName"
-    ).value = "";
-
-    document.getElementById(
-        "productPrice"
-    ).value = "";
-
-    document.getElementById(
-        "productDescription"
-    ).value = "";
-
-    document.getElementById(
-        "productImage"
-    ).value = "";
-
-    document.getElementById(
-        "productVideo"
-    ).value = "";
-
+    if(localStorage.getItem("loggedRole")==="admin"){
+        document.getElementById("adminPanelBtn")
+            .classList.remove("hidden");
+    }
 
     renderProducts();
-
+    renderOrders();
 }
 
 
-/* ================= RENDER PRODUK ================= */
+/* =====================================================
+   LOGOUT
+===================================================== */
 
-function renderProducts() {
+function logout(){
 
-    let list =
-        document.getElementById(
-            "productList"
-        );
+    localStorage.removeItem("loggedUser");
+    localStorage.removeItem("loggedRole");
 
-
-    list.innerHTML = "";
+    location.reload();
+}
 
 
-    if (products.length === 0) {
+/* =====================================================
+   RENDER PRODUK
+===================================================== */
 
-        list.innerHTML = `
-            <p>
-                Belum ada produk.
-            </p>
-        `;
+function renderProducts(){
+
+    const container =
+        document.getElementById("products");
+
+    const products =
+        JSON.parse(localStorage.getItem("products") || "[]");
+
+    if(products.length===0){
+
+        container.innerHTML =
+        `<div class="empty">
+            Belum ada produk.
+        </div>`;
 
         return;
-
     }
 
 
-    products.forEach(product => {
-
-        list.innerHTML += `
+    container.innerHTML =
+        products.map(product => `
 
         <div class="product">
 
             <img
                 src="${product.image}"
                 alt="${product.name}"
+                onerror="this.src='https://via.placeholder.com/600x400?text=GadgetStore'"
             >
 
             <div class="product-body">
 
-                <h3>
-                    ${product.name}
-                </h3>
+                <h3>${product.name}</h3>
 
                 <div class="price">
-                    Rp ${product.price.toLocaleString("id-ID")}
+                    ${rupiah(product.price)}
                 </div>
 
-                <p>
-                    ${product.description}
+                <p class="desc">
+                    ${product.desc}
                 </p>
 
-                <button
-                    class="delete"
-                    onclick="deleteProduct(${product.id})"
-                >
-                    🗑️ Hapus Produk
-                </button>
+                <video controls>
+                    <source
+                        src="${product.video}"
+                        type="video/mp4">
+                    Browser Anda tidak mendukung video.
+                </video>
+
+                <a
+                    href="#"
+                    class="btn buy"
+                    onclick="buyProduct(${product.id});return false;">
+                    🛒 Beli Sekarang
+                </a>
 
             </div>
-
         </div>
 
-        `;
-
-    });
-
-
-    updateStats();
-
+    `).join("");
 }
 
 
-/* ================= HAPUS PRODUK ================= */
+/* =====================================================
+   BELI PRODUK
+===================================================== */
 
-function deleteProduct(id) {
+function buyProduct(id){
 
-    if (
-        !confirm(
-            "Yakin ingin menghapus produk?"
-        )
-    ) {
+    const user =
+        localStorage.getItem("loggedUser");
 
+    if(!user){
+        alert("Silakan login terlebih dahulu!");
         return;
-
     }
 
+    const products =
+        JSON.parse(localStorage.getItem("products"));
 
-    products =
-        products.filter(
-            product =>
-            product.id !== id
-        );
+    const product =
+        products.find(p => p.id === id);
 
+    if(!product)return;
+
+
+    const orders =
+        JSON.parse(localStorage.getItem("orders") || "[]");
+
+
+    const order={
+        id:Date.now(),
+        customer:user,
+        productId:product.id,
+        productName:product.name,
+        price:product.price,
+        status:"Belum Dibayar",
+        date:new Date().toLocaleString("id-ID")
+    };
+
+
+    orders.push(order);
 
     localStorage.setItem(
-        "gadgetProducts",
-        JSON.stringify(products)
-    );
-
-
-    renderProducts();
-
-}
-
-
-/* ================= PESANAN ================= */
-
-function renderOrders() {
-
-    let orders =
-        JSON.parse(
-            localStorage.getItem(
-                "gadgetOrders"
-            )
-        ) || [];
-
-
-    let list =
-        document.getElementById(
-            "orderList"
-        );
-
-
-    if (orders.length === 0) {
-
-        list.innerHTML = `
-            <p>
-                Belum ada pesanan pelanggan.
-            </p>
-        `;
-
-        updateStats();
-
-        return;
-
-    }
-
-
-    list.innerHTML = "";
-
-
-    orders.forEach(order => {
-
-        list.innerHTML += `
-
-        <div class="order">
-
-            <h3>
-                📦 ${order.product}
-            </h3>
-
-            <p>
-                <b>Pembeli:</b>
-                ${order.customer}
-            </p>
-
-            <p>
-                <b>Harga:</b>
-                Rp ${order.price.toLocaleString("id-ID")}
-            </p>
-
-            <p>
-                <b>Alamat:</b>
-                ${order.address}
-            </p>
-
-            <p>
-                <b>Status:</b>
-            </p>
-
-            <select
-                onchange="changeStatus(
-                    ${order.id},
-                    this.value
-                )"
-            >
-
-                <option
-                    value="Belum Dibayar"
-                    ${order.status === "Belum Dibayar" ? "selected" : ""}
-                >
-                    Belum Dibayar
-                </option>
-
-                <option
-                    value="Diproses"
-                    ${order.status === "Diproses" ? "selected" : ""}
-                >
-                    Diproses
-                </option>
-
-                <option
-                    value="Dikirim"
-                    ${order.status === "Dikirim" ? "selected" : ""}
-                >
-                    Dikirim
-                </option>
-
-                <option
-                    value="Selesai"
-                    ${order.status === "Selesai" ? "selected" : ""}
-                >
-                    Selesai
-                </option>
-
-            </select>
-
-        </div>
-
-        `;
-
-    });
-
-
-    updateStats();
-
-}
-
-
-/* ================= UBAH STATUS ================= */
-
-function changeStatus(
-    id,
-    status
-) {
-
-    let orders =
-        JSON.parse(
-            localStorage.getItem(
-                "gadgetOrders"
-            )
-        ) || [];
-
-
-    let order =
-        orders.find(
-            item =>
-            item.id === id
-        );
-
-
-    if (order) {
-
-        order.status = status;
-
-    }
-
-
-    localStorage.setItem(
-        "gadgetOrders",
+        "orders",
         JSON.stringify(orders)
     );
 
 
-    renderOrders();
-
-}
-
-
-/* ================= STATISTIK ================= */
-
-function updateStats() {
-
-    let orders =
-        JSON.parse(
-            localStorage.getItem(
-                "gadgetOrders"
-            )
-        ) || [];
-
-
-    document.getElementById(
-        "totalProducts"
-    ).textContent =
-        products.length;
-
-
-    document.getElementById(
-        "totalOrders"
-    ).textContent =
-        orders.length;
-
-
-    document.getElementById(
-        "completedOrders"
-    ).textContent =
-
-        orders.filter(
-            order =>
-            order.status === "Selesai"
-        ).length;
-
-}
-
-
-/* ================= LOGOUT ================= */
-
-function logout() {
-
-    localStorage.removeItem(
-        "loggedIn"
+    alert(
+        "Pesanan berhasil dibuat!\n\n" +
+        product.name +
+        "\n" +
+        rupiah(product.price) +
+        "\n\nStatus: Belum Dibayar"
     );
 
-    window.location.href =
-        "index.html";
-
+    renderOrders();
 }
 
 
-/* ================= START ================= */
+/* =====================================================
+   RENDER PESANAN CUSTOMER
+===================================================== */
 
-renderProducts();
+function renderOrders(){
 
-renderOrders();
+    const container =
+        document.getElementById("orders");
+
+    const user =
+        localStorage.getItem("loggedUser");
+
+    const orders =
+        JSON.parse(localStorage.getItem("orders") || "[]");
+
+    const myOrders =
+        orders.filter(o => o.customer === user);
+
+
+    if(myOrders.length===0){
+
+        container.innerHTML=
+        `<div class="empty">
+            Belum ada pesanan.
+        </div>`;
+
+        return;
+    }
+
+
+    container.innerHTML =
+        myOrders.map(order=>`
+
+        <div class="order">
+
+            <b>${order.productName}</b>
+
+            <p>
+                Harga:
+                <b>${rupiah(order.price)}</b>
+            </p>
+
+            <p>
+                Tanggal:
+                ${order.date}
+            </p>
+
+            <span class="status">
+                ${order.status}
+            </span>
+
+        </div>
+
+    `).join("");
+}
+
+
+/* =====================================================
+   CEK LOGIN SAAT HALAMAN DIBUKA
+===================================================== */
+
+if(
+    localStorage.getItem("loggedUser") &&
+    localStorage.getItem("loggedRole") === "customer"
+){
+    showApp();
+}
 
 </script>
 
