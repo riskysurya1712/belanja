@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -21,36 +20,42 @@
 }
 
 body{
-    background:#eef8ff;
-    color:#172033;
+    background:#eaf8ff;
+    color:#17324d;
 }
+
 
 /* =====================================================
    HEADER
 ===================================================== */
 
 header{
-    background:linear-gradient(
-        135deg,
-        #071b33,
-        #0b63ce,
-        #72d7ff
-    );
+    background:
+        linear-gradient(
+            135deg,
+            #0284c7,
+            #38bdf8,
+            #bae6fd
+        );
 
     color:white;
-    padding:25px;
+    padding:30px 20px;
     text-align:center;
-    box-shadow:0 5px 20px #0002;
+
+    box-shadow:
+        0 8px 30px rgba(14,165,233,.25);
 }
 
 header h1{
     font-size:32px;
+    letter-spacing:.5px;
 }
 
 header p{
-    margin-top:7px;
-    opacity:.9;
+    margin-top:8px;
+    opacity:.95;
 }
+
 
 /* =====================================================
    CONTAINER
@@ -59,17 +64,29 @@ header p{
 .container{
     width:92%;
     max-width:1200px;
-    margin:25px auto;
+    margin:28px auto;
 }
 
+
+/* =====================================================
+   CARD
+===================================================== */
+
 .card{
-    background:white;
-    border-radius:18px;
+    background:rgba(255,255,255,.95);
+
+    border-radius:22px;
+
     padding:25px;
+
     margin-bottom:25px;
-    box-shadow:0 8px 25px #0878c522;
-    border:1px solid #d7edff;
+
+    border:1px solid #c7edff;
+
+    box-shadow:
+        0 10px 35px rgba(14,165,233,.12);
 }
+
 
 /* =====================================================
    LOGIN
@@ -82,58 +99,88 @@ header p{
     justify-content:center;
     align-items:center;
 
-    background:linear-gradient(
-        135deg,
-        #06182c,
-        #0878d1,
-        #9be9ff
-    );
+    padding:20px;
+
+    background:
+        radial-gradient(
+            circle at top left,
+            #bae6fd,
+            transparent 35%
+        ),
+
+        linear-gradient(
+            135deg,
+            #0369a1,
+            #0ea5e9,
+            #7dd3fc,
+            #e0f7ff
+        );
 }
 
 .login-box{
-    background:white;
+    background:rgba(255,255,255,.97);
 
     width:90%;
     max-width:420px;
 
-    padding:35px;
+    padding:38px;
 
-    border-radius:25px;
+    border-radius:28px;
 
-    box-shadow:0 20px 50px #0005;
+    box-shadow:
+        0 25px 60px rgba(0,80,130,.25);
+
+    border:1px solid #d5f3ff;
 }
 
 .login-box h2{
     text-align:center;
-    color:#0967bd;
+    color:#0284c7;
+
     margin-bottom:8px;
+
+    font-size:28px;
 }
 
 .login-box p{
     text-align:center;
-    color:#718096;
+    color:#64748b;
+
     margin-bottom:25px;
 }
+
+
+/* =====================================================
+   INPUT
+===================================================== */
 
 input,
 select{
     width:100%;
 
-    padding:13px;
+    padding:14px;
 
-    border:1px solid #cbd5e1;
+    border:1px solid #b9dff2;
 
-    border-radius:10px;
+    border-radius:12px;
 
     margin:7px 0 15px;
 
     outline:none;
+
+    background:#f8fdff;
+
+    transition:.2s;
 }
 
 input:focus,
 select:focus{
-    border-color:#0785e8;
+    border-color:#0ea5e9;
+
+    box-shadow:
+        0 0 0 3px #bae6fd;
 }
+
 
 /* =====================================================
    BUTTON
@@ -145,26 +192,38 @@ button,
 
     padding:12px 18px;
 
-    border-radius:10px;
+    border-radius:12px;
 
     cursor:pointer;
 
     font-weight:bold;
 
-    background:#0878d1;
+    background:#0ea5e9;
 
     color:white;
 
     transition:.2s;
+
+    box-shadow:
+        0 5px 15px rgba(14,165,233,.2);
 }
 
 button:hover,
 .btn:hover{
     transform:translateY(-2px);
+
+    background:#0284c7;
+
+    box-shadow:
+        0 8px 20px rgba(14,165,233,.3);
 }
 
 .admin-btn{
-    background:#152238;
+    background:#075985;
+}
+
+.admin-btn:hover{
+    background:#0c4a6e;
 }
 
 .logout{
@@ -176,19 +235,19 @@ button:hover,
 }
 
 .cart-btn{
-    background:#08a66a;
+    background:#0891b2;
 }
 
 .cart-btn:hover{
-    background:#078c5b;
+    background:#0e7490;
 }
 
 .buy{
-    background:#08a66a;
+    background:#06b6d4;
 }
 
 .buy:hover{
-    background:#078c5b;
+    background:#0891b2;
 }
 
 .danger{
@@ -198,6 +257,7 @@ button:hover,
 .close{
     background:#ef4444;
 }
+
 
 /* =====================================================
    NAV
@@ -225,125 +285,165 @@ button:hover,
     flex-wrap:wrap;
 }
 
+
 /* =====================================================
-   KATALOG PRODUK
+   TITLE
 ===================================================== */
 
 .section-title{
-    margin-bottom:18px;
+    margin-bottom:20px;
 
-    color:#075da8;
+    color:#0284c7;
+
+    font-size:24px;
 }
 
-/*
-   2 PRODUK PER BARIS
 
-   Produk 1 = kiri
-   Produk 2 = kanan
-
-   Produk 3 = kiri
-   Produk 4 = kanan
-
-   dst...
-*/
+/* =====================================================
+   KATALOG 2 PRODUK PER BARIS
+===================================================== */
 
 .products{
+
     display:grid;
 
     grid-template-columns:
-    repeat(2,1fr);
+        repeat(2, minmax(0, 1fr));
 
-    gap:20px;
+    gap:25px;
 }
 
-.product{
-    border:1px solid #d9ecfa;
 
-    border-radius:18px;
+/* =====================================================
+   PRODUCT CARD
+===================================================== */
+
+.product{
+
+    border:1px solid #c9eaf8;
+
+    border-radius:20px;
 
     overflow:hidden;
 
     background:white;
 
     box-shadow:
-    0 5px 18px #0878d11c;
+        0 8px 25px rgba(14,165,233,.10);
 
-    transition:.2s;
+    transition:.25s;
 }
 
 .product:hover{
-    transform:translateY(-4px);
+
+    transform:translateY(-6px);
 
     box-shadow:
-    0 10px 25px #0878d133;
+        0 15px 35px rgba(14,165,233,.2);
+
+    border-color:#7dd3fc;
 }
+
+
+/* GAMBAR */
 
 .product img{
+
     width:100%;
 
-    height:240px;
+    height:230px;
 
     object-fit:cover;
+
+    display:block;
 }
 
+
+/* BODY PRODUK */
+
 .product-body{
-    padding:18px;
+
+    padding:20px;
 }
 
 .product h3{
+
+    color:#164e63;
+
     margin-bottom:8px;
+
+    font-size:20px;
 }
 
-.price{
-    color:#0878d1;
 
-    font-size:21px;
+/* HARGA */
+
+.price{
+
+    color:#0284c7;
+
+    font-size:22px;
 
     font-weight:bold;
 
     margin:10px 0;
 }
 
+
+/* DESKRIPSI */
+
 .desc{
+
     color:#64748b;
 
-    line-height:1.5;
+    line-height:1.6;
 
-    min-height:50px;
+    min-height:55px;
 }
 
+
+/* VIDEO */
+
 video{
+
     width:100%;
+
+    height:220px;
 
     margin-top:15px;
 
-    border-radius:10px;
+    border-radius:12px;
 
-    background:#000;
+    background:#082f49;
 }
+
 
 /* =====================================================
    ORDER
 ===================================================== */
 
 .order{
-    border:1px solid #dcebf5;
+
+    border:1px solid #ccebf8;
 
     padding:18px;
 
-    border-radius:14px;
+    border-radius:16px;
 
     margin:12px 0;
+
+    background:#f8fdff;
 }
 
 .status{
+
     display:inline-block;
 
-    padding:7px 12px;
+    padding:8px 13px;
 
     border-radius:20px;
 
-    background:#e0f2fe;
+    background:#e0f7ff;
 
     color:#0369a1;
 
@@ -354,11 +454,13 @@ video{
     margin-top:8px;
 }
 
+
 /* =====================================================
    TRACKING
 ===================================================== */
 
 .tracking{
+
     display:flex;
 
     align-items:center;
@@ -369,6 +471,7 @@ video{
 }
 
 .step{
+
     text-align:center;
 
     min-width:70px;
@@ -377,6 +480,7 @@ video{
 }
 
 .circle{
+
     width:42px;
 
     height:42px;
@@ -395,30 +499,38 @@ video{
 }
 
 .step.active{
-    color:#0878d1;
+
+    color:#0284c7;
 
     font-weight:bold;
 }
 
 .step.active .circle{
-    background:#0878d1;
+
+    background:#0ea5e9;
 
     color:white;
+
+    box-shadow:
+        0 5px 15px #0ea5e955;
 }
 
 .step.done{
-    color:#08a66a;
+
+    color:#0891b2;
 
     font-weight:bold;
 }
 
 .step.done .circle{
-    background:#08a66a;
+
+    background:#06b6d4;
 
     color:white;
 }
 
 .line{
+
     height:4px;
 
     flex:1;
@@ -429,10 +541,12 @@ video{
 }
 
 .line-done{
-    background:#08a66a;
+
+    background:#06b6d4;
 }
 
 .step small{
+
     display:block;
 
     margin-top:7px;
@@ -440,11 +554,13 @@ video{
     font-size:10px;
 }
 
+
 /* =====================================================
    CART
 ===================================================== */
 
 .cart-item{
+
     display:flex;
 
     align-items:center;
@@ -453,26 +569,28 @@ video{
 
     padding:15px 0;
 
-    border-bottom:
-    1px solid #e2e8f0;
+    border-bottom:1px solid #dbeafe;
 }
 
 .cart-item img{
+
     width:80px;
 
     height:80px;
 
     object-fit:cover;
 
-    border-radius:10px;
+    border-radius:12px;
 }
 
 .cart-info{
+
     flex:1;
 }
 
 .cart-price{
-    color:#0878d1;
+
+    color:#0284c7;
 
     font-weight:bold;
 
@@ -480,6 +598,7 @@ video{
 }
 
 .qty{
+
     display:flex;
 
     align-items:center;
@@ -490,10 +609,12 @@ video{
 }
 
 .qty button{
+
     padding:6px 10px;
 }
 
 .qty span{
+
     min-width:25px;
 
     text-align:center;
@@ -502,27 +623,32 @@ video{
 }
 
 .cart-total{
+
     text-align:right;
 
     margin-top:20px;
 
-    font-size:20px;
+    font-size:21px;
 
     font-weight:bold;
 
-    color:#075da8;
+    color:#0369a1;
 }
+
 
 /* =====================================================
    MODAL
 ===================================================== */
 
 .modal{
+
     position:fixed;
 
     inset:0;
 
-    background:#0008;
+    background:rgba(2,47,73,.65);
+
+    backdrop-filter:blur(4px);
 
     display:flex;
 
@@ -536,6 +662,7 @@ video{
 }
 
 .modal-box{
+
     background:white;
 
     width:100%;
@@ -546,12 +673,16 @@ video{
 
     overflow-y:auto;
 
-    border-radius:20px;
+    border-radius:22px;
 
     padding:25px;
+
+    box-shadow:
+        0 25px 60px rgba(0,0,0,.25);
 }
 
 .modal-header{
+
     display:flex;
 
     justify-content:space-between;
@@ -562,46 +693,65 @@ video{
 }
 
 .payment{
-    border:1px solid #dcebf5;
 
-    border-radius:12px;
+    border:1px solid #ccebf8;
+
+    border-radius:14px;
 
     padding:15px;
 
     margin:10px 0;
+
+    background:#f8fdff;
+}
+
+.payment:hover{
+
+    background:#eefaff;
+
+    border-color:#7dd3fc;
 }
 
 .payment input{
+
     width:auto;
 
     margin:0 8px 0 0;
 }
 
 .payment label{
+
     cursor:pointer;
 
     font-weight:bold;
+
+    color:#075985;
 }
 
 .checkout-total{
-    background:#e8f6ff;
+
+    background:#e0f7ff;
 
     padding:15px;
 
-    border-radius:12px;
+    border-radius:14px;
 
     margin:15px 0;
 
     font-size:18px;
 
     font-weight:bold;
+
+    color:#0369a1;
 }
+
 
 /* =====================================================
    LAINNYA
 ===================================================== */
 
 .empty{
+
     text-align:center;
 
     padding:30px;
@@ -610,10 +760,12 @@ video{
 }
 
 .hidden{
+
     display:none!important;
 }
 
 footer{
+
     text-align:center;
 
     padding:25px;
@@ -621,73 +773,57 @@ footer{
     color:#64748b;
 }
 
+
 /* =====================================================
-   MOBILE
+   RESPONSIVE
 ===================================================== */
 
-/*
-   Tetap 2 produk per baris di HP
-*/
-
-@media(max-width:600px){
+@media(max-width:700px){
 
     header h1{
         font-size:25px;
     }
 
-    .products{
-        grid-template-columns:
-        repeat(2,1fr);
+    /* HP menjadi 1 produk per baris */
 
-        gap:10px;
+    .products{
+
+        grid-template-columns:1fr;
+
     }
 
     .product img{
-        height:150px;
+
+        height:210px;
+
     }
 
-    .product-body{
-        padding:12px;
-    }
+    .tracking{
 
-    .product h3{
-        font-size:15px;
-    }
+        overflow-x:auto;
 
-    .price{
-        font-size:16px;
-    }
-
-    .desc{
-        font-size:12px;
-    }
-
-    .product button{
-        font-size:11px;
-
-        padding:10px 5px;
-    }
-
-    .cart-item img{
-        width:65px;
-
-        height:65px;
     }
 
     .step{
+
         min-width:55px;
+
     }
 
     .circle{
+
         width:35px;
 
         height:35px;
 
         font-size:15px;
+
     }
 
     .step small{
+
         font-size:9px;
+
     }
 
 }
@@ -707,17 +843,13 @@ LOGIN
 
     <div class="login-box">
 
-        <h2>
-            GadgetStore Pro
-        </h2>
+        <h2>☁️ GadgetStore Pro</h2>
 
         <p>
             Login ke GadgetStore
         </p>
 
-        <label>
-            Login sebagai
-        </label>
+        <label>Login sebagai</label>
 
         <select id="role">
 
@@ -731,9 +863,8 @@ LOGIN
 
         </select>
 
-        <label>
-            Username
-        </label>
+
+        <label>Username</label>
 
         <input
             type="text"
@@ -741,9 +872,8 @@ LOGIN
             placeholder="Masukkan username"
         >
 
-        <label>
-            Password
-        </label>
+
+        <label>Password</label>
 
         <input
             type="password"
@@ -751,13 +881,15 @@ LOGIN
             placeholder="Masukkan password"
         >
 
+
         <button
             onclick="login()"
             style="width:100%">
 
-            Login
+            🔐 Login
 
         </button>
+
 
         <p
             id="loginMessage"
@@ -769,6 +901,7 @@ LOGIN
 </div>
 
 
+
 <!-- =====================================================
 APLIKASI CUSTOMER
 ===================================================== -->
@@ -778,7 +911,7 @@ APLIKASI CUSTOMER
 <header>
 
     <h1>
-        GadgetStore Management System
+        ☁️ GadgetStore Management System
     </h1>
 
     <p>
@@ -791,9 +924,7 @@ APLIKASI CUSTOMER
 <div class="container">
 
 
-<!-- =====================================================
-NAV
-===================================================== -->
+<!-- NAV -->
 
 <div class="card">
 
@@ -850,15 +981,22 @@ NAV
 </div>
 
 
-<!-- =====================================================
-KATALOG
-===================================================== -->
+
+<!-- KATALOG -->
 
 <div class="card">
 
     <h2 class="section-title">
         📱 Katalog Produk
     </h2>
+
+    <!--
+        PRODUK AKAN TAMPIL:
+        PRODUK 1 | PRODUK 2
+        PRODUK 3 | PRODUK 4
+        PRODUK 5 | PRODUK 6
+        DAN SETERUSNYA
+    -->
 
     <div
         id="products"
@@ -868,9 +1006,8 @@ KATALOG
 </div>
 
 
-<!-- =====================================================
-PESANAN
-===================================================== -->
+
+<!-- PESANAN -->
 
 <div class="card">
 
@@ -889,11 +1026,12 @@ PESANAN
 <footer>
 
     © 2026 GadgetStore Pro —
-    Prototype E-Commerce
+    Sky Blue Edition
 
 </footer>
 
 </div>
+
 
 
 <!-- =====================================================
@@ -944,6 +1082,7 @@ MODAL KERANJANG
     </div>
 
 </div>
+
 
 
 <!-- =====================================================
@@ -1058,72 +1197,42 @@ MODAL CHECKOUT
 </div>
 
 
+
 <script>
 
+
 /* =====================================================
-DATA PRODUK DEFAULT
+PRODUK DEFAULT
 ===================================================== */
 
 const defaultProducts=[
 
-    {
-        id:1,
+{
+    id:1,
+    name:"Smartphone Premium",
+    price:12000000,
+    desc:"Layar AMOLED 120Hz, RAM 12GB, kamera 108MP dan baterai 5000mAh.",
+    image:"https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=800",
+    video:"https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4"
+},
 
-        name:
-        "Smartphone Premium",
+{
+    id:2,
+    name:"Laptop Ultra",
+    price:15500000,
+    desc:"Laptop performa tinggi dengan RAM 16GB, SSD 1TB dan layar Full HD.",
+    image:"https://images.unsplash.com/photo-1496181133206-80ce9b88a853?w=800",
+    video:"https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4"
+},
 
-        price:
-        12000000,
-
-        desc:
-        "Layar AMOLED 120Hz, RAM 12GB, kamera 108MP dan baterai 5000mAh.",
-
-        image:
-        "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=800",
-
-        video:
-        "https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4"
-    },
-
-
-    {
-        id:2,
-
-        name:
-        "Laptop Ultra",
-
-        price:
-        15500000,
-
-        desc:
-        "Laptop performa tinggi dengan RAM 16GB, SSD 1TB dan layar Full HD.",
-
-        image:
-        "https://images.unsplash.com/photo-1496181133206-80ce9b88a853?w=800",
-
-        video:
-        "https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4"
-    },
-
-
-    {
-        id:3,
-
-        name:
-        "Gaming Headset",
-
-        price:
-        850000,
-
-        desc:
-        "Headset gaming surround sound dengan microphone noise cancelling.",
-
-        image:
-        "https://images.unsplash.com/photo-1599669454699-248893623440?w=800",
-
-        video:
-        "https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4"
-    }
+{
+    id:3,
+    name:"Gaming Headset",
+    price:850000,
+    desc:"Headset gaming surround sound dengan microphone noise cancelling.",
+    image:"https://images.unsplash.com/photo-1599669454699-248893623440?w=800",
+    video:"https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4"
+}
 
 ];
 
@@ -1152,7 +1261,7 @@ if(!localStorage.getItem("orders")){
 
 
 /* =====================================================
-FORMAT RUPIAH
+RUPIAH
 ===================================================== */
 
 function rupiah(number){
@@ -1189,8 +1298,6 @@ function login(){
     const msg=
         document.getElementById("loginMessage");
 
-    msg.textContent="";
-
 
     if(!username || !password){
 
@@ -1198,10 +1305,11 @@ function login(){
         "Username dan password wajib diisi!";
 
         return;
+
     }
 
 
-    /* ================= ADMIN ================= */
+    /* ADMIN */
 
     if(role==="admin"){
 
@@ -1232,10 +1340,11 @@ function login(){
         }
 
         return;
+
     }
 
 
-    /* ================= CUSTOMER ================= */
+    /* CUSTOMER */
 
     let customers=
         JSON.parse(
@@ -1254,11 +1363,8 @@ function login(){
     if(!customer){
 
         customer={
-            username:
-            username,
-
-            password:
-            password
+            username:username,
+            password:password
         };
 
 
@@ -1274,9 +1380,7 @@ function login(){
 
     else{
 
-        if(
-            customer.password!==password
-        ){
+        if(customer.password!==password){
 
             msg.textContent=
             "Password customer salah!";
@@ -1331,6 +1435,21 @@ function showApp(){
     .textContent=user;
 
 
+    if(
+        localStorage.getItem(
+            "loggedRole"
+        )==="admin"
+    ){
+
+        document
+        .getElementById(
+            "adminPanelBtn"
+        )
+        .classList.remove("hidden");
+
+    }
+
+
     renderProducts();
 
     renderOrders();
@@ -1360,7 +1479,7 @@ function logout(){
 
 
 /* =====================================================
-CART KEY
+CART
 ===================================================== */
 
 function getCartKey(){
@@ -1394,10 +1513,6 @@ function saveCart(cart){
 }
 
 
-/* =====================================================
-TAMBAH KE KERANJANG
-===================================================== */
-
 function addToCart(id){
 
     const products=
@@ -1417,14 +1532,12 @@ function addToCart(id){
     if(!product)return;
 
 
-    let cart=
-        getCart();
+    let cart=getCart();
 
 
     const existing=
         cart.find(
-            item=>
-            item.productId===id
+            item=>item.productId===id
         );
 
 
@@ -1438,18 +1551,10 @@ function addToCart(id){
 
         cart.push({
 
-            productId:
-            product.id,
-
-            name:
-            product.name,
-
-            price:
-            product.price,
-
-            image:
-            product.image,
-
+            productId:product.id,
+            name:product.name,
+            price:product.price,
+            image:product.image,
             qty:1
 
         });
@@ -1461,7 +1566,6 @@ function addToCart(id){
 
     updateCartCount();
 
-
     alert(
         product.name+
         " berhasil ditambahkan ke keranjang!"
@@ -1470,14 +1574,9 @@ function addToCart(id){
 }
 
 
-/* =====================================================
-CART COUNT
-===================================================== */
-
 function updateCartCount(){
 
-    const cart=
-        getCart();
+    const cart=getCart();
 
 
     const count=
@@ -1498,7 +1597,7 @@ function updateCartCount(){
 
 
 /* =====================================================
-RENDER PRODUK
+RENDER PRODUCTS
 ===================================================== */
 
 function renderProducts(){
@@ -1520,13 +1619,12 @@ function renderProducts(){
     if(products.length===0){
 
         container.innerHTML=
-        `
-        <div class="empty">
+        `<div class="empty">
             Belum ada produk.
-        </div>
-        `;
+        </div>`;
 
         return;
+
     }
 
 
@@ -1538,12 +1636,10 @@ function renderProducts(){
 
             <img
                 src="${product.image}"
-
                 alt="${product.name}"
 
                 onerror="
-                    this.src=
-                    'https://via.placeholder.com/600x400?text=GadgetStore'
+                this.src='https://via.placeholder.com/600x400?text=GadgetStore'
                 "
             >
 
@@ -1556,16 +1652,12 @@ function renderProducts(){
 
 
                 <div class="price">
-
                     ${rupiah(product.price)}
-
                 </div>
 
 
                 <p class="desc">
-
                     ${product.desc}
-
                 </p>
 
 
@@ -1573,27 +1665,20 @@ function renderProducts(){
 
                     <source
                         src="${product.video}"
-                        type="video/mp4"
-                    >
-
-                    Browser Anda
-                    tidak mendukung video.
+                        type="video/mp4">
 
                 </video>
 
 
                 <button
                     class="buy"
-
                     style="
                         width:100%;
-                        margin-top:15px;
+                        margin-top:15px
                     "
-
                     onclick="
                         addToCart(${product.id})
-                    "
-                >
+                    ">
 
                     🛒 Tambah ke Keranjang
 
@@ -1609,18 +1694,15 @@ function renderProducts(){
 
 
 /* =====================================================
-OPEN CART
+CART MODAL
 ===================================================== */
 
 function openCart(){
 
     renderCart();
 
-
     document
-    .getElementById(
-        "cartModal"
-    )
+    .getElementById("cartModal")
     .classList.remove("hidden");
 
 }
@@ -1629,17 +1711,11 @@ function openCart(){
 function closeCart(){
 
     document
-    .getElementById(
-        "cartModal"
-    )
+    .getElementById("cartModal")
     .classList.add("hidden");
 
 }
 
-
-/* =====================================================
-RENDER CART
-===================================================== */
 
 function renderCart(){
 
@@ -1649,21 +1725,15 @@ function renderCart(){
         );
 
 
-    const cart=
-        getCart();
+    const cart=getCart();
 
 
     if(cart.length===0){
 
         container.innerHTML=
-        `
-        <div class="empty">
-
+        `<div class="empty">
             🛒 Keranjang masih kosong.
-
-        </div>
-        `;
-
+        </div>`;
 
         document
         .getElementById(
@@ -1671,8 +1741,8 @@ function renderCart(){
         )
         .textContent="";
 
-
         return;
+
     }
 
 
@@ -1684,11 +1754,6 @@ function renderCart(){
 
             <img
                 src="${item.image}"
-
-                onerror="
-                    this.src=
-                    'https://via.placeholder.com/100'
-                "
             >
 
 
@@ -1700,23 +1765,19 @@ function renderCart(){
 
 
                 <div class="cart-price">
-
                     ${rupiah(item.price)}
-
                 </div>
 
 
                 <div class="qty">
 
-
                     <button
                         onclick="
-                            changeQty(
-                                ${item.productId},
-                                -1
-                            )
-                        "
-                    >
+                        changeQty(
+                            ${item.productId},
+                            -1
+                        )
+                        ">
 
                         −
 
@@ -1724,20 +1785,17 @@ function renderCart(){
 
 
                     <span>
-
                         ${item.qty}
-
                     </span>
 
 
                     <button
                         onclick="
-                            changeQty(
-                                ${item.productId},
-                                1
-                            )
-                        "
-                    >
+                        changeQty(
+                            ${item.productId},
+                            1
+                        )
+                        ">
 
                         +
 
@@ -1746,13 +1804,11 @@ function renderCart(){
 
                     <button
                         class="danger"
-
                         onclick="
-                            removeFromCart(
-                                ${item.productId}
-                            )
-                        "
-                    >
+                        removeFromCart(
+                            ${item.productId}
+                        )
+                        ">
 
                         🗑️
 
@@ -1788,20 +1844,14 @@ function renderCart(){
 }
 
 
-/* =====================================================
-CHANGE QUANTITY
-===================================================== */
-
 function changeQty(id,change){
 
-    let cart=
-        getCart();
+    let cart=getCart();
 
 
     const item=
         cart.find(
-            i=>
-            i.productId===id
+            i=>i.productId===id
         );
 
 
@@ -1815,8 +1865,7 @@ function changeQty(id,change){
 
         cart=
         cart.filter(
-            i=>
-            i.productId!==id
+            i=>i.productId!==id
         );
 
     }
@@ -1831,21 +1880,15 @@ function changeQty(id,change){
 }
 
 
-/* =====================================================
-REMOVE CART
-===================================================== */
-
 function removeFromCart(id){
 
-    let cart=
-        getCart();
+    let cart=getCart();
 
 
     cart=
-        cart.filter(
-            item=>
-            item.productId!==id
-        );
+    cart.filter(
+        item=>item.productId!==id
+    );
 
 
     saveCart(cart);
@@ -1863,8 +1906,7 @@ CHECKOUT
 
 function openCheckout(){
 
-    const cart=
-        getCart();
+    const cart=getCart();
 
 
     if(cart.length===0){
@@ -1921,7 +1963,7 @@ function closeCheckout(){
 
 
 /* =====================================================
-PROSES CHECKOUT
+PROCESS CHECKOUT
 ===================================================== */
 
 function processCheckout(){
@@ -1943,8 +1985,7 @@ function processCheckout(){
     }
 
 
-    const cart=
-        getCart();
+    const cart=getCart();
 
 
     if(cart.length===0){
@@ -1992,20 +2033,15 @@ function processCheckout(){
                     Math.random()*10000
                 ),
 
-            customer:
-                user,
+            customer:user,
 
-            productId:
-                item.productId,
+            productId:item.productId,
 
-            productName:
-                item.name,
+            productName:item.name,
 
-            price:
-                item.price,
+            price:item.price,
 
-            quantity:
-                item.qty,
+            quantity:item.qty,
 
             total:
                 item.price*
@@ -2019,9 +2055,7 @@ function processCheckout(){
 
             date:
                 new Date()
-                .toLocaleString(
-                    "id-ID"
-                )
+                .toLocaleString("id-ID")
 
         });
 
@@ -2047,13 +2081,10 @@ function processCheckout(){
     alert(
 
         "Pesanan berhasil dibuat!\n\n"+
-
         "Metode pembayaran: "+
         selected.value+
-
         "\nTotal: "+
         rupiah(total)+
-
         "\n\nStatus: Belum Dibayar"
 
     );
@@ -2062,7 +2093,7 @@ function processCheckout(){
 
 
 /* =====================================================
-RENDER ORDER
+RENDER ORDERS
 ===================================================== */
 
 function renderOrders(){
@@ -2089,21 +2120,16 @@ function renderOrders(){
 
     const myOrders=
         orders.filter(
-            o=>
-            o.customer===user
+            o=>o.customer===user
         );
 
 
     if(myOrders.length===0){
 
         container.innerHTML=
-        `
-        <div class="empty">
-
+        `<div class="empty">
             📦 Belum ada pesanan.
-
-        </div>
-        `;
+        </div>`;
 
         return;
 
@@ -2126,7 +2152,6 @@ function renderOrders(){
 
             <p>
                 Jumlah:
-
                 <b>
                     ${order.quantity||1}
                 </b>
@@ -2135,7 +2160,6 @@ function renderOrders(){
 
             <p>
                 Total:
-
                 <b>
                     ${rupiah(
                         order.total||
@@ -2147,7 +2171,6 @@ function renderOrders(){
 
             <p>
                 Pembayaran:
-
                 <b>
                     ${order.payment||"-"}
                 </b>
@@ -2156,27 +2179,21 @@ function renderOrders(){
 
             <p>
                 Tanggal:
-
                 ${order.date}
-
             </p>
 
 
-            <div
-                style="
-                    margin-top:18px;
-                    padding:18px;
-                    background:#f8fbff;
-                    border-radius:15px;
-                "
-            >
+            <div style="
+                margin-top:18px;
+                padding:18px;
+                background:#f0faff;
+                border-radius:15px;
+            ">
 
-                <h4
-                    style="
-                        color:#075da8;
-                        margin-bottom:15px;
-                    "
-                >
+                <h4 style="
+                    color:#0284c7;
+                    margin-bottom:15px;
+                ">
 
                     🚚 Tracking Pesanan
 
@@ -2186,17 +2203,13 @@ function renderOrders(){
                 <div class="tracking">
 
 
-                    <!-- BELUM DIBAYAR -->
-
-                    <div
-                        class="
-                            step
-                            ${getStepClass(
-                                order.status,
-                                1
-                            )}
-                        "
-                    >
+                    <div class="
+                        step
+                        ${getStepClass(
+                            order.status,
+                            1
+                        )}
+                    ">
 
                         <div class="circle">
                             💰
@@ -2209,29 +2222,23 @@ function renderOrders(){
                     </div>
 
 
-                    <div
-                        class="
-                            line
-                            ${getLineClass(
-                                order.status,
-                                2
-                            )}
-                        "
-                    >
+                    <div class="
+                        line
+                        ${getLineClass(
+                            order.status,
+                            2
+                        )}
+                    ">
                     </div>
 
 
-                    <!-- SUDAH DIBAYAR -->
-
-                    <div
-                        class="
-                            step
-                            ${getStepClass(
-                                order.status,
-                                2
-                            )}
-                        "
-                    >
+                    <div class="
+                        step
+                        ${getStepClass(
+                            order.status,
+                            2
+                        )}
+                    ">
 
                         <div class="circle">
                             ✅
@@ -2244,29 +2251,23 @@ function renderOrders(){
                     </div>
 
 
-                    <div
-                        class="
-                            line
-                            ${getLineClass(
-                                order.status,
-                                3
-                            )}
-                        "
-                    >
+                    <div class="
+                        line
+                        ${getLineClass(
+                            order.status,
+                            3
+                        )}
+                    ">
                     </div>
 
 
-                    <!-- DIKEMAS -->
-
-                    <div
-                        class="
-                            step
-                            ${getStepClass(
-                                order.status,
-                                3
-                            )}
-                        "
-                    >
+                    <div class="
+                        step
+                        ${getStepClass(
+                            order.status,
+                            3
+                        )}
+                    ">
 
                         <div class="circle">
                             📦
@@ -2279,29 +2280,23 @@ function renderOrders(){
                     </div>
 
 
-                    <div
-                        class="
-                            line
-                            ${getLineClass(
-                                order.status,
-                                4
-                            )}
-                        "
-                    >
+                    <div class="
+                        line
+                        ${getLineClass(
+                            order.status,
+                            4
+                        )}
+                    ">
                     </div>
 
 
-                    <!-- DIKIRIM -->
-
-                    <div
-                        class="
-                            step
-                            ${getStepClass(
-                                order.status,
-                                4
-                            )}
-                        "
-                    >
+                    <div class="
+                        step
+                        ${getStepClass(
+                            order.status,
+                            4
+                        )}
+                    ">
 
                         <div class="circle">
                             🚚
@@ -2316,12 +2311,10 @@ function renderOrders(){
                 </div>
 
 
-                <div
-                    style="
-                        text-align:center;
-                        margin-top:20px;
-                    "
-                >
+                <div style="
+                    text-align:center;
+                    margin-top:20px;
+                ">
 
                     <span class="status">
 
@@ -2336,13 +2329,11 @@ function renderOrders(){
                 </div>
 
 
-                <p
-                    style="
-                        text-align:center;
-                        margin-top:12px;
-                        color:#64748b;
-                    "
-                >
+                <p style="
+                    text-align:center;
+                    margin-top:12px;
+                    color:#64748b;
+                ">
 
                     ${getStatusMessage(
                         order.status
@@ -2360,7 +2351,7 @@ function renderOrders(){
 
 
 /* =====================================================
-STATUS STEP
+STATUS
 ===================================================== */
 
 function getStepClass(status,step){
@@ -2401,10 +2392,6 @@ function getStepClass(status,step){
 }
 
 
-/* =====================================================
-STATUS LINE
-===================================================== */
-
 function getLineClass(status,step){
 
     const statusNumber={
@@ -2436,10 +2423,6 @@ function getLineClass(status,step){
 }
 
 
-/* =====================================================
-STATUS MESSAGE
-===================================================== */
-
 function getStatusMessage(status){
 
     switch(status){
@@ -2465,28 +2448,20 @@ function getStatusMessage(status){
 }
 
 
-/* =====================================================
-STATUS ICON
-===================================================== */
-
 function getStatusIcon(status){
 
     switch(status){
 
         case "Sudah Dibayar":
-
             return "✅";
 
         case "Sedang Dikemas":
-
             return "📦";
 
         case "Sudah Dikirim":
-
             return "🚚";
 
         default:
-
             return "💰";
 
     }
