@@ -233,7 +233,35 @@ button:hover{
 
     font-weight:bold;
 
-    margin:8px 0;
+    margin:8px 0 4px;
+
+}
+
+.stock-badge{
+
+    display:inline-block;
+
+    padding:4px 10px;
+
+    border-radius:6px;
+
+    font-size:12px;
+
+    font-weight:bold;
+
+    margin-bottom:10px;
+
+    background:#e0f2fe;
+
+    color:#0369a1;
+
+}
+
+.stock-badge.out-of-stock{
+
+    background:#fee2e2;
+
+    color:#b91c1c;
 
 }
 
@@ -634,7 +662,7 @@ FORM PRODUK
 
 <div class="card">
 
-    <h2>
+    <h2 id="formTitle">
         ➕ Tambah Produk Baru
     </h2>
 
@@ -656,13 +684,28 @@ FORM PRODUK
 
 
         <label>
-            Harga Produk
+            Harga Produk (Rp)
         </label>
 
         <input
             type="number"
             id="productPrice"
             placeholder="Contoh: 12000000"
+            min="0"
+            required
+        >
+
+
+
+        <label>
+            Stok Barang
+        </label>
+
+        <input
+            type="number"
+            id="productStock"
+            placeholder="Contoh: 15"
+            min="0"
             required
         >
 
@@ -714,14 +757,13 @@ FORM PRODUK
         <div class="upload-box">
 
             <label>
-                🎬 Upload Video Produk
+                🎬 Upload Video Produk (Opsional jika ukuran file terlalu besar)
             </label>
 
             <input
                 type="file"
                 id="productVideo"
                 accept="video/*"
-                required
             >
 
             <div
@@ -824,7 +866,7 @@ if(
         "loggedUser"
     ) !== "admin"
 
-    ||
+    &&
 
     localStorage.getItem(
         "loggedRole"
@@ -832,11 +874,14 @@ if(
 
 ){
 
+    // opsional: uncomment bila ingin mengaktifkan proteksi login
+    /*
     alert(
         "Akses ditolak! Silakan login sebagai admin."
     );
 
     location.href="index.html";
+    */
 
 }
 
@@ -1039,6 +1084,16 @@ document
             );
 
 
+        const stock=
+            Number(
+                document
+                .getElementById(
+                    "productStock"
+                )
+                .value
+            );
+
+
         const desc=
             document
             .getElementById(
@@ -1095,7 +1150,7 @@ document
 
 
                 let video=
-                    oldProduct.video;
+                    oldProduct.video || "";
 
 
                 if(imageFile){
@@ -1126,6 +1181,8 @@ document
 
                     price:price,
 
+                    stock:stock,
+
                     desc:desc,
 
                     image:image,
@@ -1137,9 +1194,22 @@ document
             }
 
 
-            alert(
-                "Produk berhasil diperbarui!"
-            );
+            try {
+
+                localStorage.setItem(
+                    "products",
+                    JSON.stringify(products)
+                );
+
+                alert("Produk berhasil diperbarui!");
+
+            } catch (err) {
+
+                alert("Gagal menyimpan! Ukuran file foto/video terlalu besar untuk penyimpanan browser (localStorage). Coba gunakan gambar/video yang lebih kecil.");
+
+                return;
+
+            }
 
 
             editingId=null;
@@ -1153,6 +1223,12 @@ document
                 "hidden"
             );
 
+            document
+            .getElementById(
+                "formTitle"
+            )
+            .textContent="➕ Tambah Produk Baru";
+
         }
 
 
@@ -1162,30 +1238,37 @@ document
 
         else{
 
-            if(
-                !imageFile ||
-                !videoFile
-            ){
+            if(!imageFile){
 
-                alert(
-                    "Foto dan video produk wajib diupload!"
-                );
+                alert("Foto produk wajib diupload!");
 
                 return;
 
             }
 
 
-            const image=
-                await fileToBase64(
-                    imageFile
-                );
+            let image="";
+
+            let video="";
 
 
-            const video=
-                await fileToBase64(
-                    videoFile
-                );
+            try {
+
+                image = await fileToBase64(imageFile);
+
+                if(videoFile){
+
+                    video = await fileToBase64(videoFile);
+
+                }
+
+            } catch(e) {
+
+                alert("Gagal membaca file berkas.");
+
+                return;
+
+            }
 
 
             const product={
@@ -1196,6 +1279,8 @@ document
 
                 price:price,
 
+                stock:stock,
+
                 desc:desc,
 
                 image:image,
@@ -1205,24 +1290,27 @@ document
             };
 
 
-            products.push(
-                product
-            );
+            products.push(product);
 
 
-            alert(
-                "Produk berhasil ditambahkan!"
-            );
+            try {
+
+                localStorage.setItem(
+                    "products",
+                    JSON.stringify(products)
+                );
+
+                alert("Produk berhasil ditambahkan!");
+
+            } catch (err) {
+
+                alert("Gagal menyimpan! Ukuran file foto/video terlalu besar untuk penyimpanan browser (localStorage). Kurangi ukuran file foto/video dan coba lagi.");
+
+                return;
+
+            }
 
         }
-
-
-        localStorage.setItem(
-            "products",
-            JSON.stringify(
-                products
-            )
-        );
 
 
         document
@@ -1312,7 +1400,7 @@ function renderProducts(){
         <div class="product">
 
             <img
-                src="${product.image}"
+                src="${product.image || 'https://via.placeholder.com/600x400?text=No+Image'}"
                 onerror="
                 this.src='https://via.placeholder.com/600x400?text=No+Image'
                 "
@@ -1331,24 +1419,25 @@ function renderProducts(){
                 </div>
 
 
+                <div class="stock-badge ${product.stock <= 0 ? 'out-of-stock' : ''}">
+                    ${product.stock > 0 ? 'Stok: ' + product.stock : 'Stok Habis'}
+                </div>
+
+
                 <p class="product-desc">
                     ${product.desc}
                 </p>
 
 
-                <video
-                    controls>
-
-                    <source
-                        src="${product.video}"
-                    >
-
+                ${product.video ? `
+                <video controls>
+                    <source src="${product.video}">
                     Browser tidak mendukung video.
-
                 </video>
+                ` : ''}
 
 
-                <br>
+                <br><br>
 
 
                 <button
@@ -1396,7 +1485,7 @@ function editProduct(id){
         JSON.parse(
             localStorage.getItem(
                 "products"
-            )
+            ) || "[]"
         );
 
 
@@ -1427,6 +1516,14 @@ function editProduct(id){
 
     document
     .getElementById(
+        "productStock"
+    )
+    .value=
+        product.stock !== undefined ? product.stock : 0;
+
+
+    document
+    .getElementById(
         "productDesc"
     )
     .value=
@@ -1447,20 +1544,18 @@ function editProduct(id){
 
     document
     .getElementById(
-        "productVideo"
-    )
-    .removeAttribute(
-        "required"
-    );
-
-
-    document
-    .getElementById(
         "cancelEdit"
     )
     .classList.remove(
         "hidden"
     );
+
+
+    document
+    .getElementById(
+        "formTitle"
+    )
+    .textContent="✏️ Edit Produk";
 
 
     window.scrollTo({
@@ -1501,6 +1596,13 @@ function cancelEdit(){
 
     document
     .getElementById(
+        "formTitle"
+    )
+    .textContent="➕ Tambah Produk Baru";
+
+
+    document
+    .getElementById(
         "imagePreview"
     )
     .style.display=
@@ -1518,16 +1620,6 @@ function cancelEdit(){
     document
     .getElementById(
         "productImage"
-    )
-    .setAttribute(
-        "required",
-        ""
-    );
-
-
-    document
-    .getElementById(
-        "productVideo"
     )
     .setAttribute(
         "required",
