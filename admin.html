@@ -55,13 +55,18 @@ input,textarea{
     outline:none;
 }
 
+input:focus,textarea:focus{
+    border-color:#0878d1;
+}
+
+input[type="file"]{
+    background:#f8fbff;
+    cursor:pointer;
+}
+
 textarea{
     min-height:100px;
     resize:vertical;
-}
-
-input:focus,textarea:focus{
-    border-color:#0878d1;
 }
 
 button{
@@ -106,6 +111,7 @@ button:hover{
     border:1px solid #d9ecfa;
     border-radius:15px;
     overflow:hidden;
+    background:white;
 }
 
 .product img{
@@ -129,6 +135,7 @@ video{
     width:100%;
     margin-top:10px;
     border-radius:8px;
+    background:#000;
 }
 
 .order{
@@ -171,6 +178,23 @@ video{
     color:#64748b;
 }
 
+.preview{
+    display:block;
+    width:100%;
+    max-height:250px;
+    object-fit:contain;
+    margin:10px 0 15px;
+    border-radius:10px;
+    background:#f1f5f9;
+}
+
+.file-info{
+    font-size:13px;
+    color:#64748b;
+    margin-top:-8px;
+    margin-bottom:15px;
+}
+
 footer{
     text-align:center;
     padding:25px;
@@ -186,16 +210,16 @@ footer{
     <p>Administrator Dashboard</p>
 </header>
 
-
 <div class="container">
 
-<!-- ================= ADMIN HEADER ================= -->
+<!-- ADMIN HEADER -->
 
 <div class="card">
     <div class="topbar">
 
         <div>
             <h2>⚙️ Panel Administrator</h2>
+
             <p>
                 Login sebagai:
                 <b id="adminName">admin</b>
@@ -203,22 +227,26 @@ footer{
         </div>
 
         <div>
-            <button class="back"
+
+            <button
+                class="back"
                 onclick="location.href='index.html'">
                 🛍️ Halaman Customer
             </button>
 
-            <button class="delete"
+            <button
+                class="delete"
                 onclick="logout()">
                 Keluar
             </button>
+
         </div>
 
     </div>
 </div>
 
 
-<!-- ================= FORM PRODUK ================= -->
+<!-- FORM PRODUK -->
 
 <div class="card">
 
@@ -227,6 +255,7 @@ footer{
 <form id="productForm">
 
     <label>Nama Produk</label>
+
     <input
         type="text"
         id="productName"
@@ -234,7 +263,9 @@ footer{
         required
     >
 
+
     <label>Harga Produk</label>
+
     <input
         type="number"
         id="productPrice"
@@ -242,34 +273,70 @@ footer{
         required
     >
 
+
     <label>Deskripsi Produk</label>
+
     <textarea
         id="productDesc"
         placeholder="Masukkan spesifikasi produk..."
         required
     ></textarea>
 
-    <label>URL Gambar Produk</label>
+
+    <!-- UPLOAD GAMBAR -->
+
+    <label>📷 Foto Produk</label>
+
     <input
-        type="url"
+        type="file"
         id="productImage"
-        placeholder="https://contoh.com/gambar.jpg"
+        accept="image/*"
         required
     >
 
-    <label>URL Video Produk</label>
+    <div
+        id="imageInfo"
+        class="file-info">
+        Pilih foto produk dari perangkat.
+    </div>
+
+    <img
+        id="imagePreview"
+        class="preview hidden"
+        alt="Preview Foto"
+    >
+
+
+    <!-- UPLOAD VIDEO -->
+
+    <label>🎥 Video Produk</label>
+
     <input
-        type="url"
+        type="file"
         id="productVideo"
-        placeholder="https://contoh.com/video.mp4"
+        accept="video/*"
         required
     >
+
+    <div
+        id="videoInfo"
+        class="file-info">
+        Pilih video produk dari perangkat.
+    </div>
+
+    <video
+        id="videoPreview"
+        class="preview hidden"
+        controls>
+    </video>
+
 
     <button
         type="submit"
         class="success">
-        💾 Simpan Produk ke Database
+        💾 Simpan Produk
     </button>
+
 
     <button
         type="button"
@@ -284,19 +351,21 @@ footer{
 </div>
 
 
-<!-- ================= DAFTAR PRODUK ================= -->
+<!-- DAFTAR PRODUK -->
 
 <div class="card">
 
 <h2>📦 Manajemen Produk</h2>
 
-<div id="productList"
-     class="product-grid"></div>
+<div
+    id="productList"
+    class="product-grid">
+</div>
 
 </div>
 
 
-<!-- ================= PESANAN ================= -->
+<!-- PESANAN -->
 
 <div class="card">
 
@@ -377,44 +446,189 @@ let editingId=null;
 
 
 /* =====================================================
+   FILE KE BASE64
+===================================================== */
+
+function fileToBase64(file){
+
+    return new Promise((resolve,reject)=>{
+
+        const reader=new FileReader();
+
+        reader.onload=()=>{
+            resolve(reader.result);
+        };
+
+        reader.onerror=error=>{
+            reject(error);
+        };
+
+        reader.readAsDataURL(file);
+
+    });
+
+}
+
+
+/* =====================================================
+   PREVIEW GAMBAR
+===================================================== */
+
+document
+.getElementById("productImage")
+.addEventListener("change",function(){
+
+    const file=this.files[0];
+
+    if(!file)return;
+
+    document
+    .getElementById("imageInfo")
+    .textContent=
+    "File: "+file.name+
+    " | Ukuran: "+
+    (file.size/1024/1024).toFixed(2)+" MB";
+
+
+    const preview=
+        document.getElementById("imagePreview");
+
+    preview.src=
+        URL.createObjectURL(file);
+
+    preview.classList.remove("hidden");
+
+});
+
+
+/* =====================================================
+   PREVIEW VIDEO
+===================================================== */
+
+document
+.getElementById("productVideo")
+.addEventListener("change",function(){
+
+    const file=this.files[0];
+
+    if(!file)return;
+
+    document
+    .getElementById("videoInfo")
+    .textContent=
+    "File: "+file.name+
+    " | Ukuran: "+
+    (file.size/1024/1024).toFixed(2)+" MB";
+
+
+    const preview=
+        document.getElementById("videoPreview");
+
+    preview.src=
+        URL.createObjectURL(file);
+
+    preview.classList.remove("hidden");
+
+});
+
+
+/* =====================================================
    TAMBAH / EDIT PRODUK
 ===================================================== */
 
 document
 .getElementById("productForm")
-.addEventListener("submit",function(e){
+.addEventListener("submit",async function(e){
 
     e.preventDefault();
 
 
-    const name =
-        document.getElementById("productName").value.trim();
-
-    const price =
-        Number(document.getElementById("productPrice").value);
-
-    const desc =
-        document.getElementById("productDesc").value.trim();
-
-    const image =
-        document.getElementById("productImage").value.trim();
-
-    const video =
-        document.getElementById("productVideo").value.trim();
+    const name=
+        document
+        .getElementById("productName")
+        .value
+        .trim();
 
 
-    let products =
-        JSON.parse(localStorage.getItem("products") || "[]");
+    const price=
+        Number(
+            document
+            .getElementById("productPrice")
+            .value
+        );
 
 
-    /* EDIT */
+    const desc=
+        document
+        .getElementById("productDesc")
+        .value
+        .trim();
+
+
+    const imageFile=
+        document
+        .getElementById("productImage")
+        .files[0];
+
+
+    const videoFile=
+        document
+        .getElementById("productVideo")
+        .files[0];
+
+
+    let products=
+        JSON.parse(
+            localStorage.getItem("products") || "[]"
+        );
+
+
+    /* =================================================
+       EDIT PRODUK
+    ================================================= */
 
     if(editingId){
 
-        const index =
-            products.findIndex(p => p.id === editingId);
+        const index=
+            products.findIndex(
+                p=>p.id===editingId
+            );
 
-        if(index !== -1){
+
+        if(index!==-1){
+
+            let image=
+                products[index].image;
+
+            let video=
+                products[index].video;
+
+
+            /*
+               Jika admin memilih foto baru,
+               gunakan foto baru.
+            */
+
+            if(imageFile){
+
+                image=
+                    await fileToBase64(imageFile);
+
+            }
+
+
+            /*
+               Jika admin memilih video baru,
+               gunakan video baru.
+            */
+
+            if(videoFile){
+
+                video=
+                    await fileToBase64(videoFile);
+
+            }
+
 
             products[index]={
                 ...products[index],
@@ -427,9 +641,12 @@ document
 
         }
 
+
         alert("Produk berhasil diperbarui!");
 
+
         editingId=null;
+
 
         document
         .getElementById("cancelEdit")
@@ -437,33 +654,107 @@ document
 
     }
 
-    /* TAMBAH */
+
+    /* =================================================
+       TAMBAH PRODUK BARU
+    ================================================= */
 
     else{
 
+        if(!imageFile || !videoFile){
+
+            alert(
+                "Silakan pilih foto dan video produk terlebih dahulu."
+            );
+
+            return;
+
+        }
+
+
+        const image=
+            await fileToBase64(imageFile);
+
+
+        const video=
+            await fileToBase64(videoFile);
+
+
         const product={
+
             id:Date.now(),
+
             name:name,
+
             price:price,
+
             desc:desc,
+
             image:image,
+
             video:video
+
         };
 
+
         products.push(product);
+
 
         alert("Produk berhasil ditambahkan!");
 
     }
 
 
-    localStorage.setItem(
-        "products",
-        JSON.stringify(products)
-    );
+    /* =================================================
+       SIMPAN
+    ================================================= */
+
+    try{
+
+        localStorage.setItem(
+            "products",
+            JSON.stringify(products)
+        );
+
+    }
+
+    catch(error){
+
+        alert(
+            "Gagal menyimpan produk. Ukuran foto/video mungkin terlalu besar untuk localStorage."
+        );
+
+        return;
+
+    }
 
 
-    document.getElementById("productForm").reset();
+    document
+    .getElementById("productForm")
+    .reset();
+
+
+    document
+    .getElementById("imagePreview")
+    .classList.add("hidden");
+
+
+    document
+    .getElementById("videoPreview")
+    .classList.add("hidden");
+
+
+    document
+    .getElementById("imageInfo")
+    .textContent=
+    "Pilih foto produk dari perangkat.";
+
+
+    document
+    .getElementById("videoInfo")
+    .textContent=
+    "Pilih video produk dari perangkat.";
+
 
     renderProducts();
 
@@ -476,59 +767,75 @@ document
 
 function renderProducts(){
 
-    const container =
+    const container=
         document.getElementById("productList");
 
-    const products =
-        JSON.parse(localStorage.getItem("products") || "[]");
+
+    const products=
+        JSON.parse(
+            localStorage.getItem("products") || "[]"
+        );
 
 
     if(products.length===0){
 
         container.innerHTML=
-        `<div class="empty">
+        `
+        <div class="empty">
             Belum ada produk.
-        </div>`;
+        </div>
+        `;
 
         return;
+
     }
 
 
-    container.innerHTML =
+    container.innerHTML=
     products.map(product=>`
 
         <div class="product">
 
             <img
                 src="${product.image}"
-                onerror="this.src='https://via.placeholder.com/600x400?text=No+Image'"
+                onerror="
+                this.src='https://via.placeholder.com/600x400?text=No+Image'
+                "
             >
+
 
             <div class="product-body">
 
-                <h3>${product.name}</h3>
+                <h3>
+                    ${product.name}
+                </h3>
+
 
                 <div class="price">
                     ${rupiah(product.price)}
                 </div>
 
+
                 <p>
                     ${product.desc}
                 </p>
 
-                <video controls>
-                    <source
-                        src="${product.video}"
-                        type="video/mp4">
+
+                <video
+                    controls
+                    src="${product.video}">
                 </video>
 
+
                 <br>
+
 
                 <button
                     class="edit"
                     onclick="editProduct(${product.id})">
                     ✏️ Edit
                 </button>
+
 
                 <button
                     class="delete"
@@ -551,29 +858,53 @@ function renderProducts(){
 
 function editProduct(id){
 
-    const products =
-        JSON.parse(localStorage.getItem("products"));
+    const products=
+        JSON.parse(
+            localStorage.getItem("products")
+        );
 
-    const product =
-        products.find(p=>p.id===id);
+
+    const product=
+        products.find(
+            p=>p.id===id
+        );
+
 
     if(!product)return;
 
 
-    document.getElementById("productName").value=
-        product.name;
+    document
+    .getElementById("productName")
+    .value=
+    product.name;
 
-    document.getElementById("productPrice").value=
-        product.price;
 
-    document.getElementById("productDesc").value=
-        product.desc;
+    document
+    .getElementById("productPrice")
+    .value=
+    product.price;
 
-    document.getElementById("productImage").value=
-        product.image;
 
-    document.getElementById("productVideo").value=
-        product.video;
+    document
+    .getElementById("productDesc")
+    .value=
+    product.desc;
+
+
+    /*
+       Saat edit, file tidak wajib dipilih.
+       File lama tetap digunakan jika tidak
+       memilih file baru.
+    */
+
+    document
+    .getElementById("productImage")
+    .removeAttribute("required");
+
+
+    document
+    .getElementById("productVideo")
+    .removeAttribute("required");
 
 
     editingId=id;
@@ -582,6 +913,18 @@ function editProduct(id){
     document
     .getElementById("cancelEdit")
     .classList.remove("hidden");
+
+
+    document
+    .getElementById("imageInfo")
+    .textContent=
+    "Foto lama digunakan. Pilih foto baru jika ingin menggantinya.";
+
+
+    document
+    .getElementById("videoInfo")
+    .textContent=
+    "Video lama digunakan. Pilih video baru jika ingin menggantinya.";
 
 
     window.scrollTo({
@@ -600,12 +943,34 @@ function cancelEdit(){
 
     editingId=null;
 
+
     document
     .getElementById("productForm")
     .reset();
 
+
+    document
+    .getElementById("productImage")
+    .setAttribute("required","");
+
+
+    document
+    .getElementById("productVideo")
+    .setAttribute("required","");
+
+
     document
     .getElementById("cancelEdit")
+    .classList.add("hidden");
+
+
+    document
+    .getElementById("imagePreview")
+    .classList.add("hidden");
+
+
+    document
+    .getElementById("videoPreview")
     .classList.add("hidden");
 
 }
@@ -617,17 +982,27 @@ function cancelEdit(){
 
 function deleteProduct(id){
 
-    if(!confirm("Yakin ingin menghapus produk ini?")){
+    if(
+        !confirm(
+            "Yakin ingin menghapus produk ini?"
+        )
+    ){
+
         return;
+
     }
 
 
-    let products =
-        JSON.parse(localStorage.getItem("products") || "[]");
+    let products=
+        JSON.parse(
+            localStorage.getItem("products") || "[]"
+        );
 
 
-    products =
-        products.filter(p=>p.id!==id);
+    products=
+        products.filter(
+            p=>p.id!==id
+        );
 
 
     localStorage.setItem(
@@ -647,70 +1022,91 @@ function deleteProduct(id){
 
 function renderOrders(){
 
-    const container =
+    const container=
         document.getElementById("orderList");
 
-    const orders =
-        JSON.parse(localStorage.getItem("orders") || "[]");
+
+    const orders=
+        JSON.parse(
+            localStorage.getItem("orders") || "[]"
+        );
 
 
     if(orders.length===0){
 
         container.innerHTML=
-        `<div class="empty">
+        `
+        <div class="empty">
             Belum ada pesanan dari customer.
-        </div>`;
+        </div>
+        `;
 
         return;
+
     }
 
 
-    container.innerHTML =
+    container.innerHTML=
     orders.map(order=>`
 
         <div class="order">
 
-            <h3>📦 ${order.productName}</h3>
+            <h3>
+                📦 ${order.productName}
+            </h3>
+
 
             <p>
                 <b>Customer:</b>
                 ${order.customer}
             </p>
 
+
             <p>
                 <b>Harga:</b>
                 ${rupiah(order.price)}
             </p>
+
 
             <p>
                 <b>Tanggal:</b>
                 ${order.date}
             </p>
 
+
             <p style="margin-top:10px">
+
                 Status saat ini:
+
                 <span class="status">
                     ${order.status}
                 </span>
+
             </p>
 
+
             <select
-                onchange="changeStatus(${order.id},this.value)">
+                onchange="
+                changeStatus(${order.id},this.value)
+                ">
 
                 <option
                     ${order.status==="Belum Dibayar"?"selected":""}>
                     Belum Dibayar
                 </option>
 
+
                 <option
                     ${order.status==="Diproses"?"selected":""}>
                     Diproses
                 </option>
 
+
                 <option
                     ${order.status==="Dikirim"?"selected":""}>
                     Dikirim
                 </option>
+
 
                 <option
                     ${order.status==="Selesai"?"selected":""}>
@@ -732,22 +1128,28 @@ function renderOrders(){
 
 function changeStatus(id,status){
 
-    let orders =
-        JSON.parse(localStorage.getItem("orders") || "[]");
+    let orders=
+        JSON.parse(
+            localStorage.getItem("orders") || "[]"
+        );
 
 
-    const order =
-        orders.find(o=>o.id===id);
+    const order=
+        orders.find(
+            o=>o.id===id
+        );
 
 
     if(order){
 
         order.status=status;
 
+
         localStorage.setItem(
             "orders",
             JSON.stringify(orders)
         );
+
 
         renderOrders();
 
@@ -763,6 +1165,7 @@ function changeStatus(id,status){
 function logout(){
 
     localStorage.removeItem("loggedUser");
+
     localStorage.removeItem("loggedRole");
 
     location.href="index.html";
@@ -775,6 +1178,7 @@ function logout(){
 ===================================================== */
 
 renderProducts();
+
 renderOrders();
 
 </script>
