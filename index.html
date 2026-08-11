@@ -18,12 +18,6 @@ body{
     color:#172033;
 }
 
-.hidden{
-    display:none!important;
-}
-
-/* ================= HEADER ================= */
-
 header{
     background:linear-gradient(135deg,#071b33,#0b63ce,#72d7ff);
     color:white;
@@ -32,16 +26,8 @@ header{
     box-shadow:0 5px 20px #0002;
 }
 
-header h1{
-    font-size:32px;
-}
-
-header p{
-    margin-top:7px;
-    opacity:.9;
-}
-
-/* ================= CONTAINER ================= */
+header h1{font-size:32px}
+header p{margin-top:7px;opacity:.9}
 
 .container{
     width:92%;
@@ -58,8 +44,7 @@ header p{
     border:1px solid #d7edff;
 }
 
-/* ================= LOGIN ================= */
-
+/* LOGIN */
 #loginPage{
     min-height:100vh;
     display:flex;
@@ -102,8 +87,7 @@ input:focus,select:focus{
     border-color:#0785e8;
 }
 
-/* ================= BUTTON ================= */
-
+/* BUTTON */
 button{
     border:0;
     padding:12px 18px;
@@ -119,37 +103,15 @@ button:hover{
     transform:translateY(-2px);
 }
 
-.admin-btn{
-    background:#152238;
-}
-
-.logout{
-    background:#ef4444;
-}
-
-.cart-btn{
-    background:#08a66a;
-}
-
-.buy{
-    background:#08a66a;
-}
-
-.danger{
-    background:#ef4444;
-}
-
-.close{
-    background:#ef4444;
-}
-
-.pay-btn{
-    width:100%;
-    margin-top:15px;
-    background:linear-gradient(135deg,#0878d1,#0abde3);
-}
-
-/* ================= NAV ================= */
+.admin-btn{background:#152238}
+.logout{background:#ef4444}
+.logout:hover{background:#dc2626}
+.cart-btn{background:#08a66a}
+.cart-btn:hover{background:#078c5b}
+.buy{background:#08a66a}
+.buy:hover{background:#078c5b}
+.danger{background:#ef4444}
+.close{background:#ef4444}
 
 .nav{
     display:flex;
@@ -166,8 +128,7 @@ button:hover{
     flex-wrap:wrap;
 }
 
-/* ================= PRODUCTS ================= */
-
+/* PRODUK */
 .section-title{
     margin-bottom:18px;
     color:#075da8;
@@ -227,23 +188,12 @@ video{
     background:#000;
 }
 
-/* ================= ORDER ================= */
-
+/* ORDER */
 .order{
     border:1px solid #dcebf5;
     padding:18px;
     border-radius:14px;
     margin:12px 0;
-    background:white;
-}
-
-.order h3{
-    color:#075da8;
-    margin-bottom:10px;
-}
-
-.order p{
-    margin:6px 0;
 }
 
 .status{
@@ -257,8 +207,7 @@ video{
     margin-top:8px;
 }
 
-/* ================= TRACKING ================= */
-
+/* TRACKING */
 .tracking{
     display:flex;
     align-items:center;
@@ -320,8 +269,7 @@ video{
     font-size:10px;
 }
 
-/* ================= CART ================= */
-
+/* CART */
 .cart-item{
     display:flex;
     align-items:center;
@@ -372,8 +320,7 @@ video{
     color:#075da8;
 }
 
-/* ================= MODAL ================= */
-
+/* MODAL */
 .modal{
     position:fixed;
     inset:0;
@@ -402,23 +349,11 @@ video{
     margin-bottom:20px;
 }
 
-/* ================= PAYMENT ================= */
-
 .payment{
-    border:2px solid #dcebf5;
+    border:1px solid #dcebf5;
     border-radius:12px;
     padding:15px;
     margin:10px 0;
-    cursor:pointer;
-}
-
-.payment:hover{
-    border-color:#0878d1;
-}
-
-.payment.selected{
-    border-color:#0878d1;
-    background:#eaf7ff;
 }
 
 .payment input{
@@ -431,74 +366,6 @@ video{
     font-weight:bold;
 }
 
-.payment p{
-    margin-top:7px;
-    color:#64748b;
-    font-size:14px;
-}
-
-.payment-detail{
-    background:#f0faff;
-    border:1px solid #b9e4ff;
-    border-radius:15px;
-    padding:18px;
-    margin-top:15px;
-}
-
-.bank-box{
-    background:white;
-    border-radius:12px;
-    padding:15px;
-    margin:10px 0;
-    border:1px solid #d8edf9;
-}
-
-.bank-number{
-    font-size:22px;
-    font-weight:bold;
-    color:#0878d1;
-    letter-spacing:1px;
-    margin:7px 0;
-}
-
-.payment-total{
-    background:#0878d1;
-    color:white;
-    padding:15px;
-    border-radius:12px;
-    margin-top:15px;
-    font-size:20px;
-    font-weight:bold;
-    text-align:center;
-}
-
-.upload-box{
-    margin-top:15px;
-    padding:15px;
-    border:2px dashed #9edcff;
-    border-radius:12px;
-    background:#f8fdff;
-}
-
-.upload-box label{
-    display:block;
-    font-weight:bold;
-    color:#075da8;
-    margin-bottom:8px;
-}
-
-.preview{
-    width:100%;
-    max-height:220px;
-    object-fit:contain;
-    border-radius:10px;
-    margin-top:10px;
-    display:none;
-    border:1px solid #dcebf5;
-}
-
-/* ================= OTHER ================= */
-
 .checkout-total{
     background:#e8f6ff;
     padding:15px;
@@ -508,10 +375,31 @@ video{
     font-weight:bold;
 }
 
+.payment-info{
+    background:#f0f9ff;
+    border:1px solid #bae6fd;
+    padding:15px;
+    border-radius:12px;
+    margin:15px 0;
+}
+
+.success{
+    background:#dcfce7;
+    color:#166534;
+    padding:15px;
+    border-radius:12px;
+    text-align:center;
+    font-weight:bold;
+}
+
 .empty{
     text-align:center;
     padding:30px;
     color:#64748b;
+}
+
+.hidden{
+    display:none!important;
 }
 
 footer{
@@ -520,8 +408,7 @@ footer{
     color:#64748b;
 }
 
-/* ================= MOBILE ================= */
-
+/* MOBILE */
 @media(max-width:600px){
 
     header h1{
@@ -564,25 +451,17 @@ footer{
     }
 
     .step{
-        min-width:50px;
+        min-width:55px;
     }
 
     .circle{
         width:35px;
         height:35px;
-        font-size:14px;
+        font-size:15px;
     }
 
     .step small{
-        font-size:8px;
-    }
-
-    .line{
-        max-width:35px;
-    }
-
-    .bank-number{
-        font-size:18px;
+        font-size:9px;
     }
 }
 </style>
@@ -590,10 +469,7 @@ footer{
 
 <body>
 
-<!-- =====================================================
-LOGIN
-===================================================== -->
-
+<!-- LOGIN -->
 <div id="loginPage">
 
     <div class="login-box">
@@ -605,15 +481,8 @@ LOGIN
         <label>Login sebagai</label>
 
         <select id="role">
-
-            <option value="customer">
-                Customer
-            </option>
-
-            <option value="admin">
-                Administrator
-            </option>
-
+            <option value="customer">Customer</option>
+            <option value="admin">Administrator</option>
         </select>
 
         <label>Username</label>
@@ -621,38 +490,33 @@ LOGIN
         <input
             type="text"
             id="username"
-            placeholder="Masukkan username"
-        >
+            placeholder="Masukkan username">
 
         <label>Password</label>
 
         <input
             type="password"
             id="password"
-            placeholder="Masukkan password"
-        >
+            placeholder="Masukkan password">
 
         <button
             onclick="login()"
-            style="width:100%"
-        >
+            style="width:100%">
+
             Login
+
         </button>
 
         <p
             id="loginMessage"
-            style="color:#ef4444;margin-top:15px"
-        ></p>
+            style="color:#ef4444;margin-top:15px">
+        </p>
 
     </div>
-
 </div>
 
 
-<!-- =====================================================
-CUSTOMER APP
-===================================================== -->
-
+<!-- APP -->
 <div id="app" class="hidden">
 
 <header>
@@ -667,7 +531,6 @@ CUSTOMER APP
 <div class="container">
 
     <!-- NAV -->
-
     <div class="card">
 
         <div class="nav">
@@ -687,24 +550,28 @@ CUSTOMER APP
 
                 <button
                     class="cart-btn"
-                    onclick="openCart()"
-                >
+                    onclick="openCart()">
+
                     🛒 Keranjang
                     (<span id="cartCount">0</span>)
+
                 </button>
 
                 <button
-                    class="admin-btn"
-                    onclick="location.href='admin.html'"
-                >
+                    class="admin-btn hidden"
+                    id="adminPanelBtn"
+                    onclick="location.href='admin.html'">
+
                     ⚙️ Admin
+
                 </button>
 
                 <button
                     class="logout"
-                    onclick="logout()"
-                >
+                    onclick="logout()">
+
                     Keluar
+
                 </button>
 
             </div>
@@ -715,7 +582,6 @@ CUSTOMER APP
 
 
     <!-- PRODUK -->
-
     <div class="card">
 
         <h2 class="section-title">
@@ -724,14 +590,13 @@ CUSTOMER APP
 
         <div
             id="products"
-            class="products"
-        ></div>
+            class="products">
+        </div>
 
     </div>
 
 
     <!-- PESANAN -->
-
     <div class="card">
 
         <h2 class="section-title">
@@ -752,14 +617,10 @@ CUSTOMER APP
 </div>
 
 
-<!-- =====================================================
-CART MODAL
-===================================================== -->
-
+<!-- CART MODAL -->
 <div
     id="cartModal"
-    class="modal hidden"
->
+    class="modal hidden">
 
     <div class="modal-box">
 
@@ -769,9 +630,10 @@ CART MODAL
 
             <button
                 class="close"
-                onclick="closeCart()"
-            >
+                onclick="closeCart()">
+
                 ✕
+
             </button>
 
         </div>
@@ -780,15 +642,16 @@ CART MODAL
 
         <div
             id="cartTotal"
-            class="cart-total"
-        ></div>
+            class="cart-total">
+        </div>
 
         <button
             class="buy"
             style="width:100%;margin-top:20px"
-            onclick="openCheckout()"
-        >
+            onclick="openCheckout()">
+
             💳 Checkout
+
         </button>
 
     </div>
@@ -796,14 +659,10 @@ CART MODAL
 </div>
 
 
-<!-- =====================================================
-CHECKOUT MODAL
-===================================================== -->
-
+<!-- CHECKOUT MODAL -->
 <div
     id="checkoutModal"
-    class="modal hidden"
->
+    class="modal hidden">
 
     <div class="modal-box">
 
@@ -813,58 +672,25 @@ CHECKOUT MODAL
 
             <button
                 class="close"
-                onclick="closeCheckout()"
-            >
+                onclick="closeCheckout()">
+
                 ✕
+
             </button>
 
         </div>
 
         <h3>Pilih Metode Pembayaran</h3>
 
-
-        <!-- BNI -->
-
-        <div
-            class="payment"
-            id="paymentBNI"
-        >
-
-            <label>
-
-                <input
-                    type="radio"
-                    name="payment"
-                    value="BNI"
-                    onchange="selectPayment('BNI')"
-                >
-
-                🏦 BNI
-
-            </label>
-
-            <p>
-                Transfer melalui Bank BNI.
-            </p>
-
-        </div>
-
-
         <!-- BCA -->
-
-        <div
-            class="payment"
-            id="paymentBCA"
-        >
+        <div class="payment">
 
             <label>
 
                 <input
                     type="radio"
                     name="payment"
-                    value="BCA"
-                    onchange="selectPayment('BCA')"
-                >
+                    value="BCA">
 
                 🏦 BCA
 
@@ -876,105 +702,104 @@ CHECKOUT MODAL
 
         </div>
 
+        <!-- BNI -->
+        <div class="payment">
 
-        <div
-            id="checkoutDetail"
-            class="payment-detail hidden"
-        >
-
-            <h3>🏦 Cara Pembayaran</h3>
-
-            <div id="bankInfo"></div>
-
-            <div
-                id="checkoutPaymentTotal"
-                class="payment-total"
-            ></div>
-
-
-            <div class="upload-box">
-
-                <label>
-                    👤 Nama Pengirim
-                </label>
+            <label>
 
                 <input
-                    type="text"
-                    id="checkoutSender"
-                    placeholder="Nama pemilik rekening"
-                >
+                    type="radio"
+                    name="payment"
+                    value="BNI">
 
-            </div>
+                🏦 BNI
 
+            </label>
 
-            <div class="upload-box">
-
-                <label>
-                    📷 Upload Bukti Transfer
-                </label>
-
-                <input
-                    type="file"
-                    id="checkoutProof"
-                    accept="image/*"
-                    onchange="previewCheckoutProof(event)"
-                >
-
-                <img
-                    id="checkoutPreview"
-                    class="preview"
-                    alt="Preview bukti transfer"
-                >
-
-            </div>
-
-
-            <button
-                class="buy"
-                style="width:100%;margin-top:15px"
-                onclick="createPaidOrder()"
-            >
-                ✅ Konfirmasi Pembayaran
-            </button>
+            <p>
+                Transfer melalui Bank BNI.
+            </p>
 
         </div>
 
+        <!-- QRIS -->
+        <div class="payment">
+
+            <label>
+
+                <input
+                    type="radio"
+                    name="payment"
+                    value="QRIS">
+
+                📱 QRIS
+
+            </label>
+
+            <p>
+                Bayar menggunakan QRIS.
+            </p>
+
+        </div>
 
         <div
             id="checkoutTotal"
-            class="checkout-total"
-        ></div>
+            class="checkout-total">
+        </div>
+
+        <button
+            class="buy"
+            style="width:100%"
+            onclick="processCheckout()">
+
+            ✅ Buat Pesanan
+
+        </button>
 
     </div>
 
 </div>
 
 
-<!-- =====================================================
-BAYAR PESANAN MODAL
-===================================================== -->
-
+<!-- MODAL KONFIRMASI PEMBAYARAN -->
 <div
-    id="payModal"
-    class="modal hidden"
->
+    id="paymentModal"
+    class="modal hidden">
 
     <div class="modal-box">
 
         <div class="modal-header">
 
-            <h2>💳 Bayar Pesanan</h2>
+            <h2>💳 Konfirmasi Pembayaran</h2>
 
             <button
                 class="close"
-                onclick="closePayModal()"
-            >
+                onclick="closePaymentModal()">
+
                 ✕
+
             </button>
 
         </div>
 
-        <div id="payContent"></div>
+        <div id="paymentDetail"></div>
+
+        <div class="payment-info">
+
+            <h3>Informasi Pembayaran</h3>
+
+            <p id="paymentInstruction"></p>
+
+        </div>
+
+        <button
+            class="buy"
+            style="width:100%;margin-top:10px"
+            onclick="confirmPayment()">
+
+            💳 Konfirmasi Pembayaran
+
+        </button>
 
     </div>
 
@@ -984,10 +809,10 @@ BAYAR PESANAN MODAL
 <script>
 
 /* =====================================================
-DATA PRODUK
+DATA PRODUK DEFAULT
 ===================================================== */
 
-const defaultProducts = [
+const defaultProducts=[
 
     {
         id:1,
@@ -1014,22 +839,13 @@ const defaultProducts = [
         desc:"Headset gaming surround sound dengan microphone noise cancelling.",
         image:"https://images.unsplash.com/photo-1599669454699-248893623440?w=800",
         video:"https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4"
-    },
-
-    {
-        id:4,
-        name:"Smart Watch",
-        price:1250000,
-        desc:"Smartwatch modern dengan monitoring aktivitas dan notifikasi smartphone.",
-        image:"https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=800",
-        video:"https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4"
     }
 
 ];
 
 
 /* =====================================================
-INITIAL STORAGE
+STORAGE
 ===================================================== */
 
 if(!localStorage.getItem("products")){
@@ -1045,15 +861,6 @@ if(!localStorage.getItem("orders")){
 
     localStorage.setItem(
         "orders",
-        JSON.stringify([])
-    );
-
-}
-
-if(!localStorage.getItem("customers")){
-
-    localStorage.setItem(
-        "customers",
         JSON.stringify([])
     );
 
@@ -1088,34 +895,36 @@ function login(){
         document.getElementById("role").value;
 
     const username =
-        document.getElementById("username").value.trim();
+        document.getElementById("username")
+        .value.trim();
 
     const password =
-        document.getElementById("password").value;
+        document.getElementById("password")
+        .value;
 
-    const message =
+    const msg =
         document.getElementById("loginMessage");
 
-
-    message.textContent = "";
+    msg.textContent="";
 
 
     if(!username || !password){
 
-        message.textContent =
+        msg.textContent =
             "Username dan password wajib diisi!";
 
         return;
+
     }
 
 
     /* ADMIN */
 
-    if(role === "admin"){
+    if(role==="admin"){
 
         if(
-            username === "admin" &&
-            password === "12345"
+            username==="admin" &&
+            password==="12345"
         ){
 
             localStorage.setItem(
@@ -1128,11 +937,11 @@ function login(){
                 "admin"
             );
 
-            window.location.href = "admin.html";
+            location.href="admin.html";
 
         }else{
 
-            message.textContent =
+            msg.textContent =
                 "Username atau password admin salah!";
 
         }
@@ -1149,37 +958,38 @@ function login(){
         );
 
 
-    const existing =
+    let customer =
         customers.find(
             c => c.username === username
         );
 
 
-    if(existing){
+    if(!customer){
 
-        if(existing.password !== password){
-
-            message.textContent =
-                "Password customer salah!";
-
-            return;
-
-        }
-
-    }else{
-
-        customers.push({
+        customer = {
 
             username:username,
             password:password
 
-        });
+        };
 
+        customers.push(customer);
 
         localStorage.setItem(
             "customers",
             JSON.stringify(customers)
         );
+
+    }else{
+
+        if(customer.password !== password){
+
+            msg.textContent =
+                "Password customer salah!";
+
+            return;
+
+        }
 
     }
 
@@ -1225,9 +1035,7 @@ function showApp(){
 
 
     renderProducts();
-
     renderOrders();
-
     updateCartCount();
 
 }
@@ -1240,7 +1048,6 @@ LOGOUT
 function logout(){
 
     localStorage.removeItem("loggedUser");
-
     localStorage.removeItem("loggedRole");
 
     location.reload();
@@ -1252,7 +1059,7 @@ function logout(){
 CART
 ===================================================== */
 
-function cartKey(){
+function getCartKey(){
 
     return "cart_" +
         localStorage.getItem("loggedUser");
@@ -1263,7 +1070,9 @@ function cartKey(){
 function getCart(){
 
     return JSON.parse(
-        localStorage.getItem(cartKey()) || "[]"
+        localStorage.getItem(
+            getCartKey()
+        ) || "[]"
     );
 
 }
@@ -1272,12 +1081,16 @@ function getCart(){
 function saveCart(cart){
 
     localStorage.setItem(
-        cartKey(),
+        getCartKey(),
         JSON.stringify(cart)
     );
 
 }
 
+
+/* =====================================================
+ADD CART
+===================================================== */
 
 function addToCart(id){
 
@@ -1293,21 +1106,21 @@ function addToCart(id){
         );
 
 
-    if(!product) return;
+    if(!product)return;
 
 
     let cart = getCart();
 
 
-    const item =
+    const existing =
         cart.find(
-            x => x.productId === id
+            item => item.productId === id
         );
 
 
-    if(item){
+    if(existing){
 
-        item.qty++;
+        existing.qty++;
 
     }else{
 
@@ -1325,17 +1138,20 @@ function addToCart(id){
 
 
     saveCart(cart);
-
     updateCartCount();
 
 
     alert(
         product.name +
-        " berhasil ditambahkan!"
+        " berhasil ditambahkan ke keranjang!"
     );
 
 }
 
+
+/* =====================================================
+CART COUNT
+===================================================== */
 
 function updateCartCount(){
 
@@ -1344,8 +1160,8 @@ function updateCartCount(){
 
     const count =
         cart.reduce(
-            (sum,item) =>
-            sum + item.qty,
+            (total,item) =>
+            total + item.qty,
             0
         );
 
@@ -1358,7 +1174,7 @@ function updateCartCount(){
 
 
 /* =====================================================
-PRODUCT
+RENDER PRODUCTS
 ===================================================== */
 
 function renderProducts(){
@@ -1373,10 +1189,12 @@ function renderProducts(){
         );
 
 
-    if(!products.length){
+    if(products.length===0){
 
         container.innerHTML =
-            `<div class="empty">Belum ada produk.</div>`;
+            `<div class="empty">
+                Belum ada produk.
+            </div>`;
 
         return;
 
@@ -1384,13 +1202,13 @@ function renderProducts(){
 
 
     container.innerHTML =
-        products.map(p => `
+        products.map(product => `
 
             <div class="product">
 
                 <img
-                    src="${p.image}"
-                    alt="${p.name}"
+                    src="${product.image}"
+                    alt="${product.name}"
                     onerror="
                         this.src=
                         'https://via.placeholder.com/600x400?text=GadgetStore'
@@ -1400,32 +1218,36 @@ function renderProducts(){
                 <div class="product-body">
 
                     <h3>
-                        ${p.name}
+                        ${product.name}
                     </h3>
 
                     <div class="price">
-                        ${rupiah(p.price)}
+                        ${rupiah(product.price)}
                     </div>
 
                     <p class="desc">
-                        ${p.desc}
+                        ${product.desc}
                     </p>
 
                     <video controls>
 
                         <source
-                            src="${p.video}"
+                            src="${product.video}"
                             type="video/mp4"
                         >
+
+                        Browser Anda
+                        tidak mendukung video.
 
                     </video>
 
                     <button
                         class="buy"
                         style="width:100%;margin-top:15px"
-                        onclick="addToCart(${p.id})"
-                    >
+                        onclick="addToCart(${product.id})">
+
                         🛒 Tambah ke Keranjang
+
                     </button>
 
                 </div>
@@ -1461,6 +1283,10 @@ function closeCart(){
 }
 
 
+/* =====================================================
+RENDER CART
+===================================================== */
+
 function renderCart(){
 
     const container =
@@ -1470,14 +1296,17 @@ function renderCart(){
     const cart = getCart();
 
 
-    if(!cart.length){
+    if(cart.length===0){
 
         container.innerHTML =
-            `<div class="empty">🛒 Keranjang masih kosong.</div>`;
+            `<div class="empty">
+                🛒 Keranjang masih kosong.
+            </div>`;
+
 
         document
             .getElementById("cartTotal")
-            .textContent = "";
+            .textContent="";
 
         return;
 
@@ -1491,7 +1320,10 @@ function renderCart(){
 
                 <img
                     src="${item.image}"
-                    alt="${item.name}"
+                    onerror="
+                        this.src=
+                        'https://via.placeholder.com/100'
+                    "
                 >
 
                 <div class="cart-info">
@@ -1512,9 +1344,10 @@ function renderCart(){
                                     ${item.productId},
                                     -1
                                 )
-                            "
-                        >
+                            ">
+
                             −
+
                         </button>
 
                         <span>
@@ -1527,20 +1360,22 @@ function renderCart(){
                                     ${item.productId},
                                     1
                                 )
-                            "
-                        >
+                            ">
+
                             +
+
                         </button>
 
                         <button
                             class="danger"
                             onclick="
-                                removeCart(
+                                removeFromCart(
                                     ${item.productId}
                                 )
-                            "
-                        >
+                            ">
+
                             🗑️
+
                         </button>
 
                     </div>
@@ -1555,8 +1390,7 @@ function renderCart(){
     const total =
         cart.reduce(
             (sum,item) =>
-            sum +
-            item.price * item.qty,
+            sum + item.price * item.qty,
             0
         );
 
@@ -1569,6 +1403,10 @@ function renderCart(){
 }
 
 
+/* =====================================================
+CHANGE QTY
+===================================================== */
+
 function changeQty(id,change){
 
     let cart = getCart();
@@ -1576,11 +1414,11 @@ function changeQty(id,change){
 
     const item =
         cart.find(
-            x => x.productId === id
+            i => i.productId === id
         );
 
 
-    if(!item) return;
+    if(!item)return;
 
 
     item.qty += change;
@@ -1590,36 +1428,37 @@ function changeQty(id,change){
 
         cart =
             cart.filter(
-                x => x.productId !== id
+                i => i.productId !== id
             );
 
     }
 
 
     saveCart(cart);
-
     renderCart();
-
     updateCartCount();
 
 }
 
 
-function removeCart(id){
+/* =====================================================
+REMOVE CART
+===================================================== */
+
+function removeFromCart(id){
 
     let cart = getCart();
 
 
     cart =
         cart.filter(
-            x => x.productId !== id
+            item => item.productId !== id
         );
 
 
     saveCart(cart);
 
     renderCart();
-
     updateCartCount();
 
 }
@@ -1634,9 +1473,11 @@ function openCheckout(){
     const cart = getCart();
 
 
-    if(!cart.length){
+    if(cart.length===0){
 
-        alert("Keranjang masih kosong!");
+        alert(
+            "Keranjang masih kosong!"
+        );
 
         return;
 
@@ -1646,8 +1487,7 @@ function openCheckout(){
     const total =
         cart.reduce(
             (sum,item) =>
-            sum +
-            item.price * item.qty,
+            sum + item.price * item.qty,
             0
         );
 
@@ -1655,7 +1495,8 @@ function openCheckout(){
     document
         .getElementById("checkoutTotal")
         .textContent =
-        "Total: " + rupiah(total);
+        "Total Pembayaran: " +
+        rupiah(total);
 
 
     closeCart();
@@ -1678,170 +1519,10 @@ function closeCheckout(){
 
 
 /* =====================================================
-SELECT PAYMENT
+PROCESS CHECKOUT
 ===================================================== */
 
-function selectPayment(bank){
-
-    document
-        .getElementById("paymentBNI")
-        .classList.remove("selected");
-
-    document
-        .getElementById("paymentBCA")
-        .classList.remove("selected");
-
-
-    if(bank === "BNI"){
-
-        document
-            .getElementById("paymentBNI")
-            .classList.add("selected");
-
-    }
-
-
-    if(bank === "BCA"){
-
-        document
-            .getElementById("paymentBCA")
-            .classList.add("selected");
-
-    }
-
-
-    const cart = getCart();
-
-
-    const total =
-        cart.reduce(
-            (sum,item) =>
-            sum +
-            item.price * item.qty,
-            0
-        );
-
-
-    document
-        .getElementById("bankInfo")
-        .innerHTML = bank === "BNI"
-
-        ?
-
-        `
-        <div class="bank-box">
-
-            <b>Bank BNI</b>
-
-            <div class="bank-number">
-                1234567890
-            </div>
-
-            <p>
-                Nama Rekening:
-                <b>GadgetStore Pro</b>
-            </p>
-
-        </div>
-        `
-
-        :
-
-        `
-        <div class="bank-box">
-
-            <b>Bank BCA</b>
-
-            <div class="bank-number">
-                9876543210
-            </div>
-
-            <p>
-                Nama Rekening:
-                <b>GadgetStore Pro</b>
-            </p>
-
-        </div>
-        `;
-
-
-    document
-        .getElementById("checkoutPaymentTotal")
-        .textContent =
-        rupiah(total);
-
-
-    document
-        .getElementById("checkoutDetail")
-        .classList.remove("hidden");
-
-}
-
-
-/* =====================================================
-PREVIEW CHECKOUT
-===================================================== */
-
-function previewCheckoutProof(event){
-
-    const file =
-        event.target.files[0];
-
-
-    const preview =
-        document.getElementById(
-            "checkoutPreview"
-        );
-
-
-    if(!file){
-
-        preview.style.display = "none";
-
-        return;
-
-    }
-
-
-    if(!file.type.startsWith("image/")){
-
-        alert(
-            "Bukti pembayaran harus berupa gambar!"
-        );
-
-        event.target.value = "";
-
-        return;
-
-    }
-
-
-    const reader =
-        new FileReader();
-
-
-    reader.onload =
-    function(e){
-
-        preview.src =
-            e.target.result;
-
-        preview.style.display =
-            "block";
-
-    };
-
-
-    reader.readAsDataURL(file);
-
-}
-
-
-/* =====================================================
-BUAT PESANAN + BAYAR
-===================================================== */
-
-function createPaidOrder(){
+function processCheckout(){
 
     const selected =
         document.querySelector(
@@ -1852,42 +1533,7 @@ function createPaidOrder(){
     if(!selected){
 
         alert(
-            "Silakan pilih BNI atau BCA!"
-        );
-
-        return;
-
-    }
-
-
-    const sender =
-        document
-            .getElementById("checkoutSender")
-            .value
-            .trim();
-
-
-    const proof =
-        document
-            .getElementById("checkoutProof")
-            .files[0];
-
-
-    if(!sender){
-
-        alert(
-            "Nama pengirim wajib diisi!"
-        );
-
-        return;
-
-    }
-
-
-    if(!proof){
-
-        alert(
-            "Silakan upload bukti transfer!"
+            "Silakan pilih metode pembayaran!"
         );
 
         return;
@@ -1898,7 +1544,7 @@ function createPaidOrder(){
     const cart = getCart();
 
 
-    if(!cart.length){
+    if(cart.length===0){
 
         alert(
             "Keranjang kosong!"
@@ -1909,152 +1555,91 @@ function createPaidOrder(){
     }
 
 
-    const reader =
-        new FileReader();
+    const user =
+        localStorage.getItem("loggedUser");
 
 
-    reader.onload =
-    function(e){
-
-        let orders =
-            JSON.parse(
-                localStorage.getItem("orders") || "[]"
-            );
+    let orders =
+        JSON.parse(
+            localStorage.getItem("orders") || "[]"
+        );
 
 
-        const user =
-            localStorage.getItem("loggedUser");
+    const total =
+        cart.reduce(
+            (sum,item) =>
+            sum + item.price * item.qty,
+            0
+        );
 
 
-        cart.forEach(item => {
+    /*
+        SETIAP PRODUK MENJADI PESANAN
+    */
 
-            orders.push({
+    cart.forEach(item => {
 
-                id:
-                    Date.now() +
-                    Math.floor(
-                        Math.random()*100000
-                    ),
+        orders.push({
 
-                customer:user,
+            id:
+                Date.now() +
+                Math.floor(Math.random()*10000),
 
-                productId:item.productId,
+            customer:user,
 
-                productName:item.name,
+            productId:item.productId,
 
-                price:item.price,
+            productName:item.name,
 
-                quantity:item.qty,
+            price:item.price,
 
-                total:
-                    item.price * item.qty,
+            quantity:item.qty,
 
-                payment:selected.value,
+            total:item.price * item.qty,
 
-                senderName:sender,
+            payment:selected.value,
 
-                paymentProof:e.target.result,
+            status:"Belum Dibayar",
 
-                paidAt:
-                    new Date()
-                    .toLocaleString("id-ID"),
-
-                status:"Sudah Dibayar",
-
-                date:
-                    new Date()
-                    .toLocaleString("id-ID")
-
-            });
+            date:
+                new Date()
+                .toLocaleString("id-ID")
 
         });
 
-
-        localStorage.setItem(
-            "orders",
-            JSON.stringify(orders)
-        );
+    });
 
 
-        saveCart([]);
+    localStorage.setItem(
+        "orders",
+        JSON.stringify(orders)
+    );
 
 
-        closeCheckout();
+    saveCart([]);
 
 
-        updateCartCount();
+    closeCheckout();
 
-        renderOrders();
+    updateCartCount();
 
-
-        const total =
-            cart.reduce(
-                (sum,item) =>
-                sum +
-                item.price * item.qty,
-                0
-            );
+    renderOrders();
 
 
-        alert(
-            "🎉 Pembayaran berhasil!\n\n" +
-            "Bank: " +
-            selected.value +
-            "\nTotal: " +
-            rupiah(total) +
-            "\n\nStatus: Sudah Dibayar"
-        );
-
-
-        resetCheckout();
-
-    };
-
-
-    reader.readAsDataURL(proof);
+    alert(
+        "Pesanan berhasil dibuat!\n\n" +
+        "Metode pembayaran: " +
+        selected.value +
+        "\nTotal: " +
+        rupiah(total) +
+        "\n\nSilakan lakukan pembayaran."
+    );
 
 }
 
 
 /* =====================================================
-RESET CHECKOUT
-===================================================== */
-
-function resetCheckout(){
-
-    document
-        .querySelectorAll(
-            'input[name="payment"]'
-        )
-        .forEach(
-            input => input.checked = false
-        );
-
-
-    document
-        .getElementById("checkoutSender")
-        .value = "";
-
-
-    document
-        .getElementById("checkoutProof")
-        .value = "";
-
-
-    document
-        .getElementById("checkoutPreview")
-        .style.display = "none";
-
-
-    document
-        .getElementById("checkoutDetail")
-        .classList.add("hidden");
-
-}
-
-
-/* =====================================================
-ORDERS
+RENDER ORDER
 ===================================================== */
 
 function renderOrders(){
@@ -2073,13 +1658,13 @@ function renderOrders(){
         );
 
 
-    const mine =
+    const myOrders =
         orders.filter(
             o => o.customer === user
         );
 
 
-    if(!mine.length){
+    if(myOrders.length===0){
 
         container.innerHTML =
             `<div class="empty">
@@ -2092,7 +1677,7 @@ function renderOrders(){
 
 
     container.innerHTML =
-        mine
+        myOrders
         .slice()
         .reverse()
         .map(order => `
@@ -2105,17 +1690,26 @@ function renderOrders(){
 
                 <p>
                     Jumlah:
-                    <b>${order.quantity}</b>
+                    <b>
+                        ${order.quantity || 1}
+                    </b>
                 </p>
 
                 <p>
                     Total:
-                    <b>${rupiah(order.total)}</b>
+                    <b>
+                        ${rupiah(
+                            order.total ||
+                            order.price
+                        )}
+                    </b>
                 </p>
 
                 <p>
                     Pembayaran:
-                    <b>${order.payment}</b>
+                    <b>
+                        ${order.payment || "-"}
+                    </b>
                 </p>
 
                 <p>
@@ -2123,19 +1717,8 @@ function renderOrders(){
                     ${order.date}
                 </p>
 
-                ${
-                    order.senderName
-                    ?
-                    `
-                    <p>
-                        Pengirim:
-                        <b>${order.senderName}</b>
-                    </p>
-                    `
-                    :
-                    ""
-                }
 
+                <!-- TRACKING -->
 
                 <div
                     style="
@@ -2152,15 +1735,22 @@ function renderOrders(){
                             margin-bottom:15px;
                         "
                     >
+
                         🚚 Tracking Pesanan
+
                     </h4>
 
 
                     <div class="tracking">
 
                         <div
-                            class="step
-                            ${stepClass(order.status,1)}"
+                            class="
+                                step
+                                ${getStepClass(
+                                    order.status,
+                                    1
+                                )}
+                            "
                         >
 
                             <div class="circle">
@@ -2175,14 +1765,24 @@ function renderOrders(){
 
 
                         <div
-                            class="line
-                            ${lineClass(order.status,2)}"
+                            class="
+                                line
+                                ${getLineClass(
+                                    order.status,
+                                    2
+                                )}
+                            "
                         ></div>
 
 
                         <div
-                            class="step
-                            ${stepClass(order.status,2)}"
+                            class="
+                                step
+                                ${getStepClass(
+                                    order.status,
+                                    2
+                                )}
+                            "
                         >
 
                             <div class="circle">
@@ -2197,14 +1797,24 @@ function renderOrders(){
 
 
                         <div
-                            class="line
-                            ${lineClass(order.status,3)}"
+                            class="
+                                line
+                                ${getLineClass(
+                                    order.status,
+                                    3
+                                )}
+                            "
                         ></div>
 
 
                         <div
-                            class="step
-                            ${stepClass(order.status,3)}"
+                            class="
+                                step
+                                ${getStepClass(
+                                    order.status,
+                                    3
+                                )}
+                            "
                         >
 
                             <div class="circle">
@@ -2219,14 +1829,24 @@ function renderOrders(){
 
 
                         <div
-                            class="line
-                            ${lineClass(order.status,4)}"
+                            class="
+                                line
+                                ${getLineClass(
+                                    order.status,
+                                    4
+                                )}
+                            "
                         ></div>
 
 
                         <div
-                            class="step
-                            ${stepClass(order.status,4)}"
+                            class="
+                                step
+                                ${getStepClass(
+                                    order.status,
+                                    4
+                                )}
+                            "
                         >
 
                             <div class="circle">
@@ -2242,41 +1862,22 @@ function renderOrders(){
                     </div>
 
 
-                    <div style="
-                        text-align:center;
-                        margin-top:20px;
-                    ">
+                    <div
+                        style="
+                            text-align:center;
+                            margin-top:20px;
+                        "
+                    >
 
                         <span class="status">
 
-                            ${statusIcon(order.status)}
+                            ${getStatusIcon(
+                                order.status
+                            )}
 
                             ${order.status}
 
                         </span>
-
-
-                        ${
-                            order.status === "Belum Dibayar"
-                            ?
-
-                            `
-                            <button
-                                class="pay-btn"
-                                onclick="
-                                    openPayModal(
-                                        ${order.id}
-                                    )
-                                "
-                            >
-                                💳 Bayar Sekarang
-                            </button>
-                            `
-
-                            :
-
-                            ""
-                        }
 
                     </div>
 
@@ -2288,115 +1889,68 @@ function renderOrders(){
                             color:#64748b;
                         "
                     >
-                        ${statusMessage(order.status)}
+
+                        ${getStatusMessage(
+                            order.status
+                        )}
+
                     </p>
+
+
+                    <!-- TOMBOL PEMBAYARAN -->
+
+                    ${
+                        order.status === "Belum Dibayar"
+                        ?
+
+                        `
+                        <button
+                            class="buy"
+                            style="
+                                width:100%;
+                                margin-top:15px;
+                            "
+                            onclick="
+                                openPaymentModal(${order.id})
+                            "
+                        >
+
+                            💳 Konfirmasi Pembayaran
+
+                        </button>
+                        `
+
+                        :
+
+                        `
+                        <div
+                            class="success"
+                            style="margin-top:15px"
+                        >
+
+                            ✅ Pembayaran Berhasil
+
+                        </div>
+                        `
+                    }
 
                 </div>
 
             </div>
 
-        `)
-        .join("");
+        `).join("");
 
 }
 
 
 /* =====================================================
-STEP STATUS
-===================================================== */
-
-function stepClass(status,step){
-
-    const map = {
-
-        "Belum Dibayar":1,
-        "Sudah Dibayar":2,
-        "Sedang Dikemas":3,
-        "Sudah Dikirim":4
-
-    };
-
-
-    const current =
-        map[status] || 1;
-
-
-    if(step < current)
-        return "done";
-
-
-    if(step === current)
-        return "active";
-
-
-    return "";
-
-}
-
-
-function lineClass(status,step){
-
-    const map = {
-
-        "Belum Dibayar":1,
-        "Sudah Dibayar":2,
-        "Sedang Dikemas":3,
-        "Sudah Dikirim":4
-
-    };
-
-
-    const current =
-        map[status] || 1;
-
-
-    return current >= step
-        ? "line-done"
-        : "";
-
-}
-
-
-function statusIcon(status){
-
-    if(status === "Sudah Dibayar")
-        return "✅";
-
-    if(status === "Sedang Dikemas")
-        return "📦";
-
-    if(status === "Sudah Dikirim")
-        return "🚚";
-
-    return "💰";
-
-}
-
-
-function statusMessage(status){
-
-    if(status === "Sudah Dibayar")
-        return "💳 Pembayaran sudah dikonfirmasi. Pesanan akan diproses.";
-
-    if(status === "Sedang Dikemas")
-        return "📦 Pesanan sedang dikemas oleh penjual.";
-
-    if(status === "Sudah Dikirim")
-        return "🚚 Pesanan sudah dikirim dan sedang dalam perjalanan.";
-
-    return "💰 Pesanan menunggu pembayaran.";
-
-}
-
-
-/* =====================================================
-BAYAR PESANAN YANG BELUM DIBAYAR
+BUKA MODAL PEMBAYARAN
 ===================================================== */
 
 let selectedOrderId = null;
 
 
-function openPayModal(orderId){
+function openPaymentModal(orderId){
 
     selectedOrderId = orderId;
 
@@ -2424,97 +1978,152 @@ function openPayModal(orderId){
     }
 
 
-    const content =
-        document.getElementById(
-            "payContent"
-        );
+    document
+        .getElementById("paymentDetail")
+        .innerHTML = `
+
+            <div class="checkout-total">
+
+                <p>
+                    Produk:
+                    <b>${order.productName}</b>
+                </p>
+
+                <p style="margin-top:8px">
+
+                    Jumlah:
+                    <b>${order.quantity}</b>
+
+                </p>
+
+                <p style="margin-top:8px">
+
+                    Total:
+                    <b>${rupiah(order.total)}</b>
+
+                </p>
+
+                <p style="margin-top:8px">
+
+                    Metode:
+                    <b>${order.payment}</b>
+
+                </p>
+
+            </div>
+
+        `;
 
 
-    content.innerHTML = `
+    let instruction = "";
 
-        <div class="checkout-total">
 
-            Produk:
-            <b>${order.productName}</b>
+    if(order.payment === "BCA"){
+
+        instruction = `
+
+            <b>🏦 Pembayaran BCA</b>
 
             <br><br>
 
-            Total:
+            Bank BCA
+
+            <br>
+
+            No. Rekening:
+            <b>1234567890</b>
+
+            <br>
+
+            Atas Nama:
+            <b>GadgetStore Pro</b>
+
+            <br><br>
+
+            Silakan transfer sebesar
+            <b>${rupiah(order.total)}</b>.
+
+        `;
+
+    }
+
+
+    else if(order.payment === "BNI"){
+
+        instruction = `
+
+            <b>🏦 Pembayaran BNI</b>
+
+            <br><br>
+
+            Bank BNI
+
+            <br>
+
+            No. Rekening:
+            <b>9876543210</b>
+
+            <br>
+
+            Atas Nama:
+            <b>GadgetStore Pro</b>
+
+            <br><br>
+
+            Silakan transfer sebesar
+            <b>${rupiah(order.total)}</b>.
+
+        `;
+
+    }
+
+
+    else if(order.payment === "QRIS"){
+
+        instruction = `
+
+            <b>📱 Pembayaran QRIS</b>
+
+            <br><br>
+
+            Silakan scan QRIS GadgetStore Pro.
+
+            <br><br>
+
+            Total pembayaran:
+
             <b>${rupiah(order.total)}</b>
 
-        </div>
+            <br><br>
 
+            Setelah melakukan pembayaran,
+            klik tombol konfirmasi.
 
-        <h3>
-            Pilih Bank
-        </h3>
+        `;
 
-
-        <div
-            class="payment"
-            id="orderBNI"
-        >
-
-            <label>
-
-                <input
-                    type="radio"
-                    name="orderBank"
-                    value="BNI"
-                    onchange="
-                        showOrderBank('BNI')
-                    "
-                >
-
-                🏦 BNI
-
-            </label>
-
-        </div>
-
-
-        <div
-            class="payment"
-            id="orderBCA"
-        >
-
-            <label>
-
-                <input
-                    type="radio"
-                    name="orderBank"
-                    value="BCA"
-                    onchange="
-                        showOrderBank('BCA')
-                    "
-                >
-
-                🏦 BCA
-
-            </label>
-
-        </div>
-
-
-        <div
-            id="orderBankDetail"
-            class="payment-detail hidden"
-        ></div>
-
-    `;
+    }
 
 
     document
-        .getElementById("payModal")
+        .getElementById("paymentInstruction")
+        .innerHTML = instruction;
+
+
+    document
+        .getElementById("paymentModal")
         .classList.remove("hidden");
 
 }
 
 
-function closePayModal(){
+/* =====================================================
+TUTUP PAYMENT MODAL
+===================================================== */
+
+function closePaymentModal(){
 
     document
-        .getElementById("payModal")
+        .getElementById("paymentModal")
         .classList.add("hidden");
 
     selectedOrderId = null;
@@ -2523,12 +2132,23 @@ function closePayModal(){
 
 
 /* =====================================================
-DETAIL BANK ORDER
+KONFIRMASI PEMBAYARAN
 ===================================================== */
 
-function showOrderBank(bank){
+function confirmPayment(){
 
-    const orders =
+    if(!selectedOrderId){
+
+        alert(
+            "Pesanan tidak ditemukan!"
+        );
+
+        return;
+
+    }
+
+
+    let orders =
         JSON.parse(
             localStorage.getItem("orders") || "[]"
         );
@@ -2540,302 +2160,213 @@ function showOrderBank(bank){
         );
 
 
-    if(!order) return;
-
-
-    document
-        .getElementById("orderBNI")
-        .classList.remove("selected");
-
-    document
-        .getElementById("orderBCA")
-        .classList.remove("selected");
-
-
-    if(bank === "BNI"){
-
-        document
-            .getElementById("orderBNI")
-            .classList.add("selected");
-
-    }else{
-
-        document
-            .getElementById("orderBCA")
-            .classList.add("selected");
-
-    }
-
-
-    document
-        .getElementById("orderBankDetail")
-        .innerHTML = `
-
-        <h3>
-            🏦 Cara Pembayaran ${bank}
-        </h3>
-
-
-        <div class="bank-box">
-
-            <b>
-                Bank ${bank}
-            </b>
-
-            <div class="bank-number">
-
-                ${
-                    bank === "BNI"
-                    ? "1234567890"
-                    : "9876543210"
-                }
-
-            </div>
-
-            <p>
-                Nama Rekening:
-                <b>GadgetStore Pro</b>
-            </p>
-
-        </div>
-
-
-        <div class="payment-total">
-
-            ${rupiah(order.total)}
-
-        </div>
-
-
-        <div class="upload-box">
-
-            <label>
-                👤 Nama Pengirim
-            </label>
-
-            <input
-                type="text"
-                id="orderSender"
-                placeholder="Nama pemilik rekening"
-            >
-
-        </div>
-
-
-        <div class="upload-box">
-
-            <label>
-                📷 Upload Bukti Transfer
-            </label>
-
-            <input
-                type="file"
-                id="orderProof"
-                accept="image/*"
-                onchange="previewOrderProof(event)"
-            >
-
-            <img
-                id="orderPreview"
-                class="preview"
-                alt="Bukti transfer"
-            >
-
-        </div>
-
-
-        <button
-            class="buy"
-            style="width:100%;margin-top:15px"
-            onclick="
-                confirmOrderPayment('${bank}')
-            "
-        >
-
-            ✅ Saya Sudah Transfer
-
-        </button>
-
-    `;
-
-
-    document
-        .getElementById("orderBankDetail")
-        .classList.remove("hidden");
-
-}
-
-
-/* =====================================================
-PREVIEW ORDER PROOF
-===================================================== */
-
-function previewOrderProof(event){
-
-    const file =
-        event.target.files[0];
-
-
-    const preview =
-        document.getElementById(
-            "orderPreview"
-        );
-
-
-    if(!file) return;
-
-
-    if(!file.type.startsWith("image/")){
+    if(!order){
 
         alert(
-            "File harus berupa gambar!"
+            "Pesanan tidak ditemukan!"
         );
-
-        event.target.value = "";
 
         return;
 
     }
 
 
-    const reader =
-        new FileReader();
+    if(order.status !== "Belum Dibayar"){
+
+        alert(
+            "Pesanan ini sudah dibayar!"
+        );
+
+        closePaymentModal();
+
+        return;
+
+    }
 
 
-    reader.onload =
-    function(e){
+    /*
+        UBAH STATUS
+    */
 
-        preview.src =
-            e.target.result;
+    order.status = "Sudah Dibayar";
 
-        preview.style.display =
-            "block";
+
+    /*
+        SIMPAN DATA
+    */
+
+    localStorage.setItem(
+        "orders",
+        JSON.stringify(orders)
+    );
+
+
+    closePaymentModal();
+
+
+    renderOrders();
+
+
+    /*
+        NOTIFIKASI BERHASIL
+    */
+
+    alert(
+        "✅ PEMBAYARAN BERHASIL!\n\n" +
+
+        "Produk: " +
+        order.productName +
+
+        "\nTotal: " +
+        rupiah(order.total) +
+
+        "\nMetode: " +
+        order.payment +
+
+        "\n\nStatus pesanan sekarang: " +
+        "Sudah Dibayar"
+    );
+
+}
+
+
+/* =====================================================
+STATUS STEP
+===================================================== */
+
+function getStepClass(status,step){
+
+    const statusNumber = {
+
+        "Belum Dibayar":1,
+
+        "Sudah Dibayar":2,
+
+        "Sedang Dikemas":3,
+
+        "Sudah Dikirim":4
 
     };
 
 
-    reader.readAsDataURL(file);
+    const current =
+        statusNumber[status] || 1;
+
+
+    if(step < current){
+
+        return "done";
+
+    }
+
+
+    if(step === current){
+
+        return "active";
+
+    }
+
+
+    return "";
 
 }
 
 
 /* =====================================================
-CONFIRM PAYMENT
+STATUS LINE
 ===================================================== */
 
-function confirmOrderPayment(bank){
+function getLineClass(status,step){
 
-    const sender =
-        document
-            .getElementById("orderSender")
-            .value
-            .trim();
+    const statusNumber = {
 
+        "Belum Dibayar":1,
 
-    const proof =
-        document
-            .getElementById("orderProof")
-            .files[0];
+        "Sudah Dibayar":2,
 
+        "Sedang Dikemas":3,
 
-    if(!sender){
-
-        alert(
-            "Nama pengirim wajib diisi!"
-        );
-
-        return;
-
-    }
-
-
-    if(!proof){
-
-        alert(
-            "Silakan upload bukti transfer!"
-        );
-
-        return;
-
-    }
-
-
-    const reader =
-        new FileReader();
-
-
-    reader.onload =
-    function(e){
-
-        let orders =
-            JSON.parse(
-                localStorage.getItem("orders") || "[]"
-            );
-
-
-        const index =
-            orders.findIndex(
-                o => o.id === selectedOrderId
-            );
-
-
-        if(index === -1){
-
-            alert(
-                "Pesanan tidak ditemukan!"
-            );
-
-            return;
-
-        }
-
-
-        orders[index].payment =
-            bank;
-
-        orders[index].senderName =
-            sender;
-
-        orders[index].paymentProof =
-            e.target.result;
-
-        orders[index].paidAt =
-            new Date()
-            .toLocaleString("id-ID");
-
-        orders[index].status =
-            "Sudah Dibayar";
-
-
-        localStorage.setItem(
-            "orders",
-            JSON.stringify(orders)
-        );
-
-
-        closePayModal();
-
-        renderOrders();
-
-
-        alert(
-            "✅ Pembayaran berhasil!\n\n" +
-            "Bank: " + bank +
-            "\nTotal: " +
-            rupiah(orders[index].total) +
-            "\n\nStatus: Sudah Dibayar"
-        );
+        "Sudah Dikirim":4
 
     };
 
 
-    reader.readAsDataURL(proof);
+    const current =
+        statusNumber[status] || 1;
+
+
+    if(current >= step){
+
+        return "line-done";
+
+    }
+
+
+    return "";
 
 }
 
 
 /* =====================================================
-SESSION
+STATUS MESSAGE
+===================================================== */
+
+function getStatusMessage(status){
+
+    switch(status){
+
+        case "Sudah Dibayar":
+
+            return "💳 Pembayaran sudah dikonfirmasi.";
+
+        case "Sedang Dikemas":
+
+            return "📦 Pesanan sedang dikemas oleh penjual.";
+
+        case "Sudah Dikirim":
+
+            return "🚚 Pesanan sudah dikirim dan sedang dalam perjalanan.";
+
+        default:
+
+            return "💰 Pesanan menunggu pembayaran.";
+
+    }
+
+}
+
+
+/* =====================================================
+STATUS ICON
+===================================================== */
+
+function getStatusIcon(status){
+
+    switch(status){
+
+        case "Sudah Dibayar":
+
+            return "✅";
+
+        case "Sedang Dikemas":
+
+            return "📦";
+
+        case "Sudah Dikirim":
+
+            return "🚚";
+
+        default:
+
+            return "💰";
+
+    }
+
+}
+
+
+/* =====================================================
+CEK SESSION
 ===================================================== */
 
 const loggedUser =
@@ -2859,8 +2390,7 @@ else if(
     loggedRole === "admin"
 ){
 
-    window.location.href =
-        "admin.html";
+    location.href = "admin.html";
 
 }
 
