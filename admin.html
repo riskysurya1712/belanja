@@ -2,8 +2,8 @@
 <html lang="id">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>GadgetStore Pro</title>
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Admin - GadgetStore Pro</title>
 
 <style>
 *{
@@ -19,25 +19,16 @@ body{
 }
 
 header{
-    background:linear-gradient(135deg,#071b33,#0b63ce,#72d7ff);
+    background:linear-gradient(135deg,#06182c,#075da8,#5ed5ff);
     color:white;
     padding:25px;
     text-align:center;
     box-shadow:0 5px 20px #0002;
 }
 
-header h1{
-    font-size:32px;
-}
-
-header p{
-    margin-top:7px;
-    opacity:.9;
-}
-
 .container{
     width:92%;
-    max-width:1200px;
+    max-width:1250px;
     margin:25px auto;
 }
 
@@ -46,41 +37,16 @@ header p{
     border-radius:18px;
     padding:25px;
     margin-bottom:25px;
+    border:1px solid #d8edff;
     box-shadow:0 8px 25px #0878c522;
-    border:1px solid #d7edff;
 }
 
-/* LOGIN */
-#loginPage{
-    min-height:100vh;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    background:linear-gradient(135deg,#06182c,#0878d1,#9be9ff);
+h2{
+    color:#075da8;
+    margin-bottom:20px;
 }
 
-.login-box{
-    background:white;
-    width:90%;
-    max-width:420px;
-    padding:35px;
-    border-radius:25px;
-    box-shadow:0 20px 50px #0005;
-}
-
-.login-box h2{
-    text-align:center;
-    color:#0967bd;
-    margin-bottom:8px;
-}
-
-.login-box p{
-    text-align:center;
-    color:#718096;
-    margin-bottom:25px;
-}
-
-input,select{
+input,textarea{
     width:100%;
     padding:13px;
     border:1px solid #cbd5e1;
@@ -89,150 +55,120 @@ input,select{
     outline:none;
 }
 
-input:focus,select:focus{
-    border-color:#0785e8;
+textarea{
+    min-height:100px;
+    resize:vertical;
 }
 
-button,.btn{
+input:focus,textarea:focus{
+    border-color:#0878d1;
+}
+
+button{
     border:0;
     padding:12px 18px;
     border-radius:10px;
     cursor:pointer;
     font-weight:bold;
-    background:#0878d1;
     color:white;
-    transition:.2s;
+    background:#0878d1;
+    margin:3px;
 }
 
-button:hover,.btn:hover{
+button:hover{
     transform:translateY(-2px);
-    background:#075ca2;
 }
 
-.admin-btn{
-    background:#152238;
-}
-
-.logout{
+.delete{
     background:#ef4444;
 }
 
-.info{
-    background:#e8f6ff;
-    padding:12px;
-    border-radius:10px;
-    font-size:14px;
-    margin-top:10px;
+.edit{
+    background:#f59e0b;
 }
 
-/* NAV */
-.nav{
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    gap:15px;
-    flex-wrap:wrap;
+.back{
+    background:#475569;
 }
 
-.user-info{
-    display:flex;
-    align-items:center;
-    gap:10px;
+.success{
+    background:#08a66a;
 }
 
-/* KATALOG */
-.section-title{
-    margin-bottom:18px;
-    color:#075da8;
-}
-
-.products{
+.product-grid{
     display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+    grid-template-columns:
+    repeat(auto-fit,minmax(270px,1fr));
     gap:20px;
 }
 
 .product{
     border:1px solid #d9ecfa;
-    border-radius:18px;
+    border-radius:15px;
     overflow:hidden;
-    background:white;
-    box-shadow:0 5px 18px #0878d11c;
 }
 
 .product img{
     width:100%;
-    height:210px;
+    height:190px;
     object-fit:cover;
 }
 
 .product-body{
-    padding:18px;
-}
-
-.product h3{
-    margin-bottom:8px;
+    padding:16px;
 }
 
 .price{
     color:#0878d1;
-    font-size:21px;
+    font-size:20px;
     font-weight:bold;
-    margin:10px 0;
-}
-
-.desc{
-    color:#64748b;
-    line-height:1.5;
-    min-height:50px;
+    margin:8px 0;
 }
 
 video{
     width:100%;
-    margin-top:15px;
-    border-radius:10px;
-    background:#000;
+    margin-top:10px;
+    border-radius:8px;
 }
 
-.buy{
-    display:block;
-    text-align:center;
-    text-decoration:none;
-    margin-top:15px;
-    background:#08a66a;
-}
-
-.buy:hover{
-    background:#078c5b;
-}
-
-/* PESANAN */
 .order{
     border:1px solid #dcebf5;
-    padding:15px;
     border-radius:12px;
+    padding:16px;
     margin:10px 0;
 }
 
+.order select{
+    padding:10px;
+    border:1px solid #cbd5e1;
+    border-radius:8px;
+    margin-top:10px;
+}
+
 .status{
-    display:inline-block;
     padding:6px 10px;
     border-radius:20px;
     background:#e0f2fe;
     color:#0369a1;
-    font-size:13px;
     font-weight:bold;
-    margin-top:8px;
+}
+
+.hidden{
+    display:none!important;
+}
+
+.topbar{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:10px;
+    flex-wrap:wrap;
 }
 
 .empty{
     text-align:center;
     padding:30px;
     color:#64748b;
-}
-
-.hidden{
-    display:none!important;
 }
 
 footer{
@@ -245,139 +181,176 @@ footer{
 
 <body>
 
-<!-- ================= LOGIN ================= -->
-<div id="loginPage">
-
-<div class="login-box">
-    <h2>GadgetStore Pro</h2>
-    <p>Login ke GadgetStore Management System</p>
-
-    <label>Login sebagai</label>
-    <select id="role">
-        <option value="customer">Customer</option>
-        <option value="admin">Administrator</option>
-    </select>
-
-    <label>Username</label>
-    <input type="text" id="username" placeholder="Masukkan username">
-
-    <label>Password</label>
-    <input type="password" id="password" placeholder="Masukkan password">
-
-    <button onclick="login()" style="width:100%">
-        Login
-    </button>
-
-    <div class="info">
-        <b>Customer:</b> bebas membuat username & password sendiri.<br><br>
-        <b>Admin:</b> username = admin | password = 12345
-    </div>
-
-    <p id="loginMessage" style="color:#ef4444;margin-top:15px"></p>
-</div>
-
-</div>
-
-
-<!-- ================= APLIKASI CUSTOMER ================= -->
-<div id="app" class="hidden">
-
 <header>
     <h1>GadgetStore Management System</h1>
-    <p>Premium Technology Marketplace</p>
+    <p>Administrator Dashboard</p>
 </header>
+
 
 <div class="container">
 
-    <div class="card">
-        <div class="nav">
-            <div>
-                <h2>🛍️ Panel Pembeli</h2>
-                <p>Selamat datang, <b id="welcome"></b></p>
-            </div>
+<!-- ================= ADMIN HEADER ================= -->
 
-            <div class="user-info">
-                <button class="admin-btn hidden" id="adminPanelBtn"
-                    onclick="location.href='admin.html'">
-                    ⚙️ Panel Admin
-                </button>
+<div class="card">
+    <div class="topbar">
 
-                <button class="logout" onclick="logout()">
-                    Keluar
-                </button>
-            </div>
+        <div>
+            <h2>⚙️ Panel Administrator</h2>
+            <p>
+                Login sebagai:
+                <b id="adminName">admin</b>
+            </p>
         </div>
+
+        <div>
+            <button class="back"
+                onclick="location.href='index.html'">
+                🛍️ Halaman Customer
+            </button>
+
+            <button class="delete"
+                onclick="logout()">
+                Keluar
+            </button>
+        </div>
+
     </div>
+</div>
 
 
-    <!-- KATALOG -->
-    <div class="card">
-        <h2 class="section-title">📱 Katalog Produk</h2>
+<!-- ================= FORM PRODUK ================= -->
 
-        <div id="products" class="products"></div>
-    </div>
+<div class="card">
 
+<h2>➕ Tambah Produk Baru</h2>
 
-    <!-- PESANAN -->
-    <div class="card">
-        <h2 class="section-title">📦 Status Pesanan Saya</h2>
+<form id="productForm">
 
-        <div id="orders"></div>
-    </div>
+    <label>Nama Produk</label>
+    <input
+        type="text"
+        id="productName"
+        placeholder="Contoh: Smartphone Galaxy Ultra"
+        required
+    >
+
+    <label>Harga Produk</label>
+    <input
+        type="number"
+        id="productPrice"
+        placeholder="Contoh: 12000000"
+        required
+    >
+
+    <label>Deskripsi Produk</label>
+    <textarea
+        id="productDesc"
+        placeholder="Masukkan spesifikasi produk..."
+        required
+    ></textarea>
+
+    <label>URL Gambar Produk</label>
+    <input
+        type="url"
+        id="productImage"
+        placeholder="https://contoh.com/gambar.jpg"
+        required
+    >
+
+    <label>URL Video Produk</label>
+    <input
+        type="url"
+        id="productVideo"
+        placeholder="https://contoh.com/video.mp4"
+        required
+    >
+
+    <button
+        type="submit"
+        class="success">
+        💾 Simpan Produk ke Database
+    </button>
+
+    <button
+        type="button"
+        class="back hidden"
+        id="cancelEdit"
+        onclick="cancelEdit()">
+        Batal Edit
+    </button>
+
+</form>
 
 </div>
+
+
+<!-- ================= DAFTAR PRODUK ================= -->
+
+<div class="card">
+
+<h2>📦 Manajemen Produk</h2>
+
+<div id="productList"
+     class="product-grid"></div>
+
+</div>
+
+
+<!-- ================= PESANAN ================= -->
+
+<div class="card">
+
+<h2>🚚 Manajemen Status Pesanan</h2>
+
+<div id="orderList"></div>
+
+</div>
+
+</div>
+
 
 <footer>
-    © 2026 GadgetStore Pro — Prototype E-Commerce
+    © 2026 GadgetStore Pro — Administrator
 </footer>
-
-</div>
 
 
 <script>
 
 /* =====================================================
-   DATA PRODUK DEFAULT
+   CEK ADMIN
 ===================================================== */
 
-const defaultProducts = [
-{
-    id:1,
-    name:"Smartphone Premium",
-    price:12000000,
-    desc:"Layar AMOLED 120Hz, RAM 12GB, kamera 108MP dan baterai 5000mAh.",
-    image:"https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=800",
-    video:"https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4"
-},
-{
-    id:2,
-    name:"Laptop Ultra",
-    price:15500000,
-    desc:"Laptop performa tinggi dengan RAM 16GB, SSD 1TB dan layar Full HD.",
-    image:"https://images.unsplash.com/photo-1496181133206-80ce9b88a853?w=800",
-    video:"https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4"
-},
-{
-    id:3,
-    name:"Gaming Headset",
-    price:850000,
-    desc:"Headset gaming surround sound dengan microphone noise cancelling.",
-    image:"https://images.unsplash.com/photo-1599669454699-248893623440?w=800",
-    video:"https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4"
+if(
+    localStorage.getItem("loggedUser") !== "admin" ||
+    localStorage.getItem("loggedRole") !== "admin"
+){
+
+    alert("Akses ditolak! Silakan login sebagai admin.");
+
+    location.href="index.html";
 }
-];
 
 
 /* =====================================================
-   INITIAL STORAGE
+   DATA DEFAULT
 ===================================================== */
 
 if(!localStorage.getItem("products")){
-    localStorage.setItem("products",JSON.stringify(defaultProducts));
+
+    localStorage.setItem(
+        "products",
+        JSON.stringify([])
+    );
+
 }
 
 if(!localStorage.getItem("orders")){
-    localStorage.setItem("orders",JSON.stringify([]));
+
+    localStorage.setItem(
+        "orders",
+        JSON.stringify([])
+    );
+
 }
 
 
@@ -386,117 +359,400 @@ if(!localStorage.getItem("orders")){
 ===================================================== */
 
 function rupiah(number){
+
     return new Intl.NumberFormat("id-ID",{
         style:"currency",
         currency:"IDR",
         maximumFractionDigits:0
     }).format(number);
+
 }
 
 
 /* =====================================================
-   LOGIN
+   EDIT ID
 ===================================================== */
 
-function login(){
-
-    const role = document.getElementById("role").value;
-    const username = document.getElementById("username").value.trim();
-    const password = document.getElementById("password").value;
-
-    const msg = document.getElementById("loginMessage");
-
-    if(!username || !password){
-        msg.textContent = "Username dan password wajib diisi!";
-        return;
-    }
-
-
-    /* ADMIN */
-
-    if(role === "admin"){
-
-        if(username === "admin" && password === "12345"){
-
-            localStorage.setItem("loggedUser","admin");
-            localStorage.setItem("loggedRole","admin");
-
-            location.href="admin.html";
-
-        }else{
-            msg.textContent="Username atau password admin salah!";
-        }
-
-        return;
-    }
-
-
-    /* CUSTOMER */
-
-    let customers =
-        JSON.parse(localStorage.getItem("customers") || "[]");
-
-    let customer =
-        customers.find(c => c.username === username);
-
-
-    /* Jika belum ada, otomatis membuat akun */
-
-    if(!customer){
-
-        customer={
-            username:username,
-            password:password
-        };
-
-        customers.push(customer);
-
-        localStorage.setItem(
-            "customers",
-            JSON.stringify(customers)
-        );
-
-    }else{
-
-        if(customer.password !== password){
-            msg.textContent="Password customer salah!";
-            return;
-        }
-
-    }
-
-
-    localStorage.setItem("loggedUser",username);
-    localStorage.setItem("loggedRole","customer");
-
-    showApp();
-}
+let editingId=null;
 
 
 /* =====================================================
-   TAMPILKAN APLIKASI
+   TAMBAH / EDIT PRODUK
 ===================================================== */
 
-function showApp(){
+document
+.getElementById("productForm")
+.addEventListener("submit",function(e){
 
-    document.getElementById("loginPage")
+    e.preventDefault();
+
+
+    const name =
+        document.getElementById("productName").value.trim();
+
+    const price =
+        Number(document.getElementById("productPrice").value);
+
+    const desc =
+        document.getElementById("productDesc").value.trim();
+
+    const image =
+        document.getElementById("productImage").value.trim();
+
+    const video =
+        document.getElementById("productVideo").value.trim();
+
+
+    let products =
+        JSON.parse(localStorage.getItem("products") || "[]");
+
+
+    /* EDIT */
+
+    if(editingId){
+
+        const index =
+            products.findIndex(p => p.id === editingId);
+
+        if(index !== -1){
+
+            products[index]={
+                ...products[index],
+                name,
+                price,
+                desc,
+                image,
+                video
+            };
+
+        }
+
+        alert("Produk berhasil diperbarui!");
+
+        editingId=null;
+
+        document
+        .getElementById("cancelEdit")
         .classList.add("hidden");
 
-    document.getElementById("app")
-        .classList.remove("hidden");
-
-    const user =
-        localStorage.getItem("loggedUser");
-
-    document.getElementById("welcome").textContent=user;
-
-    if(localStorage.getItem("loggedRole")==="admin"){
-        document.getElementById("adminPanelBtn")
-            .classList.remove("hidden");
     }
 
+    /* TAMBAH */
+
+    else{
+
+        const product={
+            id:Date.now(),
+            name:name,
+            price:price,
+            desc:desc,
+            image:image,
+            video:video
+        };
+
+        products.push(product);
+
+        alert("Produk berhasil ditambahkan!");
+
+    }
+
+
+    localStorage.setItem(
+        "products",
+        JSON.stringify(products)
+    );
+
+
+    document.getElementById("productForm").reset();
+
     renderProducts();
-    renderOrders();
+
+});
+
+
+/* =====================================================
+   TAMPIL PRODUK
+===================================================== */
+
+function renderProducts(){
+
+    const container =
+        document.getElementById("productList");
+
+    const products =
+        JSON.parse(localStorage.getItem("products") || "[]");
+
+
+    if(products.length===0){
+
+        container.innerHTML=
+        `<div class="empty">
+            Belum ada produk.
+        </div>`;
+
+        return;
+    }
+
+
+    container.innerHTML =
+    products.map(product=>`
+
+        <div class="product">
+
+            <img
+                src="${product.image}"
+                onerror="this.src='https://via.placeholder.com/600x400?text=No+Image'"
+            >
+
+            <div class="product-body">
+
+                <h3>${product.name}</h3>
+
+                <div class="price">
+                    ${rupiah(product.price)}
+                </div>
+
+                <p>
+                    ${product.desc}
+                </p>
+
+                <video controls>
+                    <source
+                        src="${product.video}"
+                        type="video/mp4">
+                </video>
+
+                <br>
+
+                <button
+                    class="edit"
+                    onclick="editProduct(${product.id})">
+                    ✏️ Edit
+                </button>
+
+                <button
+                    class="delete"
+                    onclick="deleteProduct(${product.id})">
+                    🗑️ Hapus
+                </button>
+
+            </div>
+
+        </div>
+
+    `).join("");
+
+}
+
+
+/* =====================================================
+   EDIT PRODUK
+===================================================== */
+
+function editProduct(id){
+
+    const products =
+        JSON.parse(localStorage.getItem("products"));
+
+    const product =
+        products.find(p=>p.id===id);
+
+    if(!product)return;
+
+
+    document.getElementById("productName").value=
+        product.name;
+
+    document.getElementById("productPrice").value=
+        product.price;
+
+    document.getElementById("productDesc").value=
+        product.desc;
+
+    document.getElementById("productImage").value=
+        product.image;
+
+    document.getElementById("productVideo").value=
+        product.video;
+
+
+    editingId=id;
+
+
+    document
+    .getElementById("cancelEdit")
+    .classList.remove("hidden");
+
+
+    window.scrollTo({
+        top:0,
+        behavior:"smooth"
+    });
+
+}
+
+
+/* =====================================================
+   BATAL EDIT
+===================================================== */
+
+function cancelEdit(){
+
+    editingId=null;
+
+    document
+    .getElementById("productForm")
+    .reset();
+
+    document
+    .getElementById("cancelEdit")
+    .classList.add("hidden");
+
+}
+
+
+/* =====================================================
+   HAPUS PRODUK
+===================================================== */
+
+function deleteProduct(id){
+
+    if(!confirm("Yakin ingin menghapus produk ini?")){
+        return;
+    }
+
+
+    let products =
+        JSON.parse(localStorage.getItem("products") || "[]");
+
+
+    products =
+        products.filter(p=>p.id!==id);
+
+
+    localStorage.setItem(
+        "products",
+        JSON.stringify(products)
+    );
+
+
+    renderProducts();
+
+}
+
+
+/* =====================================================
+   RENDER PESANAN
+===================================================== */
+
+function renderOrders(){
+
+    const container =
+        document.getElementById("orderList");
+
+    const orders =
+        JSON.parse(localStorage.getItem("orders") || "[]");
+
+
+    if(orders.length===0){
+
+        container.innerHTML=
+        `<div class="empty">
+            Belum ada pesanan dari customer.
+        </div>`;
+
+        return;
+    }
+
+
+    container.innerHTML =
+    orders.map(order=>`
+
+        <div class="order">
+
+            <h3>📦 ${order.productName}</h3>
+
+            <p>
+                <b>Customer:</b>
+                ${order.customer}
+            </p>
+
+            <p>
+                <b>Harga:</b>
+                ${rupiah(order.price)}
+            </p>
+
+            <p>
+                <b>Tanggal:</b>
+                ${order.date}
+            </p>
+
+            <p style="margin-top:10px">
+                Status saat ini:
+                <span class="status">
+                    ${order.status}
+                </span>
+            </p>
+
+            <select
+                onchange="changeStatus(${order.id},this.value)">
+
+                <option
+                    ${order.status==="Belum Dibayar"?"selected":""}>
+                    Belum Dibayar
+                </option>
+
+                <option
+                    ${order.status==="Diproses"?"selected":""}>
+                    Diproses
+                </option>
+
+                <option
+                    ${order.status==="Dikirim"?"selected":""}>
+                    Dikirim
+                </option>
+
+                <option
+                    ${order.status==="Selesai"?"selected":""}>
+                    Selesai
+                </option>
+
+            </select>
+
+        </div>
+
+    `).join("");
+
+}
+
+
+/* =====================================================
+   UBAH STATUS PESANAN
+===================================================== */
+
+function changeStatus(id,status){
+
+    let orders =
+        JSON.parse(localStorage.getItem("orders") || "[]");
+
+
+    const order =
+        orders.find(o=>o.id===id);
+
+
+    if(order){
+
+        order.status=status;
+
+        localStorage.setItem(
+            "orders",
+            JSON.stringify(orders)
+        );
+
+        renderOrders();
+
+    }
+
 }
 
 
@@ -509,202 +765,17 @@ function logout(){
     localStorage.removeItem("loggedUser");
     localStorage.removeItem("loggedRole");
 
-    location.reload();
+    location.href="index.html";
+
 }
 
 
 /* =====================================================
-   RENDER PRODUK
+   LOAD
 ===================================================== */
 
-function renderProducts(){
-
-    const container =
-        document.getElementById("products");
-
-    const products =
-        JSON.parse(localStorage.getItem("products") || "[]");
-
-    if(products.length===0){
-
-        container.innerHTML =
-        `<div class="empty">
-            Belum ada produk.
-        </div>`;
-
-        return;
-    }
-
-
-    container.innerHTML =
-        products.map(product => `
-
-        <div class="product">
-
-            <img
-                src="${product.image}"
-                alt="${product.name}"
-                onerror="this.src='https://via.placeholder.com/600x400?text=GadgetStore'"
-            >
-
-            <div class="product-body">
-
-                <h3>${product.name}</h3>
-
-                <div class="price">
-                    ${rupiah(product.price)}
-                </div>
-
-                <p class="desc">
-                    ${product.desc}
-                </p>
-
-                <video controls>
-                    <source
-                        src="${product.video}"
-                        type="video/mp4">
-                    Browser Anda tidak mendukung video.
-                </video>
-
-                <a
-                    href="#"
-                    class="btn buy"
-                    onclick="buyProduct(${product.id});return false;">
-                    🛒 Beli Sekarang
-                </a>
-
-            </div>
-        </div>
-
-    `).join("");
-}
-
-
-/* =====================================================
-   BELI PRODUK
-===================================================== */
-
-function buyProduct(id){
-
-    const user =
-        localStorage.getItem("loggedUser");
-
-    if(!user){
-        alert("Silakan login terlebih dahulu!");
-        return;
-    }
-
-    const products =
-        JSON.parse(localStorage.getItem("products"));
-
-    const product =
-        products.find(p => p.id === id);
-
-    if(!product)return;
-
-
-    const orders =
-        JSON.parse(localStorage.getItem("orders") || "[]");
-
-
-    const order={
-        id:Date.now(),
-        customer:user,
-        productId:product.id,
-        productName:product.name,
-        price:product.price,
-        status:"Belum Dibayar",
-        date:new Date().toLocaleString("id-ID")
-    };
-
-
-    orders.push(order);
-
-    localStorage.setItem(
-        "orders",
-        JSON.stringify(orders)
-    );
-
-
-    alert(
-        "Pesanan berhasil dibuat!\n\n" +
-        product.name +
-        "\n" +
-        rupiah(product.price) +
-        "\n\nStatus: Belum Dibayar"
-    );
-
-    renderOrders();
-}
-
-
-/* =====================================================
-   RENDER PESANAN CUSTOMER
-===================================================== */
-
-function renderOrders(){
-
-    const container =
-        document.getElementById("orders");
-
-    const user =
-        localStorage.getItem("loggedUser");
-
-    const orders =
-        JSON.parse(localStorage.getItem("orders") || "[]");
-
-    const myOrders =
-        orders.filter(o => o.customer === user);
-
-
-    if(myOrders.length===0){
-
-        container.innerHTML=
-        `<div class="empty">
-            Belum ada pesanan.
-        </div>`;
-
-        return;
-    }
-
-
-    container.innerHTML =
-        myOrders.map(order=>`
-
-        <div class="order">
-
-            <b>${order.productName}</b>
-
-            <p>
-                Harga:
-                <b>${rupiah(order.price)}</b>
-            </p>
-
-            <p>
-                Tanggal:
-                ${order.date}
-            </p>
-
-            <span class="status">
-                ${order.status}
-            </span>
-
-        </div>
-
-    `).join("");
-}
-
-
-/* =====================================================
-   CEK LOGIN SAAT HALAMAN DIBUKA
-===================================================== */
-
-if(
-    localStorage.getItem("loggedUser") &&
-    localStorage.getItem("loggedRole") === "customer"
-){
-    showApp();
-}
+renderProducts();
+renderOrders();
 
 </script>
 
