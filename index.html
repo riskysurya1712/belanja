@@ -33,7 +33,7 @@ header{
     color:white;
     padding:25px;
     text-align:center;
-
+    position:relative;
     box-shadow:0 5px 20px #0002;
 }
 
@@ -44,6 +44,22 @@ header h1{
 header p{
     margin-top:7px;
     opacity:.9;
+}
+
+.user-bar {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.user-badge {
+    background: rgba(255, 255, 255, 0.2);
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 14px;
 }
 
 .container{
@@ -100,6 +116,12 @@ button:hover{
 
 .admin-btn{
     background:#075da8;
+}
+
+.logout-btn{
+    background:#ef4444;
+    padding:6px 12px;
+    font-size:12px;
 }
 
 /* ================= PRODUCT ================= */
@@ -184,7 +206,7 @@ button:hover{
     transform:none;
 }
 
-/* ================= MODAL PESAN ================= */
+/* ================= MODAL ================= */
 
 .modal{
     display:none;
@@ -205,6 +227,23 @@ button:hover{
     border-radius:18px;
     width:90%;
     max-width:450px;
+}
+
+.auth-tabs {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.auth-tabs button {
+    flex: 1;
+    background: #e2e8f0;
+    color: #475569;
+}
+
+.auth-tabs button.active {
+    background: #0878d1;
+    color: white;
 }
 
 input, select{
@@ -237,15 +276,24 @@ footer{
 <header>
     <h1>GadgetStore Pro</h1>
     <p>Toko Gadget Impian Anda</p>
+    
+    <!-- BAR STATUS USER -->
+    <div class="user-bar">
+        <div id="userInfo" style="display: none;">
+            <span id="userNameDisplay" class="user-badge"></span>
+            <button class="logout-btn" onclick="logout()">Logout</button>
+        </div>
+        <button id="loginNavBtn" onclick="openAuthModal()">🔑 Login / Daftar</button>
+    </div>
 </header>
 
 <div class="container">
 
-    <!-- NAVIGASI KE ADMIN -->
+    <!-- NAVIGASI KE ADMIN (HANYA MUNCUL BILA ADMIN LOGIN) -->
     <div class="card">
         <div class="topbar">
             <h2>🛍️ Katalog Produk</h2>
-            <button class="admin-btn" onclick="location.href='admin.html'">
+            <button id="adminPageBtn" class="admin-btn" style="display: none;" onclick="location.href='admin.html'">
                 ⚙️ Halaman Admin
             </button>
         </div>
@@ -256,6 +304,42 @@ footer{
         <div id="productList" class="product-grid"></div>
     </div>
 
+</div>
+
+<!-- MODAL AUTHENTICATION (LOGIN & DAFTAR) -->
+<div id="authModal" class="modal">
+    <div class="modal-content">
+        <div class="auth-tabs">
+            <button id="tabLoginBtn" class="active" onclick="switchAuthTab('login')">Login</button>
+            <button id="tabRegisterBtn" onclick="switchAuthTab('register')">Daftar Akun</button>
+        </div>
+
+        <!-- FORM LOGIN -->
+        <form id="loginForm">
+            <h2>🔑 Login User / Admin</h2>
+            <label>Username</label>
+            <input type="text" id="loginUsername" placeholder="Masukkan username" required>
+
+            <label>Password</label>
+            <input type="password" id="loginPassword" placeholder="Masukkan password" required>
+
+            <button type="submit" class="success" style="width: 100%;">Masuk</button>
+            <button type="button" class="admin-btn" style="background:#64748b; width: 100%;" onclick="closeAuthModal()">Batal</button>
+        </form>
+
+        <!-- FORM REGISTRASI CUSTOMER -->
+        <form id="registerForm" style="display: none;">
+            <h2>📝 Registrasi Customer</h2>
+            <label>Username Bebas</label>
+            <input type="text" id="regUsername" placeholder="Buat username Anda" required>
+
+            <label>Password Bebas</label>
+            <input type="password" id="regPassword" placeholder="Buat password Anda" required>
+
+            <button type="submit" class="success" style="width: 100%;">Daftar & Login</button>
+            <button type="button" class="admin-btn" style="background:#64748b; width: 100%;" onclick="closeAuthModal()">Batal</button>
+        </form>
+    </div>
 </div>
 
 <!-- MODAL FORM PEMBELIAN -->
@@ -294,6 +378,135 @@ footer{
 </footer>
 
 <script>
+
+/* =====================================================
+SISTEM OTENTIKASI & USER MANAGEMENT
+===================================================== */
+
+let currentUser = JSON.parse(localStorage.getItem("currentUser") || "null");
+
+function checkAuthStatus() {
+    const userInfo = document.getElementById("userInfo");
+    const loginNavBtn = document.getElementById("loginNavBtn");
+    const userNameDisplay = document.getElementById("userNameDisplay");
+    const adminPageBtn = document.getElementById("adminPageBtn");
+
+    if (currentUser) {
+        userInfo.style.display = "flex";
+        loginNavBtn.style.display = "none";
+        userNameDisplay.textContent = `👤 ${currentUser.username} (${currentUser.role})`;
+        
+        // Hanya tampilkan tombol Admin jika login sebagai admin
+        if (currentUser.role === "admin") {
+            adminPageBtn.style.display = "inline-block";
+        } else {
+            adminPageBtn.style.display = "none";
+        }
+    } else {
+        userInfo.style.display = "none";
+        loginNavBtn.style.display = "inline-block";
+        adminPageBtn.style.display = "none";
+    }
+}
+
+function openAuthModal() {
+    document.getElementById("authModal").style.display = "flex";
+}
+
+function closeAuthModal() {
+    document.getElementById("authModal").style.display = "none";
+    document.getElementById("loginForm").reset();
+    document.getElementById("registerForm").reset();
+}
+
+function switchAuthTab(tab) {
+    const loginForm = document.getElementById("loginForm");
+    const registerForm = document.getElementById("registerForm");
+    const tabLoginBtn = document.getElementById("tabLoginBtn");
+    const tabRegisterBtn = document.getElementById("tabRegisterBtn");
+
+    if (tab === "login") {
+        loginForm.style.display = "block";
+        registerForm.style.display = "none";
+        tabLoginBtn.classList.add("active");
+        tabRegisterBtn.classList.remove("active");
+    } else {
+        loginForm.style.display = "none";
+        registerForm.style.display = "block";
+        tabLoginBtn.classList.remove("active");
+        tabRegisterBtn.classList.add("active");
+    }
+}
+
+// Handler Submit Form Login
+document.getElementById("loginForm").addEventListener("submit", function(e) {
+    e.preventDefault();
+    const usernameInput = document.getElementById("loginUsername").value.trim();
+    const passwordInput = document.getElementById("loginPassword").value.trim();
+
+    // 1. Cek Kredensial Admin
+    if (usernameInput === "admin" && passwordInput === "12345") {
+        currentUser = { username: "admin", role: "admin" };
+        localStorage.setItem("currentUser", JSON.stringify(currentUser));
+        alert("Login berhasil sebagai Admin!");
+        closeAuthModal();
+        checkAuthStatus();
+        return;
+    }
+
+    // 2. Cek Kredensial Customer dari LocalStorage
+    const users = JSON.parse(localStorage.getItem("registeredUsers") || "[]");
+    const foundUser = users.find(u => u.username === usernameInput && u.password === passwordInput);
+
+    if (foundUser) {
+        currentUser = { username: foundUser.username, role: "customer" };
+        localStorage.setItem("currentUser", JSON.stringify(currentUser));
+        alert(`Selamat datang kembali, ${foundUser.username}!`);
+        closeAuthModal();
+        checkAuthStatus();
+    } else {
+        alert("Username atau Password salah! (Atau daftar akun terlebih dahulu)");
+    }
+});
+
+// Handler Submit Form Registrasi
+document.getElementById("registerForm").addEventListener("submit", function(e) {
+    e.preventDefault();
+    const regUsername = document.getElementById("regUsername").value.trim();
+    const regPassword = document.getElementById("regPassword").value.trim();
+
+    if (regUsername.toLowerCase() === "admin") {
+        alert("Username 'admin' telah dicadangkan. Silakan gunakan username lain.");
+        return;
+    }
+
+    const users = JSON.parse(localStorage.getItem("registeredUsers") || "[]");
+    const isExist = users.some(u => u.username === regUsername);
+
+    if (isExist) {
+        alert("Username telah digunakan! Silakan pilih username lain.");
+        return;
+    }
+
+    // Simpan User Baru
+    users.push({ username: regUsername, password: regPassword });
+    localStorage.setItem("registeredUsers", JSON.stringify(users));
+
+    // Auto Login
+    currentUser = { username: regUsername, role: "customer" };
+    localStorage.setItem("currentUser", JSON.stringify(currentUser));
+
+    alert("Pendaftaran berhasil! Anda telah otomatis login.");
+    closeAuthModal();
+    checkAuthStatus();
+});
+
+function logout() {
+    localStorage.removeItem("currentUser");
+    currentUser = null;
+    alert("Anda telah logout.");
+    checkAuthStatus();
+}
 
 /* =====================================================
 INDEXEDDB UTILITIES (DAPATKAN DATA PRODUK DARI ADMIN)
@@ -448,12 +661,23 @@ SISTEM PEMESANAN (TERKONEKSI DENGAN ADMIN)
 ===================================================== */
 
 function openBuyModal(id, name, price) {
+    if (!currentUser) {
+        alert("Silakan login terlebih dahulu sebelum membeli!");
+        openAuthModal();
+        return;
+    }
+
     document.getElementById("orderProductId").value = id;
     document.getElementById("orderProductName").value = name;
     document.getElementById("orderProductPrice").value = price;
 
     document.getElementById("displayProductName").textContent = name;
     document.getElementById("displayProductPrice").textContent = rupiah(price);
+    
+    // Otomatis isikan nama akun jika login sebagai customer
+    if (currentUser) {
+        document.getElementById("customerName").value = currentUser.username;
+    }
 
     document.getElementById("buyModal").style.display = "flex";
 }
@@ -510,6 +734,8 @@ document.getElementById("orderForm").addEventListener("submit", async function(e
     renderCustomerProducts();
 });
 
+// Inisialisasi awal
+checkAuthStatus();
 renderCustomerProducts();
 
 </script>
