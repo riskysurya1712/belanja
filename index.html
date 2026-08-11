@@ -1,0 +1,868 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>GadgetStore Pro</title>
+
+<style>
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg, #e0f7ff, #f8fdff);
+    color: #172033;
+}
+
+/* ================= HEADER ================= */
+
+header {
+    background: linear-gradient(135deg, #0284c7, #38bdf8);
+    color: white;
+    padding: 20px 7%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 5px 20px #0284c755;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.logo span {
+    color: #dff8ff;
+}
+
+nav {
+    display: flex;
+    gap: 10px;
+}
+
+nav button {
+    border: none;
+    padding: 10px 18px;
+    border-radius: 10px;
+    background: white;
+    color: #0284c7;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+/* ================= HERO ================= */
+
+.hero {
+    text-align: center;
+    padding: 60px 20px;
+}
+
+.hero h1 {
+    font-size: 42px;
+    color: #075985;
+    margin-bottom: 15px;
+}
+
+.hero p {
+    color: #64748b;
+    font-size: 17px;
+}
+
+/* ================= LOGIN ================= */
+
+.login-box {
+    max-width: 430px;
+    margin: 30px auto;
+    background: white;
+    padding: 35px;
+    border-radius: 20px;
+    box-shadow: 0 10px 35px #0284c733;
+    border: 1px solid #bae6fd;
+}
+
+.login-box h2 {
+    text-align: center;
+    margin-bottom: 25px;
+    color: #0369a1;
+}
+
+.login-box input,
+.login-box select {
+    width: 100%;
+    padding: 13px;
+    margin: 8px 0;
+    border: 1px solid #bae6fd;
+    border-radius: 10px;
+    outline: none;
+}
+
+.login-box input:focus,
+.login-box select:focus {
+    border-color: #0284c7;
+}
+
+.btn {
+    width: 100%;
+    padding: 13px;
+    border: none;
+    border-radius: 10px;
+    background: linear-gradient(135deg, #0284c7, #38bdf8);
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.btn:hover {
+    opacity: .9;
+}
+
+.demo {
+    background: #f0f9ff;
+    padding: 12px;
+    border-radius: 10px;
+    margin-top: 15px;
+    font-size: 13px;
+    color: #0369a1;
+}
+
+/* ================= CUSTOMER ================= */
+
+#customerPage {
+    display: none;
+}
+
+.container {
+    width: 90%;
+    max-width: 1250px;
+    margin: auto;
+}
+
+.section-title {
+    margin: 35px 0 20px;
+    color: #075985;
+}
+
+.products {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+    gap: 25px;
+}
+
+.product {
+    background: white;
+    border-radius: 18px;
+    overflow: hidden;
+    border: 1px solid #bae6fd;
+    box-shadow: 0 8px 25px #0284c722;
+    transition: .3s;
+}
+
+.product:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 35px #0284c744;
+}
+
+.product img {
+    width: 100%;
+    height: 210px;
+    object-fit: cover;
+    background: #e0f7ff;
+}
+
+.product-content {
+    padding: 18px;
+}
+
+.product h3 {
+    color: #075985;
+    margin-bottom: 8px;
+}
+
+.price {
+    font-size: 21px;
+    font-weight: bold;
+    color: #0284c7;
+    margin-bottom: 10px;
+}
+
+.description {
+    color: #64748b;
+    line-height: 1.5;
+    margin-bottom: 15px;
+}
+
+.product video {
+    width: 100%;
+    max-height: 180px;
+    border-radius: 10px;
+    background: black;
+    margin-bottom: 15px;
+}
+
+.buy-btn {
+    display: block;
+    text-align: center;
+    text-decoration: none;
+    background: linear-gradient(135deg, #0284c7, #38bdf8);
+    color: white;
+    padding: 12px;
+    border-radius: 10px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+/* ================= ORDER ================= */
+
+.orders {
+    margin: 50px 0;
+}
+
+.order-card {
+    background: white;
+    border: 1px solid #bae6fd;
+    border-radius: 15px;
+    padding: 20px;
+    margin-bottom: 15px;
+    box-shadow: 0 5px 20px #0284c722;
+}
+
+.order-card h3 {
+    color: #075985;
+}
+
+.status {
+    display: inline-block;
+    padding: 7px 12px;
+    margin-top: 10px;
+    border-radius: 20px;
+    background: #e0f2fe;
+    color: #0369a1;
+    font-weight: bold;
+}
+
+/* ================= FOOTER ================= */
+
+footer {
+    margin-top: 50px;
+    background: #075985;
+    color: white;
+    text-align: center;
+    padding: 30px;
+}
+
+/* ================= MODAL ================= */
+
+.modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: #0008;
+    align-items: center;
+    justify-content: center;
+    z-index: 100;
+}
+
+.modal-box {
+    background: white;
+    width: 90%;
+    max-width: 450px;
+    padding: 30px;
+    border-radius: 20px;
+}
+
+.modal-box h2 {
+    color: #075985;
+    margin-bottom: 15px;
+}
+
+.modal-box input,
+.modal-box textarea {
+    width: 100%;
+    padding: 12px;
+    margin: 7px 0;
+    border: 1px solid #bae6fd;
+    border-radius: 10px;
+}
+
+.close {
+    float: right;
+    cursor: pointer;
+    font-size: 25px;
+    color: #64748b;
+}
+
+@media(max-width:600px) {
+
+    header {
+        padding: 15px;
+    }
+
+    .logo {
+        font-size: 18px;
+    }
+
+    .hero h1 {
+        font-size: 30px;
+    }
+
+    nav button {
+        padding: 8px;
+        font-size: 12px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- ================= HEADER ================= -->
+
+<header>
+
+    <div class="logo">
+        ❄️ GadgetStore <span>Pro</span>
+    </div>
+
+    <nav>
+        <button onclick="showOrders()">📦 Pesanan</button>
+        <button onclick="logout()">Keluar</button>
+    </nav>
+
+</header>
+
+
+<!-- ================= LOGIN ================= -->
+
+<section id="loginPage">
+
+    <div class="hero">
+        <h1>GadgetStore Management System</h1>
+        <p>Platform E-Commerce Gadget Modern & Interaktif</p>
+    </div>
+
+    <div class="login-box">
+
+        <h2>🔐 Login</h2>
+
+        <input
+            type="text"
+            id="username"
+            placeholder="Username"
+        >
+
+        <input
+            type="password"
+            id="password"
+            placeholder="Password"
+        >
+
+        <select id="role">
+            <option value="customer">Customer</option>
+            <option value="admin">Administrator</option>
+        </select>
+
+        <button class="btn" onclick="login()">
+            Masuk ke Sistem
+        </button>
+
+        <div class="demo">
+            <b>Login Demo</b><br><br>
+            Customer → customer / 12345<br>
+            Admin → admin / admin123
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= CUSTOMER ================= -->
+
+<section id="customerPage">
+
+    <div class="hero">
+
+        <h1>Selamat Datang di GadgetStore Pro</h1>
+
+        <p>
+            Temukan gadget terbaik dengan kualitas premium
+        </p>
+
+    </div>
+
+
+    <div class="container">
+
+        <h2 class="section-title">
+            🛍️ Katalog Produk
+        </h2>
+
+        <div class="products" id="productList"></div>
+
+
+        <!-- ================= PESANAN ================= -->
+
+        <div class="orders" id="ordersSection">
+
+            <h2 class="section-title">
+                📦 Status Pesanan Saya
+            </h2>
+
+            <div id="orderList"></div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= CHECKOUT MODAL ================= -->
+
+<div class="modal" id="checkoutModal">
+
+    <div class="modal-box">
+
+        <span class="close" onclick="closeModal()">×</span>
+
+        <h2>🛒 Checkout Produk</h2>
+
+        <p id="checkoutProduct"></p>
+
+        <input
+            id="customerName"
+            placeholder="Nama penerima"
+        >
+
+        <input
+            id="customerAddress"
+            placeholder="Alamat pengiriman"
+        >
+
+        <button class="btn" onclick="checkout()">
+            Konfirmasi Pesanan
+        </button>
+
+    </div>
+
+</div>
+
+
+<footer>
+
+    <h3>❄️ GadgetStore Pro</h3>
+
+    <p>
+        E-Commerce Gadget Modern
+    </p>
+
+    <br>
+
+    <small>
+        © 2026 GadgetStore Pro
+    </small>
+
+</footer>
+
+
+<script>
+
+/* ================= DATA AWAL ================= */
+
+let products = JSON.parse(
+    localStorage.getItem("gadgetProducts")
+) || [
+
+    {
+        id: 1,
+        name: "Smartphone Premium X",
+        price: 12000000,
+        image:
+        "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9",
+        video:
+        "https://www.w3schools.com/html/mov_bbb.mp4",
+        description:
+        "Layar AMOLED 120Hz, RAM 12GB, Storage 256GB, kamera 108MP."
+    },
+
+    {
+        id: 2,
+        name: "Laptop Ultra Pro",
+        price: 18500000,
+        image:
+        "https://images.unsplash.com/photo-1496181133206-80ce9b88a853",
+        video:
+        "https://www.w3schools.com/html/movie.mp4",
+        description:
+        "Intel Core i7, RAM 16GB, SSD 1TB, layar 14 inch Full HD."
+    },
+
+    {
+        id: 3,
+        name: "Gaming Headset RGB",
+        price: 850000,
+        image:
+        "https://images.unsplash.com/photo-1505740420928-5e560c06d30e",
+        video:
+        "https://www.w3schools.com/html/mov_bbb.mp4",
+        description:
+        "Surround sound, RGB lighting, microphone noise cancelling."
+    }
+
+];
+
+
+/* ================= LOGIN ================= */
+
+function login() {
+
+    let username =
+        document.getElementById("username").value;
+
+    let password =
+        document.getElementById("password").value;
+
+    let role =
+        document.getElementById("role").value;
+
+
+    if (
+        role === "admin" &&
+        username === "admin" &&
+        password === "admin123"
+    ) {
+
+        localStorage.setItem(
+            "loggedIn",
+            "admin"
+        );
+
+        window.location.href = "admin.html";
+
+        return;
+    }
+
+
+    if (
+        role === "customer" &&
+        username === "customer" &&
+        password === "12345"
+    ) {
+
+        localStorage.setItem(
+            "loggedIn",
+            "customer"
+        );
+
+        showCustomer();
+
+        return;
+    }
+
+
+    alert("Username, password, atau role salah!");
+
+}
+
+
+/* ================= CUSTOMER ================= */
+
+function showCustomer() {
+
+    document.getElementById(
+        "loginPage"
+    ).style.display = "none";
+
+    document.getElementById(
+        "customerPage"
+    ).style.display = "block";
+
+    renderProducts();
+
+    renderOrders();
+
+}
+
+
+/* ================= RENDER PRODUK ================= */
+
+function renderProducts() {
+
+    let list =
+        document.getElementById("productList");
+
+    list.innerHTML = "";
+
+
+    products.forEach(product => {
+
+        list.innerHTML += `
+
+        <div class="product">
+
+            <img
+                src="${product.image}"
+                alt="${product.name}"
+            >
+
+            <div class="product-content">
+
+                <h3>
+                    ${product.name}
+                </h3>
+
+                <div class="price">
+                    Rp ${product.price.toLocaleString("id-ID")}
+                </div>
+
+                <p class="description">
+                    ${product.description}
+                </p>
+
+                <video controls>
+                    <source
+                        src="${product.video}"
+                        type="video/mp4"
+                    >
+                    Browser Anda tidak mendukung video.
+                </video>
+
+                <a
+                    class="buy-btn"
+                    onclick="openCheckout(${product.id})"
+                >
+                    🛒 Beli Sekarang
+                </a>
+
+            </div>
+
+        </div>
+
+        `;
+
+    });
+
+}
+
+
+/* ================= CHECKOUT ================= */
+
+let selectedProduct = null;
+
+
+function openCheckout(id) {
+
+    selectedProduct =
+        products.find(p => p.id === id);
+
+    document.getElementById(
+        "checkoutProduct"
+    ).innerHTML =
+
+    `<b>${selectedProduct.name}</b>
+    <br>
+    Rp ${selectedProduct.price.toLocaleString("id-ID")}`;
+
+    document.getElementById(
+        "checkoutModal"
+    ).style.display = "flex";
+
+}
+
+
+function closeModal() {
+
+    document.getElementById(
+        "checkoutModal"
+    ).style.display = "none";
+
+}
+
+
+function checkout() {
+
+    let name =
+        document.getElementById(
+            "customerName"
+        ).value;
+
+    let address =
+        document.getElementById(
+            "customerAddress"
+        ).value;
+
+
+    if (!name || !address) {
+
+        alert(
+            "Nama dan alamat harus diisi!"
+        );
+
+        return;
+
+    }
+
+
+    let orders =
+        JSON.parse(
+            localStorage.getItem("gadgetOrders")
+        ) || [];
+
+
+    orders.push({
+
+        id: Date.now(),
+
+        product:
+            selectedProduct.name,
+
+        price:
+            selectedProduct.price,
+
+        customer:
+            name,
+
+        address:
+            address,
+
+        status:
+            "Belum Dibayar"
+
+    });
+
+
+    localStorage.setItem(
+        "gadgetOrders",
+        JSON.stringify(orders)
+    );
+
+
+    alert(
+        "Pesanan berhasil dibuat!"
+    );
+
+
+    closeModal();
+
+    renderOrders();
+
+}
+
+
+/* ================= PESANAN ================= */
+
+function renderOrders() {
+
+    let orders =
+        JSON.parse(
+            localStorage.getItem("gadgetOrders")
+        ) || [];
+
+
+    let list =
+        document.getElementById("orderList");
+
+
+    if (orders.length === 0) {
+
+        list.innerHTML = `
+            <div class="order-card">
+                Belum ada pesanan.
+            </div>
+        `;
+
+        return;
+    }
+
+
+    list.innerHTML = "";
+
+
+    orders.forEach(order => {
+
+        list.innerHTML += `
+
+        <div class="order-card">
+
+            <h3>
+                ${order.product}
+            </h3>
+
+            <p>
+                Pembeli: ${order.customer}
+            </p>
+
+            <p>
+                Rp ${order.price.toLocaleString("id-ID")}
+            </p>
+
+            <p>
+                Alamat: ${order.address}
+            </p>
+
+            <span class="status">
+                ${order.status}
+            </span>
+
+        </div>
+
+        `;
+
+    });
+
+}
+
+
+function showOrders() {
+
+    document.getElementById(
+        "ordersSection"
+    ).scrollIntoView({
+        behavior: "smooth"
+    });
+
+}
+
+
+/* ================= LOGOUT ================= */
+
+function logout() {
+
+    localStorage.removeItem(
+        "loggedIn"
+    );
+
+    location.reload();
+
+}
+
+
+/* ================= AUTO LOGIN ================= */
+
+window.onload = function() {
+
+    if (
+        localStorage.getItem(
+            "loggedIn"
+        ) === "customer"
+    ) {
+
+        showCustomer();
+
+    }
+
+};
+
+</script>
+
+</body>
+</html>
