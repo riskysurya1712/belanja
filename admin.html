@@ -1,0 +1,981 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>GadgetStore Pro - Admin</title>
+
+<style>
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: linear-gradient(
+        135deg,
+        #e0f7ff,
+        #f8fdff
+    );
+    color: #172033;
+}
+
+/* HEADER */
+
+header {
+    background: linear-gradient(
+        135deg,
+        #0369a1,
+        #38bdf8
+    );
+
+    color: white;
+
+    padding: 20px 7%;
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    box-shadow:
+        0 5px 25px #0284c755;
+}
+
+.logo {
+    font-size: 25px;
+    font-weight: bold;
+}
+
+.logout {
+    background: white;
+    color: #0369a1;
+    border: none;
+    padding: 10px 18px;
+    border-radius: 10px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+
+/* CONTAINER */
+
+.container {
+    width: 90%;
+    max-width: 1250px;
+    margin: 35px auto;
+}
+
+
+/* WELCOME */
+
+.welcome {
+    margin-bottom: 30px;
+}
+
+.welcome h1 {
+    color: #075985;
+    margin-bottom: 8px;
+}
+
+.welcome p {
+    color: #64748b;
+}
+
+
+/* DASHBOARD */
+
+.dashboard {
+    display: grid;
+    grid-template-columns:
+        1fr 1fr 1fr;
+
+    gap: 20px;
+
+    margin-bottom: 30px;
+}
+
+.stat {
+    background: white;
+    padding: 25px;
+    border-radius: 18px;
+    border: 1px solid #bae6fd;
+    box-shadow: 0 7px 25px #0284c722;
+}
+
+.stat h3 {
+    color: #64748b;
+}
+
+.stat strong {
+    display: block;
+    margin-top: 10px;
+    font-size: 30px;
+    color: #0284c7;
+}
+
+
+/* CARD */
+
+.card {
+    background: white;
+    padding: 30px;
+    border-radius: 20px;
+    border: 1px solid #bae6fd;
+    box-shadow: 0 8px 30px #0284c722;
+    margin-bottom: 30px;
+}
+
+.card h2 {
+    color: #075985;
+    margin-bottom: 20px;
+}
+
+
+/* FORM */
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    font-weight: bold;
+    color: #334155;
+    margin-bottom: 6px;
+}
+
+input,
+textarea {
+    width: 100%;
+    padding: 13px;
+    border: 1px solid #bae6fd;
+    border-radius: 10px;
+    outline: none;
+    font-size: 14px;
+}
+
+textarea {
+    min-height: 100px;
+    resize: vertical;
+}
+
+input:focus,
+textarea:focus {
+    border-color: #0284c7;
+}
+
+
+/* BUTTON */
+
+.btn {
+    padding: 13px 20px;
+    border: none;
+    border-radius: 10px;
+    background:
+        linear-gradient(
+            135deg,
+            #0284c7,
+            #38bdf8
+        );
+
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.btn:hover {
+    opacity: .9;
+}
+
+
+/* PRODUCTS */
+
+.products {
+    display: grid;
+
+    grid-template-columns:
+        repeat(
+            auto-fit,
+            minmax(260px, 1fr)
+        );
+
+    gap: 20px;
+}
+
+.product {
+    border: 1px solid #bae6fd;
+    border-radius: 15px;
+    overflow: hidden;
+    background: #f8fdff;
+}
+
+.product img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+}
+
+.product-body {
+    padding: 15px;
+}
+
+.product-body h3 {
+    color: #075985;
+}
+
+.price {
+    color: #0284c7;
+    font-weight: bold;
+    font-size: 18px;
+    margin: 8px 0;
+}
+
+.product-body p {
+    color: #64748b;
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+.delete {
+    margin-top: 12px;
+    width: 100%;
+    border: none;
+    padding: 10px;
+    background: #ef4444;
+    color: white;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+
+/* ORDER */
+
+.order {
+    border: 1px solid #bae6fd;
+    padding: 20px;
+    border-radius: 15px;
+    margin-bottom: 15px;
+    background: #f8fdff;
+}
+
+.order h3 {
+    color: #075985;
+    margin-bottom: 10px;
+}
+
+.order p {
+    margin: 5px 0;
+    color: #475569;
+}
+
+select {
+    padding: 10px;
+    border: 1px solid #bae6fd;
+    border-radius: 8px;
+    margin-top: 10px;
+    background: white;
+}
+
+
+/* FOOTER */
+
+footer {
+    background: #075985;
+    color: white;
+    text-align: center;
+    padding: 30px;
+    margin-top: 50px;
+}
+
+
+/* RESPONSIVE */
+
+@media(max-width:800px) {
+
+    .dashboard {
+        grid-template-columns: 1fr;
+    }
+
+    header {
+        padding: 15px;
+    }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<!-- HEADER -->
+
+<header>
+
+    <div class="logo">
+        ❄️ GadgetStore Pro
+        <small> | ADMIN</small>
+    </div>
+
+    <button
+        class="logout"
+        onclick="logout()"
+    >
+        Keluar
+    </button>
+
+</header>
+
+
+<div class="container">
+
+
+    <!-- WELCOME -->
+
+    <div class="welcome">
+
+        <h1>
+            👨‍💼 Dashboard Administrator
+        </h1>
+
+        <p>
+            Kelola produk dan status pesanan pelanggan.
+        </p>
+
+    </div>
+
+
+    <!-- STATISTICS -->
+
+    <div class="dashboard">
+
+        <div class="stat">
+
+            <h3>Total Produk</h3>
+
+            <strong id="totalProducts">
+                0
+            </strong>
+
+        </div>
+
+
+        <div class="stat">
+
+            <h3>Total Pesanan</h3>
+
+            <strong id="totalOrders">
+                0
+            </strong>
+
+        </div>
+
+
+        <div class="stat">
+
+            <h3>Pesanan Selesai</h3>
+
+            <strong id="completedOrders">
+                0
+            </strong>
+
+        </div>
+
+    </div>
+
+
+    <!-- TAMBAH PRODUK -->
+
+    <div class="card">
+
+        <h2>
+            ➕ Tambahkan Produk Baru
+        </h2>
+
+
+        <div class="form-group">
+
+            <label>
+                Nama Produk
+            </label>
+
+            <input
+                type="text"
+                id="productName"
+                placeholder="Contoh: iPhone 17 Pro Max"
+            >
+
+        </div>
+
+
+        <div class="form-group">
+
+            <label>
+                Harga Produk
+            </label>
+
+            <input
+                type="number"
+                id="productPrice"
+                placeholder="Contoh: 15000000"
+            >
+
+        </div>
+
+
+        <div class="form-group">
+
+            <label>
+                Deskripsi Produk
+            </label>
+
+            <textarea
+                id="productDescription"
+                placeholder="Masukkan spesifikasi produk..."
+            ></textarea>
+
+        </div>
+
+
+        <div class="form-group">
+
+            <label>
+                URL Foto Produk
+            </label>
+
+            <input
+                type="text"
+                id="productImage"
+                placeholder="https://contoh.com/gambar.jpg"
+            >
+
+        </div>
+
+
+        <div class="form-group">
+
+            <label>
+                URL Video Produk
+            </label>
+
+            <input
+                type="text"
+                id="productVideo"
+                placeholder="https://contoh.com/video.mp4"
+            >
+
+        </div>
+
+
+        <button
+            class="btn"
+            onclick="addProduct()"
+        >
+            💾 Simpan Produk ke Database
+        </button>
+
+    </div>
+
+
+    <!-- DAFTAR PRODUK -->
+
+    <div class="card">
+
+        <h2>
+            📦 Daftar Produk
+        </h2>
+
+        <div
+            class="products"
+            id="productList"
+        ></div>
+
+    </div>
+
+
+    <!-- PESANAN -->
+
+    <div class="card">
+
+        <h2>
+            🚚 Manajemen Status Pesanan
+        </h2>
+
+        <div id="orderList"></div>
+
+    </div>
+
+
+</div>
+
+
+<footer>
+
+    <h3>
+        ❄️ GadgetStore Pro
+    </h3>
+
+    <p>
+        Administrator Dashboard
+    </p>
+
+</footer>
+
+
+<script>
+
+/* ================= CEK LOGIN ================= */
+
+if (
+    localStorage.getItem("loggedIn")
+    !== "admin"
+) {
+
+    window.location.href =
+        "index.html";
+
+}
+
+
+/* ================= DATA PRODUK ================= */
+
+let products =
+    JSON.parse(
+        localStorage.getItem(
+            "gadgetProducts"
+        )
+    ) || [];
+
+
+/* ================= TAMBAH PRODUK ================= */
+
+function addProduct() {
+
+    let name =
+        document.getElementById(
+            "productName"
+        ).value;
+
+    let price =
+        document.getElementById(
+            "productPrice"
+        ).value;
+
+    let description =
+        document.getElementById(
+            "productDescription"
+        ).value;
+
+    let image =
+        document.getElementById(
+            "productImage"
+        ).value;
+
+    let video =
+        document.getElementById(
+            "productVideo"
+        ).value;
+
+
+    if (
+        !name ||
+        !price ||
+        !description ||
+        !image ||
+        !video
+    ) {
+
+        alert(
+            "Semua data produk harus diisi!"
+        );
+
+        return;
+
+    }
+
+
+    let product = {
+
+        id: Date.now(),
+
+        name: name,
+
+        price: Number(price),
+
+        description: description,
+
+        image: image,
+
+        video: video
+
+    };
+
+
+    products.push(product);
+
+
+    localStorage.setItem(
+        "gadgetProducts",
+        JSON.stringify(products)
+    );
+
+
+    alert(
+        "Produk berhasil ditambahkan!"
+    );
+
+
+    document.getElementById(
+        "productName"
+    ).value = "";
+
+    document.getElementById(
+        "productPrice"
+    ).value = "";
+
+    document.getElementById(
+        "productDescription"
+    ).value = "";
+
+    document.getElementById(
+        "productImage"
+    ).value = "";
+
+    document.getElementById(
+        "productVideo"
+    ).value = "";
+
+
+    renderProducts();
+
+}
+
+
+/* ================= RENDER PRODUK ================= */
+
+function renderProducts() {
+
+    let list =
+        document.getElementById(
+            "productList"
+        );
+
+
+    list.innerHTML = "";
+
+
+    if (products.length === 0) {
+
+        list.innerHTML = `
+            <p>
+                Belum ada produk.
+            </p>
+        `;
+
+        return;
+
+    }
+
+
+    products.forEach(product => {
+
+        list.innerHTML += `
+
+        <div class="product">
+
+            <img
+                src="${product.image}"
+                alt="${product.name}"
+            >
+
+            <div class="product-body">
+
+                <h3>
+                    ${product.name}
+                </h3>
+
+                <div class="price">
+                    Rp ${product.price.toLocaleString("id-ID")}
+                </div>
+
+                <p>
+                    ${product.description}
+                </p>
+
+                <button
+                    class="delete"
+                    onclick="deleteProduct(${product.id})"
+                >
+                    🗑️ Hapus Produk
+                </button>
+
+            </div>
+
+        </div>
+
+        `;
+
+    });
+
+
+    updateStats();
+
+}
+
+
+/* ================= HAPUS PRODUK ================= */
+
+function deleteProduct(id) {
+
+    if (
+        !confirm(
+            "Yakin ingin menghapus produk?"
+        )
+    ) {
+
+        return;
+
+    }
+
+
+    products =
+        products.filter(
+            product =>
+            product.id !== id
+        );
+
+
+    localStorage.setItem(
+        "gadgetProducts",
+        JSON.stringify(products)
+    );
+
+
+    renderProducts();
+
+}
+
+
+/* ================= PESANAN ================= */
+
+function renderOrders() {
+
+    let orders =
+        JSON.parse(
+            localStorage.getItem(
+                "gadgetOrders"
+            )
+        ) || [];
+
+
+    let list =
+        document.getElementById(
+            "orderList"
+        );
+
+
+    if (orders.length === 0) {
+
+        list.innerHTML = `
+            <p>
+                Belum ada pesanan pelanggan.
+            </p>
+        `;
+
+        updateStats();
+
+        return;
+
+    }
+
+
+    list.innerHTML = "";
+
+
+    orders.forEach(order => {
+
+        list.innerHTML += `
+
+        <div class="order">
+
+            <h3>
+                📦 ${order.product}
+            </h3>
+
+            <p>
+                <b>Pembeli:</b>
+                ${order.customer}
+            </p>
+
+            <p>
+                <b>Harga:</b>
+                Rp ${order.price.toLocaleString("id-ID")}
+            </p>
+
+            <p>
+                <b>Alamat:</b>
+                ${order.address}
+            </p>
+
+            <p>
+                <b>Status:</b>
+            </p>
+
+            <select
+                onchange="changeStatus(
+                    ${order.id},
+                    this.value
+                )"
+            >
+
+                <option
+                    value="Belum Dibayar"
+                    ${order.status === "Belum Dibayar" ? "selected" : ""}
+                >
+                    Belum Dibayar
+                </option>
+
+                <option
+                    value="Diproses"
+                    ${order.status === "Diproses" ? "selected" : ""}
+                >
+                    Diproses
+                </option>
+
+                <option
+                    value="Dikirim"
+                    ${order.status === "Dikirim" ? "selected" : ""}
+                >
+                    Dikirim
+                </option>
+
+                <option
+                    value="Selesai"
+                    ${order.status === "Selesai" ? "selected" : ""}
+                >
+                    Selesai
+                </option>
+
+            </select>
+
+        </div>
+
+        `;
+
+    });
+
+
+    updateStats();
+
+}
+
+
+/* ================= UBAH STATUS ================= */
+
+function changeStatus(
+    id,
+    status
+) {
+
+    let orders =
+        JSON.parse(
+            localStorage.getItem(
+                "gadgetOrders"
+            )
+        ) || [];
+
+
+    let order =
+        orders.find(
+            item =>
+            item.id === id
+        );
+
+
+    if (order) {
+
+        order.status = status;
+
+    }
+
+
+    localStorage.setItem(
+        "gadgetOrders",
+        JSON.stringify(orders)
+    );
+
+
+    renderOrders();
+
+}
+
+
+/* ================= STATISTIK ================= */
+
+function updateStats() {
+
+    let orders =
+        JSON.parse(
+            localStorage.getItem(
+                "gadgetOrders"
+            )
+        ) || [];
+
+
+    document.getElementById(
+        "totalProducts"
+    ).textContent =
+        products.length;
+
+
+    document.getElementById(
+        "totalOrders"
+    ).textContent =
+        orders.length;
+
+
+    document.getElementById(
+        "completedOrders"
+    ).textContent =
+
+        orders.filter(
+            order =>
+            order.status === "Selesai"
+        ).length;
+
+}
+
+
+/* ================= LOGOUT ================= */
+
+function logout() {
+
+    localStorage.removeItem(
+        "loggedIn"
+    );
+
+    window.location.href =
+        "index.html";
+
+}
+
+
+/* ================= START ================= */
+
+renderProducts();
+
+renderOrders();
+
+</script>
+
+</body>
+</html>
