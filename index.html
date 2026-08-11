@@ -1,12 +1,18 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>GadgetStore Pro</title>
 
 <style>
+
+/* =====================================================
+   RESET
+===================================================== */
+
 *{
     box-sizing:border-box;
     margin:0;
@@ -19,8 +25,18 @@ body{
     color:#172033;
 }
 
+/* =====================================================
+   HEADER
+===================================================== */
+
 header{
-    background:linear-gradient(135deg,#071b33,#0b63ce,#72d7ff);
+    background:linear-gradient(
+        135deg,
+        #071b33,
+        #0b63ce,
+        #72d7ff
+    );
+
     color:white;
     padding:25px;
     text-align:center;
@@ -35,6 +51,10 @@ header p{
     margin-top:7px;
     opacity:.9;
 }
+
+/* =====================================================
+   CONTAINER
+===================================================== */
 
 .container{
     width:92%;
@@ -51,13 +71,17 @@ header p{
     border:1px solid #d7edff;
 }
 
-/* ================= LOGIN ================= */
+/* =====================================================
+   LOGIN
+===================================================== */
 
 #loginPage{
     min-height:100vh;
+
     display:flex;
     justify-content:center;
     align-items:center;
+
     background:linear-gradient(
         135deg,
         #06182c,
@@ -68,10 +92,14 @@ header p{
 
 .login-box{
     background:white;
+
     width:90%;
     max-width:420px;
+
     padding:35px;
+
     border-radius:25px;
+
     box-shadow:0 20px 50px #0005;
 }
 
@@ -90,10 +118,15 @@ header p{
 input,
 select{
     width:100%;
+
     padding:13px;
+
     border:1px solid #cbd5e1;
+
     border-radius:10px;
+
     margin:7px 0 15px;
+
     outline:none;
 }
 
@@ -102,17 +135,26 @@ select:focus{
     border-color:#0785e8;
 }
 
-/* ================= BUTTON ================= */
+/* =====================================================
+   BUTTON
+===================================================== */
 
 button,
 .btn{
     border:0;
+
     padding:12px 18px;
+
     border-radius:10px;
+
     cursor:pointer;
+
     font-weight:bold;
+
     background:#0878d1;
+
     color:white;
+
     transition:.2s;
 }
 
@@ -157,54 +199,90 @@ button:hover,
     background:#ef4444;
 }
 
-/* ================= NAV ================= */
+/* =====================================================
+   NAV
+===================================================== */
 
 .nav{
     display:flex;
+
     justify-content:space-between;
+
     align-items:center;
+
     gap:15px;
+
     flex-wrap:wrap;
 }
 
 .user-info{
     display:flex;
+
     align-items:center;
+
     gap:10px;
+
     flex-wrap:wrap;
 }
 
-/* ================= PRODUK ================= */
+/* =====================================================
+   KATALOG PRODUK
+===================================================== */
 
 .section-title{
     margin-bottom:18px;
+
     color:#075da8;
 }
 
-/* 2 PRODUK SETIAP BARIS */
+/*
+   2 PRODUK PER BARIS
+
+   Produk 1 = kiri
+   Produk 2 = kanan
+
+   Produk 3 = kiri
+   Produk 4 = kanan
+
+   dst...
+*/
+
 .products{
     display:grid;
-    grid-template-columns:repeat(2,1fr);
+
+    grid-template-columns:
+    repeat(2,1fr);
+
     gap:20px;
 }
 
 .product{
     border:1px solid #d9ecfa;
+
     border-radius:18px;
+
     overflow:hidden;
+
     background:white;
-    box-shadow:0 5px 18px #0878d11c;
+
+    box-shadow:
+    0 5px 18px #0878d11c;
+
     transition:.2s;
 }
 
 .product:hover{
     transform:translateY(-4px);
-    box-shadow:0 10px 25px #0878d133;
+
+    box-shadow:
+    0 10px 25px #0878d133;
 }
 
 .product img{
     width:100%;
-    height:250px;
+
+    height:240px;
+
     object-fit:cover;
 }
 
@@ -218,94 +296,135 @@ button:hover,
 
 .price{
     color:#0878d1;
+
     font-size:21px;
+
     font-weight:bold;
+
     margin:10px 0;
 }
 
 .desc{
     color:#64748b;
+
     line-height:1.5;
+
     min-height:50px;
 }
 
 video{
     width:100%;
+
     margin-top:15px;
+
     border-radius:10px;
+
     background:#000;
 }
 
-/* ================= ORDER ================= */
+/* =====================================================
+   ORDER
+===================================================== */
 
 .order{
     border:1px solid #dcebf5;
+
     padding:18px;
+
     border-radius:14px;
+
     margin:12px 0;
 }
 
 .status{
     display:inline-block;
+
     padding:7px 12px;
+
     border-radius:20px;
+
     background:#e0f2fe;
+
     color:#0369a1;
+
     font-size:13px;
+
     font-weight:bold;
+
     margin-top:8px;
 }
 
-/* ================= TRACKING ================= */
+/* =====================================================
+   TRACKING
+===================================================== */
 
 .tracking{
     display:flex;
+
     align-items:center;
+
     justify-content:center;
+
     margin-top:18px;
 }
 
 .step{
     text-align:center;
+
     min-width:70px;
+
     color:#94a3b8;
 }
 
 .circle{
     width:42px;
+
     height:42px;
+
     margin:auto;
+
     border-radius:50%;
+
     background:#e2e8f0;
+
     display:flex;
+
     justify-content:center;
+
     align-items:center;
 }
 
 .step.active{
     color:#0878d1;
+
     font-weight:bold;
 }
 
 .step.active .circle{
     background:#0878d1;
+
     color:white;
 }
 
 .step.done{
     color:#08a66a;
+
     font-weight:bold;
 }
 
 .step.done .circle{
     background:#08a66a;
+
     color:white;
 }
 
 .line{
     height:4px;
+
     flex:1;
+
     max-width:80px;
+
     background:#e2e8f0;
 }
 
@@ -315,24 +434,36 @@ video{
 
 .step small{
     display:block;
+
     margin-top:7px;
+
     font-size:10px;
 }
 
-/* ================= CART ================= */
+/* =====================================================
+   CART
+===================================================== */
 
 .cart-item{
     display:flex;
+
     align-items:center;
+
     gap:15px;
+
     padding:15px 0;
-    border-bottom:1px solid #e2e8f0;
+
+    border-bottom:
+    1px solid #e2e8f0;
 }
 
 .cart-item img{
     width:80px;
+
     height:80px;
+
     object-fit:cover;
+
     border-radius:10px;
 }
 
@@ -342,14 +473,19 @@ video{
 
 .cart-price{
     color:#0878d1;
+
     font-weight:bold;
+
     margin-top:5px;
 }
 
 .qty{
     display:flex;
+
     align-items:center;
+
     gap:7px;
+
     margin-top:8px;
 }
 
@@ -359,79 +495,117 @@ video{
 
 .qty span{
     min-width:25px;
+
     text-align:center;
+
     font-weight:bold;
 }
 
 .cart-total{
     text-align:right;
+
     margin-top:20px;
+
     font-size:20px;
+
     font-weight:bold;
+
     color:#075da8;
 }
 
-/* ================= MODAL ================= */
+/* =====================================================
+   MODAL
+===================================================== */
 
 .modal{
     position:fixed;
+
     inset:0;
+
     background:#0008;
+
     display:flex;
+
     justify-content:center;
+
     align-items:center;
+
     padding:20px;
+
     z-index:1000;
 }
 
 .modal-box{
     background:white;
+
     width:100%;
+
     max-width:550px;
+
     max-height:90vh;
+
     overflow-y:auto;
+
     border-radius:20px;
+
     padding:25px;
 }
 
 .modal-header{
     display:flex;
+
     justify-content:space-between;
+
     align-items:center;
+
     margin-bottom:20px;
 }
 
 .payment{
     border:1px solid #dcebf5;
+
     border-radius:12px;
+
     padding:15px;
+
     margin:10px 0;
 }
 
 .payment input{
     width:auto;
+
     margin:0 8px 0 0;
 }
 
 .payment label{
     cursor:pointer;
+
     font-weight:bold;
 }
 
 .checkout-total{
     background:#e8f6ff;
+
     padding:15px;
+
     border-radius:12px;
+
     margin:15px 0;
+
     font-size:18px;
+
     font-weight:bold;
 }
 
-/* ================= LAINNYA ================= */
+/* =====================================================
+   LAINNYA
+===================================================== */
 
 .empty{
     text-align:center;
+
     padding:30px;
+
     color:#64748b;
 }
 
@@ -441,11 +615,19 @@ video{
 
 footer{
     text-align:center;
+
     padding:25px;
+
     color:#64748b;
 }
 
-/* ================= MOBILE ================= */
+/* =====================================================
+   MOBILE
+===================================================== */
+
+/*
+   Tetap 2 produk per baris di HP
+*/
 
 @media(max-width:600px){
 
@@ -453,17 +635,42 @@ footer{
         font-size:25px;
     }
 
-    /* HP menjadi 1 produk per baris */
     .products{
-        grid-template-columns:1fr;
+        grid-template-columns:
+        repeat(2,1fr);
+
+        gap:10px;
     }
 
     .product img{
-        height:210px;
+        height:150px;
+    }
+
+    .product-body{
+        padding:12px;
+    }
+
+    .product h3{
+        font-size:15px;
+    }
+
+    .price{
+        font-size:16px;
+    }
+
+    .desc{
+        font-size:12px;
+    }
+
+    .product button{
+        font-size:11px;
+
+        padding:10px 5px;
     }
 
     .cart-item img{
         width:65px;
+
         height:65px;
     }
 
@@ -473,7 +680,9 @@ footer{
 
     .circle{
         width:35px;
+
         height:35px;
+
         font-size:15px;
     }
 
@@ -482,29 +691,49 @@ footer{
     }
 
 }
+
 </style>
 </head>
 
+
 <body>
 
-<!-- ================= LOGIN ================= -->
+
+<!-- =====================================================
+LOGIN
+===================================================== -->
 
 <div id="loginPage">
 
     <div class="login-box">
 
-        <h2>GadgetStore Pro</h2>
+        <h2>
+            GadgetStore Pro
+        </h2>
 
-        <p>Login ke GadgetStore</p>
+        <p>
+            Login ke GadgetStore
+        </p>
 
-        <label>Login sebagai</label>
+        <label>
+            Login sebagai
+        </label>
 
         <select id="role">
-            <option value="customer">Customer</option>
-            <option value="admin">Administrator</option>
+
+            <option value="customer">
+                Customer
+            </option>
+
+            <option value="admin">
+                Administrator
+            </option>
+
         </select>
 
-        <label>Username</label>
+        <label>
+            Username
+        </label>
 
         <input
             type="text"
@@ -512,7 +741,9 @@ footer{
             placeholder="Masukkan username"
         >
 
-        <label>Password</label>
+        <label>
+            Password
+        </label>
 
         <input
             type="password"
@@ -538,21 +769,31 @@ footer{
 </div>
 
 
-<!-- ================= APLIKASI CUSTOMER ================= -->
+<!-- =====================================================
+APLIKASI CUSTOMER
+===================================================== -->
 
 <div id="app" class="hidden">
 
 <header>
 
-    <h1>GadgetStore Management System</h1>
+    <h1>
+        GadgetStore Management System
+    </h1>
 
-    <p>Premium Technology Marketplace</p>
+    <p>
+        Premium Technology Marketplace
+    </p>
 
 </header>
 
+
 <div class="container">
 
-<!-- ================= NAV ================= -->
+
+<!-- =====================================================
+NAV
+===================================================== -->
 
 <div class="card">
 
@@ -560,7 +801,9 @@ footer{
 
         <div>
 
-            <h2>🛍️ Panel Pembeli</h2>
+            <h2>
+                🛍️ Panel Pembeli
+            </h2>
 
             <p>
                 Selamat datang,
@@ -568,6 +811,7 @@ footer{
             </p>
 
         </div>
+
 
         <div class="user-info">
 
@@ -580,6 +824,7 @@ footer{
 
             </button>
 
+
             <button
                 class="admin-btn hidden"
                 id="adminPanelBtn"
@@ -588,6 +833,7 @@ footer{
                 ⚙️ Admin
 
             </button>
+
 
             <button
                 class="logout"
@@ -604,7 +850,9 @@ footer{
 </div>
 
 
-<!-- ================= PRODUK ================= -->
+<!-- =====================================================
+KATALOG
+===================================================== -->
 
 <div class="card">
 
@@ -620,7 +868,9 @@ footer{
 </div>
 
 
-<!-- ================= PESANAN ================= -->
+<!-- =====================================================
+PESANAN
+===================================================== -->
 
 <div class="card">
 
@@ -632,16 +882,23 @@ footer{
 
 </div>
 
+
 </div>
 
+
 <footer>
-    © 2026 GadgetStore Pro — Prototype E-Commerce
+
+    © 2026 GadgetStore Pro —
+    Prototype E-Commerce
+
 </footer>
 
 </div>
 
 
-<!-- ================= MODAL KERANJANG ================= -->
+<!-- =====================================================
+MODAL KERANJANG
+===================================================== -->
 
 <div
     id="cartModal"
@@ -651,7 +908,9 @@ footer{
 
         <div class="modal-header">
 
-            <h2>🛒 Keranjang</h2>
+            <h2>
+                🛒 Keranjang
+            </h2>
 
             <button
                 class="close"
@@ -663,12 +922,15 @@ footer{
 
         </div>
 
+
         <div id="cartItems"></div>
+
 
         <div
             id="cartTotal"
             class="cart-total">
         </div>
+
 
         <button
             class="buy"
@@ -684,7 +946,9 @@ footer{
 </div>
 
 
-<!-- ================= MODAL CHECKOUT ================= -->
+<!-- =====================================================
+MODAL CHECKOUT
+===================================================== -->
 
 <div
     id="checkoutModal"
@@ -694,7 +958,9 @@ footer{
 
         <div class="modal-header">
 
-            <h2>💳 Pembayaran</h2>
+            <h2>
+                💳 Pembayaran
+            </h2>
 
             <button
                 class="close"
@@ -706,9 +972,11 @@ footer{
 
         </div>
 
+
         <h3>
             Pilih Metode Pembayaran
         </h3>
+
 
         <div class="payment">
 
@@ -729,6 +997,7 @@ footer{
 
         </div>
 
+
         <div class="payment">
 
             <label>
@@ -747,6 +1016,7 @@ footer{
             </p>
 
         </div>
+
 
         <div class="payment">
 
@@ -767,10 +1037,12 @@ footer{
 
         </div>
 
+
         <div
             id="checkoutTotal"
             class="checkout-total">
         </div>
+
 
         <button
             class="buy"
@@ -789,37 +1061,69 @@ footer{
 <script>
 
 /* =====================================================
-PRODUK DEFAULT
+DATA PRODUK DEFAULT
 ===================================================== */
 
 const defaultProducts=[
 
-{
-    id:1,
-    name:"Smartphone Premium",
-    price:12000000,
-    desc:"Layar AMOLED 120Hz, RAM 12GB, kamera 108MP dan baterai 5000mAh.",
-    image:"https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=800",
-    video:"https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4"
-},
+    {
+        id:1,
 
-{
-    id:2,
-    name:"Laptop Ultra",
-    price:15500000,
-    desc:"Laptop performa tinggi dengan RAM 16GB, SSD 1TB dan layar Full HD.",
-    image:"https://images.unsplash.com/photo-1496181133206-80ce9b88a853?w=800",
-    video:"https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4"
-},
+        name:
+        "Smartphone Premium",
 
-{
-    id:3,
-    name:"Gaming Headset",
-    price:850000,
-    desc:"Headset gaming surround sound dengan microphone noise cancelling.",
-    image:"https://images.unsplash.com/photo-1599669454699-248893623440?w=800",
-    video:"https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4"
-}
+        price:
+        12000000,
+
+        desc:
+        "Layar AMOLED 120Hz, RAM 12GB, kamera 108MP dan baterai 5000mAh.",
+
+        image:
+        "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=800",
+
+        video:
+        "https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4"
+    },
+
+
+    {
+        id:2,
+
+        name:
+        "Laptop Ultra",
+
+        price:
+        15500000,
+
+        desc:
+        "Laptop performa tinggi dengan RAM 16GB, SSD 1TB dan layar Full HD.",
+
+        image:
+        "https://images.unsplash.com/photo-1496181133206-80ce9b88a853?w=800",
+
+        video:
+        "https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4"
+    },
+
+
+    {
+        id:3,
+
+        name:
+        "Gaming Headset",
+
+        price:
+        850000,
+
+        desc:
+        "Headset gaming surround sound dengan microphone noise cancelling.",
+
+        image:
+        "https://images.unsplash.com/photo-1599669454699-248893623440?w=800",
+
+        video:
+        "https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4"
+    }
 
 ];
 
@@ -848,7 +1152,7 @@ if(!localStorage.getItem("orders")){
 
 
 /* =====================================================
-RUPIAH
+FORMAT RUPIAH
 ===================================================== */
 
 function rupiah(number){
@@ -887,16 +1191,17 @@ function login(){
 
     msg.textContent="";
 
+
     if(!username || !password){
 
         msg.textContent=
         "Username dan password wajib diisi!";
 
         return;
-
     }
 
-    /* ADMIN */
+
+    /* ================= ADMIN ================= */
 
     if(role==="admin"){
 
@@ -927,11 +1232,10 @@ function login(){
         }
 
         return;
-
     }
 
 
-    /* CUSTOMER */
+    /* ================= CUSTOMER ================= */
 
     let customers=
         JSON.parse(
@@ -940,19 +1244,26 @@ function login(){
             ) || "[]"
         );
 
+
     let customer=
         customers.find(
             c=>c.username===username
         );
 
+
     if(!customer){
 
         customer={
-            username:username,
-            password:password
+            username:
+            username,
+
+            password:
+            password
         };
 
+
         customers.push(customer);
+
 
         localStorage.setItem(
             "customers",
@@ -963,7 +1274,9 @@ function login(){
 
     else{
 
-        if(customer.password!==password){
+        if(
+            customer.password!==password
+        ){
 
             msg.textContent=
             "Password customer salah!";
@@ -974,6 +1287,7 @@ function login(){
 
     }
 
+
     localStorage.setItem(
         "loggedUser",
         username
@@ -983,6 +1297,7 @@ function login(){
         "loggedRole",
         "customer"
     );
+
 
     showApp();
 
@@ -999,35 +1314,27 @@ function showApp(){
     .getElementById("loginPage")
     .classList.add("hidden");
 
+
     document
     .getElementById("app")
     .classList.remove("hidden");
+
 
     const user=
         localStorage.getItem(
             "loggedUser"
         );
 
+
     document
     .getElementById("welcome")
     .textContent=user;
 
-    if(
-        localStorage.getItem(
-            "loggedRole"
-        )==="admin"
-    ){
-
-        document
-        .getElementById(
-            "adminPanelBtn"
-        )
-        .classList.remove("hidden");
-
-    }
 
     renderProducts();
+
     renderOrders();
+
     updateCartCount();
 
 }
@@ -1088,7 +1395,7 @@ function saveCart(cart){
 
 
 /* =====================================================
-TAMBAH KERANJANG
+TAMBAH KE KERANJANG
 ===================================================== */
 
 function addToCart(id){
@@ -1100,19 +1407,26 @@ function addToCart(id){
             ) || "[]"
         );
 
+
     const product=
         products.find(
             p=>p.id===id
         );
 
+
     if(!product)return;
 
-    let cart=getCart();
+
+    let cart=
+        getCart();
+
 
     const existing=
         cart.find(
-            item=>item.productId===id
+            item=>
+            item.productId===id
         );
+
 
     if(existing){
 
@@ -1124,19 +1438,29 @@ function addToCart(id){
 
         cart.push({
 
-            productId:product.id,
-            name:product.name,
-            price:product.price,
-            image:product.image,
+            productId:
+            product.id,
+
+            name:
+            product.name,
+
+            price:
+            product.price,
+
+            image:
+            product.image,
+
             qty:1
 
         });
 
     }
 
+
     saveCart(cart);
 
     updateCartCount();
+
 
     alert(
         product.name+
@@ -1147,12 +1471,14 @@ function addToCart(id){
 
 
 /* =====================================================
-COUNT CART
+CART COUNT
 ===================================================== */
 
 function updateCartCount(){
 
-    const cart=getCart();
+    const cart=
+        getCart();
+
 
     const count=
         cart.reduce(
@@ -1161,15 +1487,18 @@ function updateCartCount(){
             0
         );
 
+
     document
-    .getElementById("cartCount")
+    .getElementById(
+        "cartCount"
+    )
     .textContent=count;
 
 }
 
 
 /* =====================================================
-RENDER PRODUCTS
+RENDER PRODUK
 ===================================================== */
 
 function renderProducts(){
@@ -1179,6 +1508,7 @@ function renderProducts(){
             "products"
         );
 
+
     const products=
         JSON.parse(
             localStorage.getItem(
@@ -1186,16 +1516,19 @@ function renderProducts(){
             ) || "[]"
         );
 
+
     if(products.length===0){
 
         container.innerHTML=
-        `<div class="empty">
+        `
+        <div class="empty">
             Belum ada produk.
-        </div>`;
+        </div>
+        `;
 
         return;
-
     }
+
 
     container.innerHTML=
 
@@ -1205,12 +1538,15 @@ function renderProducts(){
 
             <img
                 src="${product.image}"
+
                 alt="${product.name}"
 
                 onerror="
-                this.src='https://via.placeholder.com/600x400?text=GadgetStore'
+                    this.src=
+                    'https://via.placeholder.com/600x400?text=GadgetStore'
                 "
             >
+
 
             <div class="product-body">
 
@@ -1218,33 +1554,46 @@ function renderProducts(){
                     ${product.name}
                 </h3>
 
+
                 <div class="price">
+
                     ${rupiah(product.price)}
+
                 </div>
 
+
                 <p class="desc">
+
                     ${product.desc}
+
                 </p>
+
 
                 <video controls>
 
                     <source
                         src="${product.video}"
-                        type="video/mp4">
+                        type="video/mp4"
+                    >
 
-                    Browser Anda tidak mendukung video.
+                    Browser Anda
+                    tidak mendukung video.
 
                 </video>
 
+
                 <button
                     class="buy"
+
                     style="
                         width:100%;
-                        margin-top:15px
+                        margin-top:15px;
                     "
+
                     onclick="
                         addToCart(${product.id})
-                    ">
+                    "
+                >
 
                     🛒 Tambah ke Keranjang
 
@@ -1267,8 +1616,11 @@ function openCart(){
 
     renderCart();
 
+
     document
-    .getElementById("cartModal")
+    .getElementById(
+        "cartModal"
+    )
     .classList.remove("hidden");
 
 }
@@ -1277,7 +1629,9 @@ function openCart(){
 function closeCart(){
 
     document
-    .getElementById("cartModal")
+    .getElementById(
+        "cartModal"
+    )
     .classList.add("hidden");
 
 }
@@ -1294,14 +1648,22 @@ function renderCart(){
             "cartItems"
         );
 
-    const cart=getCart();
+
+    const cart=
+        getCart();
+
 
     if(cart.length===0){
 
         container.innerHTML=
-        `<div class="empty">
+        `
+        <div class="empty">
+
             🛒 Keranjang masih kosong.
-        </div>`;
+
+        </div>
+        `;
+
 
         document
         .getElementById(
@@ -1309,9 +1671,10 @@ function renderCart(){
         )
         .textContent="";
 
-        return;
 
+        return;
     }
+
 
     container.innerHTML=
 
@@ -1321,10 +1684,13 @@ function renderCart(){
 
             <img
                 src="${item.image}"
+
                 onerror="
-                this.src='https://via.placeholder.com/100'
+                    this.src=
+                    'https://via.placeholder.com/100'
                 "
             >
+
 
             <div class="cart-info">
 
@@ -1332,47 +1698,61 @@ function renderCart(){
                     ${item.name}
                 </h4>
 
+
                 <div class="cart-price">
+
                     ${rupiah(item.price)}
+
                 </div>
+
 
                 <div class="qty">
 
+
                     <button
                         onclick="
-                        changeQty(
-                            ${item.productId},
-                            -1
-                        )
-                        ">
+                            changeQty(
+                                ${item.productId},
+                                -1
+                            )
+                        "
+                    >
 
                         −
 
                     </button>
 
+
                     <span>
+
                         ${item.qty}
+
                     </span>
+
 
                     <button
                         onclick="
-                        changeQty(
-                            ${item.productId},
-                            1
-                        )
-                        ">
+                            changeQty(
+                                ${item.productId},
+                                1
+                            )
+                        "
+                    >
 
                         +
 
                     </button>
 
+
                     <button
                         class="danger"
+
                         onclick="
-                        removeFromCart(
-                            ${item.productId}
-                        )
-                        ">
+                            removeFromCart(
+                                ${item.productId}
+                            )
+                        "
+                    >
 
                         🗑️
 
@@ -1386,6 +1766,7 @@ function renderCart(){
 
     `).join("");
 
+
     const total=
         cart.reduce(
             (sum,item)=>
@@ -1394,6 +1775,7 @@ function renderCart(){
             item.qty,
             0
         );
+
 
     document
     .getElementById(
@@ -1407,30 +1789,38 @@ function renderCart(){
 
 
 /* =====================================================
-CHANGE QTY
+CHANGE QUANTITY
 ===================================================== */
 
 function changeQty(id,change){
 
-    let cart=getCart();
+    let cart=
+        getCart();
+
 
     const item=
         cart.find(
-            i=>i.productId===id
+            i=>
+            i.productId===id
         );
+
 
     if(!item)return;
 
+
     item.qty+=change;
+
 
     if(item.qty<=0){
 
         cart=
         cart.filter(
-            i=>i.productId!==id
+            i=>
+            i.productId!==id
         );
 
     }
+
 
     saveCart(cart);
 
@@ -1447,12 +1837,16 @@ REMOVE CART
 
 function removeFromCart(id){
 
-    let cart=getCart();
+    let cart=
+        getCart();
+
 
     cart=
-    cart.filter(
-        item=>item.productId!==id
-    );
+        cart.filter(
+            item=>
+            item.productId!==id
+        );
+
 
     saveCart(cart);
 
@@ -1469,7 +1863,9 @@ CHECKOUT
 
 function openCheckout(){
 
-    const cart=getCart();
+    const cart=
+        getCart();
+
 
     if(cart.length===0){
 
@@ -1481,6 +1877,7 @@ function openCheckout(){
 
     }
 
+
     const total=
         cart.reduce(
             (sum,item)=>
@@ -1490,6 +1887,7 @@ function openCheckout(){
             0
         );
 
+
     document
     .getElementById(
         "checkoutTotal"
@@ -1498,7 +1896,9 @@ function openCheckout(){
     "Total Pembayaran: "+
     rupiah(total);
 
+
     closeCart();
+
 
     document
     .getElementById(
@@ -1531,6 +1931,7 @@ function processCheckout(){
             'input[name="payment"]:checked'
         );
 
+
     if(!selected){
 
         alert(
@@ -1541,7 +1942,10 @@ function processCheckout(){
 
     }
 
-    const cart=getCart();
+
+    const cart=
+        getCart();
+
 
     if(cart.length===0){
 
@@ -1553,10 +1957,12 @@ function processCheckout(){
 
     }
 
+
     const user=
         localStorage.getItem(
             "loggedUser"
         );
+
 
     let orders=
         JSON.parse(
@@ -1564,6 +1970,7 @@ function processCheckout(){
                 "orders"
             ) || "[]"
         );
+
 
     const total=
         cart.reduce(
@@ -1573,6 +1980,7 @@ function processCheckout(){
             item.qty,
             0
         );
+
 
     cart.forEach(item=>{
 
@@ -1584,15 +1992,20 @@ function processCheckout(){
                     Math.random()*10000
                 ),
 
-            customer:user,
+            customer:
+                user,
 
-            productId:item.productId,
+            productId:
+                item.productId,
 
-            productName:item.name,
+            productName:
+                item.name,
 
-            price:item.price,
+            price:
+                item.price,
 
-            quantity:item.qty,
+            quantity:
+                item.qty,
 
             total:
                 item.price*
@@ -1606,18 +2019,23 @@ function processCheckout(){
 
             date:
                 new Date()
-                .toLocaleString("id-ID")
+                .toLocaleString(
+                    "id-ID"
+                )
 
         });
 
     });
+
 
     localStorage.setItem(
         "orders",
         JSON.stringify(orders)
     );
 
+
     saveCart([]);
+
 
     closeCheckout();
 
@@ -1625,13 +2043,17 @@ function processCheckout(){
 
     renderOrders();
 
+
     alert(
 
         "Pesanan berhasil dibuat!\n\n"+
+
         "Metode pembayaran: "+
         selected.value+
+
         "\nTotal: "+
         rupiah(total)+
+
         "\n\nStatus: Belum Dibayar"
 
     );
@@ -1650,10 +2072,12 @@ function renderOrders(){
             "orders"
         );
 
+
     const user=
         localStorage.getItem(
             "loggedUser"
         );
+
 
     const orders=
         JSON.parse(
@@ -1662,21 +2086,29 @@ function renderOrders(){
             ) || "[]"
         );
 
+
     const myOrders=
         orders.filter(
-            o=>o.customer===user
+            o=>
+            o.customer===user
         );
+
 
     if(myOrders.length===0){
 
         container.innerHTML=
-        `<div class="empty">
+        `
+        <div class="empty">
+
             📦 Belum ada pesanan.
-        </div>`;
+
+        </div>
+        `;
 
         return;
 
     }
+
 
     container.innerHTML=
 
@@ -1691,15 +2123,19 @@ function renderOrders(){
                 📦 ${order.productName}
             </h3>
 
+
             <p>
                 Jumlah:
+
                 <b>
                     ${order.quantity||1}
                 </b>
             </p>
 
+
             <p>
                 Total:
+
                 <b>
                     ${rupiah(
                         order.total||
@@ -1708,43 +2144,59 @@ function renderOrders(){
                 </b>
             </p>
 
+
             <p>
                 Pembayaran:
+
                 <b>
                     ${order.payment||"-"}
                 </b>
             </p>
 
+
             <p>
                 Tanggal:
+
                 ${order.date}
+
             </p>
 
-            <div style="
-                margin-top:18px;
-                padding:18px;
-                background:#f8fbff;
-                border-radius:15px;
-            ">
 
-                <h4 style="
-                    color:#075da8;
-                    margin-bottom:15px;
-                ">
+            <div
+                style="
+                    margin-top:18px;
+                    padding:18px;
+                    background:#f8fbff;
+                    border-radius:15px;
+                "
+            >
+
+                <h4
+                    style="
+                        color:#075da8;
+                        margin-bottom:15px;
+                    "
+                >
 
                     🚚 Tracking Pesanan
 
                 </h4>
 
+
                 <div class="tracking">
 
-                    <div class="
-                        step
-                        ${getStepClass(
-                            order.status,
-                            1
-                        )}
-                    ">
+
+                    <!-- BELUM DIBAYAR -->
+
+                    <div
+                        class="
+                            step
+                            ${getStepClass(
+                                order.status,
+                                1
+                            )}
+                        "
+                    >
 
                         <div class="circle">
                             💰
@@ -1756,22 +2208,30 @@ function renderOrders(){
 
                     </div>
 
-                    <div class="
-                        line
-                        ${getLineClass(
-                            order.status,
-                            2
-                        )}
-                    ">
+
+                    <div
+                        class="
+                            line
+                            ${getLineClass(
+                                order.status,
+                                2
+                            )}
+                        "
+                    >
                     </div>
 
-                    <div class="
-                        step
-                        ${getStepClass(
-                            order.status,
-                            2
-                        )}
-                    ">
+
+                    <!-- SUDAH DIBAYAR -->
+
+                    <div
+                        class="
+                            step
+                            ${getStepClass(
+                                order.status,
+                                2
+                            )}
+                        "
+                    >
 
                         <div class="circle">
                             ✅
@@ -1783,22 +2243,30 @@ function renderOrders(){
 
                     </div>
 
-                    <div class="
-                        line
-                        ${getLineClass(
-                            order.status,
-                            3
-                        )}
-                    ">
+
+                    <div
+                        class="
+                            line
+                            ${getLineClass(
+                                order.status,
+                                3
+                            )}
+                        "
+                    >
                     </div>
 
-                    <div class="
-                        step
-                        ${getStepClass(
-                            order.status,
-                            3
-                        )}
-                    ">
+
+                    <!-- DIKEMAS -->
+
+                    <div
+                        class="
+                            step
+                            ${getStepClass(
+                                order.status,
+                                3
+                            )}
+                        "
+                    >
 
                         <div class="circle">
                             📦
@@ -1810,22 +2278,30 @@ function renderOrders(){
 
                     </div>
 
-                    <div class="
-                        line
-                        ${getLineClass(
-                            order.status,
-                            4
-                        )}
-                    ">
+
+                    <div
+                        class="
+                            line
+                            ${getLineClass(
+                                order.status,
+                                4
+                            )}
+                        "
+                    >
                     </div>
 
-                    <div class="
-                        step
-                        ${getStepClass(
-                            order.status,
-                            4
-                        )}
-                    ">
+
+                    <!-- DIKIRIM -->
+
+                    <div
+                        class="
+                            step
+                            ${getStepClass(
+                                order.status,
+                                4
+                            )}
+                        "
+                    >
 
                         <div class="circle">
                             🚚
@@ -1839,10 +2315,13 @@ function renderOrders(){
 
                 </div>
 
-                <div style="
-                    text-align:center;
-                    margin-top:20px;
-                ">
+
+                <div
+                    style="
+                        text-align:center;
+                        margin-top:20px;
+                    "
+                >
 
                     <span class="status">
 
@@ -1856,11 +2335,14 @@ function renderOrders(){
 
                 </div>
 
-                <p style="
-                    text-align:center;
-                    margin-top:12px;
-                    color:#64748b;
-                ">
+
+                <p
+                    style="
+                        text-align:center;
+                        margin-top:12px;
+                        color:#64748b;
+                    "
+                >
 
                     ${getStatusMessage(
                         order.status
@@ -1895,8 +2377,10 @@ function getStepClass(status,step){
 
     };
 
+
     const current=
         statusNumber[status]||1;
+
 
     if(step<current){
 
@@ -1904,11 +2388,13 @@ function getStepClass(status,step){
 
     }
 
+
     if(step===current){
 
         return "active";
 
     }
+
 
     return "";
 
@@ -1933,14 +2419,17 @@ function getLineClass(status,step){
 
     };
 
+
     const current=
         statusNumber[status]||1;
+
 
     if(current>=step){
 
         return "line-done";
 
     }
+
 
     return "";
 
@@ -1985,15 +2474,19 @@ function getStatusIcon(status){
     switch(status){
 
         case "Sudah Dibayar":
+
             return "✅";
 
         case "Sedang Dikemas":
+
             return "📦";
 
         case "Sudah Dikirim":
+
             return "🚚";
 
         default:
+
             return "💰";
 
     }
@@ -2014,6 +2507,7 @@ const loggedRole=
     localStorage.getItem(
         "loggedRole"
     );
+
 
 if(
     loggedUser &&
@@ -2049,3 +2543,20 @@ else{
 
 </body>
 </html>
+
+Bagian terpentingnya adalah:
+
+.products{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:20px;
+}
+
+Jadi urutannya akan selalu:
+
+Produk 1 ← → Produk 2
+Produk 3 ← → Produk 4
+Produk 5 ← → Produk 6
+Produk 7 ← → Produk 8
+
+dan seterusnya ke bawah.
